@@ -1,0 +1,83 @@
+import json
+import math
+from pathlib import Path
+
+import pytest
+
+from eval.retrieval_eval import QUESTION_TYPES, QuestionResult, answer_rank, percentile, summarize, summarize_by_type
+
+S = "ada_2010_standards.pdf"
+G = "ada_2010_guidance.pdf"
+
+
+def item(source, section_id):
+    return {"source": source, "section_id": section_id}
+
+
+def test_answer_rank_single_group_any_member():
+    expected = [[item(S, "404.2.3"), item(S, "404.3.1")]]
+    assert answer_rank([(S, "405.2"), (S, "404.3.1"), (S, "404.2.3")], expected) == 2
+
+
+def test_answer_rank_all_groups_must_be_covered():
+    expected = [[item(S, "604.5.1")], [item(S, "604.5.2")]]
+    assert answer_rank([(S, "604.5.2"), (S, "609.4"), (S, "604.5.1")], expected) == 3
+    assert answer_rank([(S, "604.5.2"), (S, "609.4")], expected) is None
+
+
+def test_answer_rank_source_must_match():
+    assert answer_rank([(G, "404.2.3")], [[item(S, "404.2.3")]]) is None
+
+
+def test_answer_rank_out_of_corpus_is_none():
+    assert answer_rank([(S, "404.2.3")], []) is None
+
+
+def test_percentile_nearest_rank():
+    values = [10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
+    assert percentile(values, 50) == 50.0
+    assert percentile(values, 95) == 100.0
+    assert percentile([7.0], 95) == 7.0
+    assert math.isnan(percentile([], 50))
+
+
+def result(qid, qtype, found, rank, latency=100.0):
+    return QuestionResult(qid, qtype, found, rank, latency)
+
+
+def test_summarize_metrics():
+    results = [
+        result("p1", "paraphrase", [(S, "a")], 1),
+        result("p2", "paraphrase", [(S, "x"), (S, "y"), (S, "b")], 3),
+        result("p3", "paraphrase", [(S, "x")], None),
+        result("p4", "paraphrase", [], None),               # false refusal
+        result("o1", "out_of_corpus", [], None),             # correct refusal
+        result("o2", "out_of_corpus", [(S, "x")], None),     # should have been empty
+    ]
+    s = summarize(results)
+    assert s["hit@1"] == pytest.approx(1 / 4)
+    assert s["hit@3"] == pytest.approx(2 / 4)
+    assert s["hit@5"] == pytest.approx(2 / 4)
+    assert s["mrr"] == pytest.approx((1 + 1 / 3) / 4)
+    assert s["refusal_accuracy"] == pytest.approx(1 / 2)
+    assert s["false_refusals"] == pytest.approx(1 / 4)
+
+
+def test_summarize_by_type_covers_every_type():
+    by_type = summarize_by_type([result("p1", "paraphrase", [(S, "a")], 1), result("o1", "out_of_corpus", [], None)])
+    assert set(by_type) == set(QUESTION_TYPES)
+    assert by_type["paraphrase"]["hit@1"] == 1.0
+    assert by_type["out_of_corpus"]["refusal_accuracy"] == 1.0
+    assert math.isnan(by_type["exact_id"]["hit@1"])  # no questions of that type
+
+
+def test_golden_set_is_well_formed():
+    questions = json.loads((Path(__file__).parent.parent / "eval" / "golden.json").read_text())["questions"]
+    assert len({q["id"] for q in questions}) == len(questions)
+    for q in questions:
+        assert q["type"] in QUESTION_TYPES and q["question"]
+        assert (q["expected"] == []) == (q["type"] == "out_of_corpus")
+        if q["type"] == "two_sections":
+            assert len(q["expected"]) == 2
+        for group in q["expected"]:
+            assert group and all(set(e) == {"source", "section_id"} for e in group)

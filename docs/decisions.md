@@ -190,3 +190,78 @@ what is still open. Numbers are from the ADA corpus: `ada_2010_standards.pdf` (2
   switch); step 4b adds faithfulness (LLM judge) once the chain exists.
 - **Why:** retrieval evals need no LLM, so they are free and fast locally, and they settle the open questions
   (rerank or not, `rerank_mode`, `final_k`, the threshold) before an answer chain is built on top.
+
+---
+
+## Step 4a — retrieval evals (no LLM)
+
+Full tables: `eval/results.md` (per-question results: `eval/results.json`); harness: `eval/retrieval_eval.py`.
+
+### 4a.1 Golden set
+- 34 questions in `eval/golden.json`, drafted from the PDF text (not from retrieval output): 10 paraphrase,
+  5 exact ID, 5 numeric/keyword, 4 guidance-only, 2 two-section, 8 out-of-corpus. `expected` is a list of groups:
+  every group must be hit, any section inside a group is acceptable (p04 and p08 also accept the Guidance section
+  that states the same number: the user is correctly answered either way).
+- The 4 extra out-of-domain negatives (sprinkler spacing, live load, U-factor, circuit amperage) were checked by
+  grepping both PDFs: `live load`, `U-factor`, `climate zone`, `amp/ampere/amperage` 0 hits; `sprinkler` 2 hits on
+  guidance p.90 (sprinklered buildings exempt from areas of rescue assistance, no spacing rule).
+- 8 negatives: refusal accuracy moves in 12.5% steps. Still small; every number below is a handful of questions.
+
+### 4a.2 Raw retrievers (exact-ref boost OFF)
+| | vector-only | bm25-only | hybrid | +sections |
+|---|---:|---:|---:|---:|
+| hit@3 (all in-corpus) | 77% | 81% | **88%** | 73% |
+| exact-ID hit@3 / MRR | 40% / 0.27 | 80% / 0.70 | **100%** / 0.73 | 40% / 0.40 |
+| paraphrase hit@3 / MRR | 70% / 0.50 | 60% / 0.53 | 70% / 0.55 | 70% / **0.70** |
+- **Vector search fails on exact IDs; BM25 does not.** The tokenizer keeps `604.5` whole, embeddings do not read it.
+  Hybrid gets the best of both (exact-ID 100%, paraphrase no worse than vector).
+- **The section-vector path hurts** exact-ID (100% → 40% hit@3) and guidance-only (100% → 75%) while helping
+  paraphrase ordering (MRR 0.55 → 0.70): its top-5 sections pull confident-looking neighbours above the right one.
+  Open: evaluate rerank *without* the section path.
+- Retrievers alone never refuse (0% refusal accuracy; bm25-only 12% only because stopword-only queries have no hits).
+
+### 4a.3 Reranker (boost ON, threshold 0)
+| | replace | blend (w=0.5) | rrf |
+|---|---:|---:|---:|
+| hit@1 / hit@3 / MRR | 65% / 85% / 0.750 | **69%** / 85% / **0.769** | 65% / 85% / 0.750 |
+| refusal acc. / false refusals | 88% / 4% | 88% / 4% | 88% / 4% |
+| p50 / p95 latency | 57 / 67 ms | 54 / 62 ms | 54 / 63 ms |
+- Reranking is what makes refusal possible: 0% → 88% refusal accuracy at 4% false refusals (1 of 26), MRR
+  0.699 → 0.75–0.77, for ~35 ms more per query.
+- The three modes differ by about one question: blend ranks paraphrases better (MRR 0.65 vs 0.50) but loses g02
+  (guidance-only: the right section has the top rerank score 7.93 but is 6th by RRF, and blend's RRF half keeps it
+  out of the top 3). This is the sigmoid saturation from 2.5: among confident candidates blend ≈ RRF order.
+- `final_k` 3 vs 5: identical on every rerank row. Every miss is a total miss (not in the top 5 either), and few
+  candidates pass the threshold anyway.
+- Exact-ref boost ablation (blend, k=3): MRR 0.769 → 0.692, hit@3 85% → 77% without it. Keep it on.
+
+### 4a.4 Why the misses miss (blend, k=3)
+| q | failure | cause |
+|---|---|---|
+| p01 doorway width | 404.2.3 at fused rank 22 of 25 | first-stage recall: outside `rerank_top_n` = 10, the reranker never sees it |
+| p03 turning space | 304.3.x at fused rank 25 of 25 | same |
+| p04 light switch | expected sections not among 34 candidates; all rerank scores < −5 → empty | vocabulary gap: the code says "operable parts", never "light switch" |
+| g02 vans | fused rank 6, top rerank score, dropped by blend | rerank mode (replace gets it) |
+| o03 GFCI | `205.1` (receptacles at kitchen counters) scores +1.58 > 0 | hard negative close to real content |
+- Two of five misses are recall at the first stage, not ranking: raising `rerank_top_n` (10 → 25) is the obvious
+  next experiment; a synonym list (light switch → operable parts) would be the query-normalization fix for p04.
+
+### 4a.5 Threshold sweep (blend, k=3)
+| threshold | −4 | −3 … +1 | +2 | +3 | +4 |
+|---|---:|---:|---:|---:|---:|
+| refusal acc. | 75% | 88% | 100% | 100% | 100% |
+| false refusals | 4% | 4% | 4% | 8% | 15% |
+- A flat region from −3 to +1. +2 reaches 100% refusal at no cost *on this set*, but only because of one
+  question (o03 at +1.58), and it is one step away from where false refusals start rising (+3).
+- **Overfitting warning:** the threshold is tuned and reported on the same 34 questions. The 4% false refusal
+  (p04) is a recall failure no threshold can fix.
+
+### 4a.6 Recommended defaults (not yet applied to `RetrievalConfig`)
+- Retrievers: child vector + BM25; exact-ref boost on; section-vector path: keep for now, but test rerank without it.
+- Reranker on. `rerank_mode`: **blend** (best MRR and hit@1), with the caveat that its lead over replace/rrf is
+  about one question, and it loses the guidance-only case g02.
+- `final_k` = **3**: 5 gains nothing here and adds two more parents (~1.7x the context) for the LLM to read.
+- Threshold: **keep 0.0**, the middle of the flat region, not the tuned +2. Out-of-corpus questions that slip through
+  (like o03) meet a second gate in step 3: the answer chain must refuse when the context does not answer. A false
+  refusal, on the other hand, cannot be recovered later. Re-check with a held-out set.
+- Next experiments (evidence above): `rerank_top_n` 25; rerank without the section path; a small synonym list.

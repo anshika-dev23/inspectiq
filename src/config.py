@@ -149,6 +149,7 @@ class RetrievalConfig:
     # How the reranker orders candidates (pinned exact refs always stay first):
     #   "replace": by cross-encoder score alone
     #   "blend":   rerank_blend_weight * sigmoid(rerank score) + (1 - weight) * (RRF score / best RRF score)
+    #   "rrf":     the reranker's ranking is a 4th list in RRF (rank-based, no score normalization)
     rerank_mode: str = "replace"
     rerank_blend_weight: float = 0.5
 

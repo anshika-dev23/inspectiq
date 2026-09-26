@@ -30,7 +30,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--year", type=int, help="edition_year filter")
     parser.add_argument("--type", dest="section_type", help='section_type filter: "code" or "regulation"')
     parser.add_argument("--no-rerank", action="store_true", help="skip the cross-encoder and its threshold")
-    parser.add_argument("--rerank-mode", choices=["replace", "blend"], default=RetrievalConfig.rerank_mode)
+    parser.add_argument("--rerank-mode", choices=["replace", "blend", "rrf"], default=RetrievalConfig.rerank_mode)
     parser.add_argument("--final-k", type=int, default=RetrievalConfig.final_k)
     parser.add_argument("--full", action="store_true", help=f"print whole contexts, not {PREVIEW_CHARS}-char previews")
     return parser.parse_args()
@@ -79,7 +79,7 @@ def main() -> None:
               f"top {len(debug.reranked)}")
         for rank, candidate in enumerate(debug.reranked[:TOP], start=1):
             verdict = "pinned" if candidate.pinned else ("pass" if candidate.rerank_score >= config.rerank_threshold else "FAIL")
-            blend = "" if candidate.blend_score is None else f"  blend={candidate.blend_score:.3f}"
+            blend = "" if candidate.order_score is None else f"  {config.rerank_mode}={candidate.order_score:.4f}"
             print(f"  {rank:>2}. {candidate.rerank_score:7.2f} {verdict:<6}  {label(candidate.parent_id, docstore)}{blend}")
 
     print(f"\n-- contexts: {len(result.contexts)}" + ("   -> EMPTY: answer \"I don't know\"" if result.is_empty else ""))

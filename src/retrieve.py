@@ -31,7 +31,7 @@ FILTER_KEYS = ("code_name", "edition_year", "section_type")
 # Section refs in a query: "404.2.3", "604.5", "35.151(b)", "§ 36.406(f)", "R302.1".
 # At least two digits before the first dot, so "1.5 inches" is not a ref.
 SECTION_REF = re.compile(r"\b([a-z]?\d{2,4}(?:\.\d+)+(?:\([a-z0-9]+\))*)", re.IGNORECASE)
-RERANK_MODES = ("replace", "blend")
+RERANK_MODES = ("replace", "blend", "rrf")
 # Window edges move to the nearest line break, but never further than this.
 MAX_SNAP_CHARS = 200
 
@@ -72,7 +72,8 @@ class Candidate:
     ranks: dict[str, int]              # retriever name -> rank of this parent in that retriever
     pinned: bool = False               # named by an exact section ref in the query
     rerank_score: float | None = None
-    blend_score: float | None = None   # only in rerank_mode "blend"
+    rerank_rank: int | None = None     # 1-based rank by cross-encoder score among the reranked candidates
+    order_score: float | None = None   # the score used for ordering in rerank_mode "blend" or "rrf"
     best_child_ids: list[str] = field(default_factory=list)
 
 
@@ -391,26 +392,35 @@ def sigmoid(x: float) -> float:
     return 1.0 / (1.0 + math.exp(-x))
 
 
-def order_candidates(candidates: list[Candidate], mode: str, blend_weight: float) -> list[Candidate]:
+def order_candidates(candidates: list[Candidate], mode: str, blend_weight: float, rrf_k: int) -> list[Candidate]:
     """Pinned parents first (query order), the rest by:
       replace: the cross-encoder score;
       blend:   weight * sigmoid(rerank score) + (1 - weight) * rrf_score / best rrf_score.
-    Both parts of the blend are in 0..1: the ms-marco cross-encoder is trained as a binary
-    classifier, so sigmoid(logit) reads as P(relevant); RRF is divided by this query's best RRF.
+               Both parts are in 0..1: the ms-marco cross-encoder is trained as a binary classifier,
+               so sigmoid(logit) reads as P(relevant); RRF is divided by this query's best RRF.
+      rrf:     the reranker's ranking is a 4th list in RRF: rrf_score + 1 / (rrf_k + rerank_rank).
+               Rank-based, so no score normalization is needed.
     """
     if mode not in RERANK_MODES:
         raise ValueError(f"rerank_mode must be one of {RERANK_MODES}, got {mode!r}")
+    for rank, candidate in enumerate(sorted(candidates, key=lambda c: -c.rerank_score), start=1):
+        candidate.rerank_rank = rank
     pinned = [c for c in candidates if c.pinned]
     others = [c for c in candidates if not c.pinned]
+
     if mode == "replace":
         return pinned + sorted(others, key=lambda c: -c.rerank_score)
 
-    best_rrf = max((c.rrf_score for c in candidates), default=0.0) or 1.0
-    for candidate in candidates:
-        candidate.blend_score = (
-            blend_weight * sigmoid(candidate.rerank_score) + (1 - blend_weight) * candidate.rrf_score / best_rrf
-        )
-    return pinned + sorted(others, key=lambda c: -c.blend_score)
+    if mode == "blend":
+        best_rrf = max((c.rrf_score for c in candidates), default=0.0) or 1.0
+        for candidate in candidates:
+            candidate.order_score = (
+                blend_weight * sigmoid(candidate.rerank_score) + (1 - blend_weight) * candidate.rrf_score / best_rrf
+            )
+    else:  # "rrf"
+        for candidate in candidates:
+            candidate.order_score = candidate.rrf_score + 1.0 / (rrf_k + candidate.rerank_rank)
+    return pinned + sorted(others, key=lambda c: -c.order_score)
 
 
 def rerank(query_text: str, candidates: list[Candidate], resources: RetrievalResources,
@@ -421,7 +431,7 @@ def rerank(query_text: str, candidates: list[Candidate], resources: RetrievalRes
     scores = resources.rerank([(query_text, rerank_passage(c, resources)) for c in candidates])
     for candidate, score in zip(candidates, scores):
         candidate.rerank_score = float(score)
-    return order_candidates(candidates, config.rerank_mode, config.rerank_blend_weight)
+    return order_candidates(candidates, config.rerank_mode, config.rerank_blend_weight, config.rrf_k)
 
 
 def passes_threshold(candidate: Candidate, threshold: float) -> bool:

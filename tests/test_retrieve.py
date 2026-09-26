@@ -130,35 +130,51 @@ def candidate(parent_id, rrf, rerank_score, pinned=False):
 
 
 def test_order_candidates_replace_uses_rerank_score_only():
-    ordered = order_candidates([candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)], "replace", 0.5)
+    ordered = order_candidates([candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)], "replace", 0.5, 60)
     assert [c.parent_id for c in ordered] == ["rerank_top", "rrf_top"]
 
 
 def test_order_candidates_blend_combines_normalized_scores():
     candidates = [candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)]
-    ordered = order_candidates(candidates, "blend", 0.5)
+    ordered = order_candidates(candidates, "blend", 0.5, 60)
     # rrf_top:    0.5 * sigmoid(6.5) + 0.5 * 1.0  = 0.99924
     # rerank_top: 0.5 * sigmoid(8.3) + 0.5 * 0.6  = 0.79988
     assert [c.parent_id for c in ordered] == ["rrf_top", "rerank_top"]
-    assert ordered[0].blend_score == pytest.approx(0.5 / (1 + math.exp(-6.5)) + 0.5)
-    assert ordered[1].blend_score == pytest.approx(0.5 / (1 + math.exp(-8.3)) + 0.5 * 0.6)
+    assert ordered[0].order_score == pytest.approx(0.5 / (1 + math.exp(-6.5)) + 0.5)
+    assert ordered[1].order_score == pytest.approx(0.5 / (1 + math.exp(-8.3)) + 0.5 * 0.6)
 
 
 def test_order_candidates_blend_weight_extremes():
     candidates = [candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)]
-    assert order_candidates(candidates, "blend", 1.0)[0].parent_id == "rerank_top"   # rerank only
-    assert order_candidates(candidates, "blend", 0.0)[0].parent_id == "rrf_top"      # RRF only
+    assert order_candidates(candidates, "blend", 1.0, 60)[0].parent_id == "rerank_top"   # rerank only
+    assert order_candidates(candidates, "blend", 0.0, 60)[0].parent_id == "rrf_top"      # RRF only
 
 
-def test_order_candidates_keeps_pinned_first_in_both_modes():
+def test_order_candidates_rrf_adds_the_rerank_rank_as_a_fourth_list():
+    # rrf_top is 1st by RRF, 2nd by rerank; rerank_top is 2nd by RRF, 1st by rerank.
+    candidates = [candidate("rrf_top", 1 / 61 + 1 / 61 + 1 / 61, 6.5), candidate("rerank_top", 1 / 62 + 1 / 62 + 1 / 62, 8.3)]
+    ordered = order_candidates(candidates, "rrf", 0.5, 60)
+    by_id = {c.parent_id: c for c in ordered}
+    assert by_id["rerank_top"].rerank_rank == 1 and by_id["rrf_top"].rerank_rank == 2
+    assert by_id["rrf_top"].order_score == pytest.approx(3 / 61 + 1 / 62)
+    assert by_id["rerank_top"].order_score == pytest.approx(3 / 62 + 1 / 61)
+    assert [c.parent_id for c in ordered] == ["rrf_top", "rerank_top"]  # 3 of 4 lists prefer rrf_top
+
+
+def test_order_candidates_rrf_lets_the_reranker_break_a_tie():
+    candidates = [candidate("a", 1 / 61 + 1 / 62, 1.0), candidate("b", 1 / 61 + 1 / 62, 5.0)]
+    assert [c.parent_id for c in order_candidates(candidates, "rrf", 0.5, 60)] == ["b", "a"]
+
+
+def test_order_candidates_keeps_pinned_first_in_all_modes():
     candidates = [candidate("other", 0.05, 9.0), candidate("pinned", 0.0, -5.0, pinned=True)]
-    for mode in ("replace", "blend"):
-        assert order_candidates(candidates, mode, 0.5)[0].parent_id == "pinned"
+    for mode in ("replace", "blend", "rrf"):
+        assert order_candidates(candidates, mode, 0.5, 60)[0].parent_id == "pinned"
 
 
 def test_order_candidates_rejects_unknown_mode():
     with pytest.raises(ValueError, match="rerank_mode"):
-        order_candidates([], "average", 0.5)
+        order_candidates([], "average", 0.5, 60)
 
 
 def test_resolve_section_ref_falls_back_to_paragraph():
@@ -365,7 +381,7 @@ def test_final_k_limits_the_number_of_contexts(resources):
 def test_blend_mode_runs_end_to_end(resources):
     result = retrieve("grab bar for water closets", config=replace(CONFIG, rerank_mode="blend"), resources=resources)
     assert result.contexts[0].section_id == "604.5"
-    assert all(c.blend_score is not None for c in result.debug.reranked)
+    assert all(c.order_score is not None for c in result.debug.reranked)
 
 
 def test_context_window_can_be_switched_off(resources):

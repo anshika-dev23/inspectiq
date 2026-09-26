@@ -1,0 +1,10252 @@
+{
+ "vector-only | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 25.8
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 20.2
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "234, 1002"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.2
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.5
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.6"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.4
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 18.6
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 18.7
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.9
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 15.7
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "601.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.4
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.403(d)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.6
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.9
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 16.6
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.8
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.9
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 17.9
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.2
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.8
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.8
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.6"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.1
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.0
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 17.0
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 17.3
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(c)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.5
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "243"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.3
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.7"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.7
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "207"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.2
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "229.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.1
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.7
+  }
+ ],
+ "vector-only | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.5
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "240.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.0
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "234, 1002"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.8
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.11"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.6
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.2
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.3.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "409.3.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.2
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 16.4
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 16.5
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.3
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 16.5
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "601.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(j)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.8
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.403(d)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.403"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.4
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(k)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.5
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 16.9
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(j)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.5
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 17.1
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.9
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.1
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 17.4
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "307.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.1
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "605.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.3
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 16.9
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.8
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.1
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 16.9
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 17.5
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(c)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(k)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.401(a)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.4
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "233.3.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.0
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.5
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "243"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "207"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 17.9
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1006.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "806"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.8
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "207"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "811.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.6
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "229.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1006.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.4.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.7
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 16.5
+  }
+ ],
+ "bm25-only | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 3.4
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "238, 1006"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.9
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 3.2
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "211, 602"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "707.7.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "307.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.4
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.6"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 1.7
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.0
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "203, 206, 215"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.9
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.3
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.3
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 0.9
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 1.2
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(d)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.1
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.4
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.2.3.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(f)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 0.9
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 1.6
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.5
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.6
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 1.2
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.1
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 4.8
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 3.0
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.7"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.8
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 3.0
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 0.7
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "707.6.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.1
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "602.4"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 3.1
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "215.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.4.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "705.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.5.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.2.8"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.8
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "36.401(d)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "222.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "903.4"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.7
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "209, 503"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.2.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.4
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.9
+  }
+ ],
+ "bm25-only | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.3
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "238, 1006"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.6
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "304"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "211, 602"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "707.7.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "307.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "218.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.9
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.6"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "308.2.2"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 1.5
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.3.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.10"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.8
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.5
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "203, 206, 215"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.7
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.2
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "209, 503"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.1
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(f)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 0.8
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1005.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 1.1
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(d)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(4)(ii)(C)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ]
+   ],
+   "answer_rank": 5,
+   "latency_ms": 1.0
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.2
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.2.3.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 0.8
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 1.4
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.4
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "705.1.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 1.5
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 1.4
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.1
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "605.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 3.6
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.6"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.8
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "218, 810"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.10"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 2.6
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 3.1
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 0.7
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "707.6.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "105.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "229.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.1
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "602.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 3.0
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "215.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.7
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "705.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.5.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.2.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.2.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.8
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "36.401(d)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "222.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "903.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "234, 1002"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "234.4.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.7
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "209, 503"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "105.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "231, 808"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 2.4
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 1.9
+  }
+ ],
+ "hybrid (vector+bm25) | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 18.3
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "304"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "307.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "211, 602"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.2
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.8
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.3.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.6
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 20.2
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.7
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.5
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.9
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "601.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.7
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 18.7
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(b)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.2
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(j)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 17.7
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 18.4
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.3
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.0
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.6
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.7
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.5
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.4
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 20.7
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(c)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.3
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "707.6.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.9
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.9
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "215.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "243"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.9
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "705.1.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.1
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.401(d)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "207"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.6
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "229.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "105.2.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.3
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.8
+  }
+ ],
+ "hybrid (vector+bm25) | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.3
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.3
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "304"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "307.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "211, 602"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "707.7.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 57.2
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.6"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 23.8
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.3.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.7
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 55.4
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.6
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.3"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.0
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "601.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 17.9
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.403(d)"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 19.0
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(d)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.7
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.3
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(j)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ]
+   ],
+   "answer_rank": 3,
+   "latency_ms": 18.8
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1009.5.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 18.9
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.0
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "806"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.2
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.8"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.5
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.1
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 22.1
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.1
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.6"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "218, 810"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.5
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.7"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.8
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 21.4
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(c)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(k)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.401(a)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.2
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "707.6.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "224, 806"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.6
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.8
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "215.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "243"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.7
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "705.1.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(e)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.5.8"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.401(d)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "207"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "222.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "229.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "105.2.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 43.9
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 23.6
+  }
+ ],
+ "+sections | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.1
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.3
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 40.3
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.11"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.7
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.6"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.4
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.4
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.2
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "601.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.8
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.403(d)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.5
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.0
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.7
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.5
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.1
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 19.4
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.9
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 22.3
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.3
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 22.1
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.3
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 21.3
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 21.1
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.404(a)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.9
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "233.3.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "707.6.3.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 22.8
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "243"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.9
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "705.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.6"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "811.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1006.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.4.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.9
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.2
+  }
+ ],
+ "+sections | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.8
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1009.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.7
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.6
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.11"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "409.4.6.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.2
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.3.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "409.3.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.4
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.9
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "227.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.6
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.8
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.9
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "601.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 5,
+   "latency_ms": 19.1
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.403(d)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "240.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.6
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(d)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.1
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 18.4
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.1
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.7"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 22.0
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.6
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1009.2.9"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 20.4
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 20.7
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.3.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "213.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "605.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 23.5
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.9
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 21.9
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "406.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 22.1
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 21.8
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 21.5
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.404(a)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(c)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 18.9
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "233.3.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "707.6.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.9
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "212.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 22.4
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "243"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "215.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.5
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "705.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "602.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.2
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "302.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "811.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "302.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "207.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "409.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 19.8
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1006.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.4.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "229.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.6.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 21.5
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "804.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "809.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "804.6.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 20.1
+  }
+ ],
+ "+rerank replace | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 65.3
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 54.0
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1004.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 60.8
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 58.7
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.7
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 60.0
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 55.2
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 55.4
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.6
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "209, 503"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.6
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.8
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.6
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.8
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.2
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.2.3.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.4
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.1
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.7.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.9
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.0
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 53.7
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.2
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 65.0
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.4
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.9
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.9
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 66.0
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 59.9
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.0
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 57.7
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 61.4
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 55.6
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 62.2
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 55.7
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.9
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.8
+  }
+ ],
+ "+rerank replace | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 56.7
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 51.4
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1004.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 57.4
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 56.9
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.3
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.9
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 51.5
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 52.2
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.1
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "209, 503"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.8
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 48.7
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.7
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(4)(ii)(C)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(d)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.3
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(e)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(c)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.4
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.2.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.0
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.5
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.5
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "806"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.4
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 53.2
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.5
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 62.6
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.8
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "218, 810"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.8
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.2
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.3"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 64.1
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 57.4
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 47.9
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.3
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 55.8
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.7
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 57.2
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 48.0
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 48.3
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 51.6
+  }
+ ],
+ "+rerank blend | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 54.6
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.3
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 56.7
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 55.6
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.9
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.5
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 53.2
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.5
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.5
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.9
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 48.2
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.8
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.4
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.3
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.3
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.2
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 49.2
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.0
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 53.6
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.5
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 62.4
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 55.1
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 58.1
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.6
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 64.0
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 57.2
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 48.2
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.9
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 58.4
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.7
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 59.3
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 51.7
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 49.0
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 51.5
+  }
+ ],
+ "+rerank blend | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 54.8
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.1
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1004.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 57.9
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 55.6
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.3
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.0
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 51.5
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.5
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.3
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.8
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 49.3
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.0
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(d)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.6
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.1
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.0
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.5
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.7.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 49.6
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "806"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.0
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 54.8
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.0
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 62.6
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 54.5
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.1
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.0
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 62.9
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 58.2
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 50.8
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 54.8
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 58.5
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 55.7
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 59.3
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.1
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 51.4
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.0
+  }
+ ],
+ "+rerank rrf | k=3": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 58.4
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.9
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 57.5
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 56.1
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.0
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.0
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 52.5
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 52.7
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.2
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.2
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 48.0
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.6
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.1
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.3
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.8
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.9
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 49.9
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.1
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 53.4
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.2
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 62.6
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 55.3
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.4
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 54.4
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 62.8
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 56.4
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 47.8
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.3
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 56.5
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.9
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 57.7
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.5
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 49.8
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 52.3
+  }
+ ],
+ "+rerank rrf | k=5": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "221"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 54.2
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1002.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.9.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.5
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "809.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.3"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "236, 1004"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1004.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 58.3
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 54.3
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "610.3"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.2
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.8
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "208, 502"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "216.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "208.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 51.8
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "227, 904"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 51.9
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.7
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.3
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 50.3
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.405"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "235, 1003"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.6
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(d)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 53.7
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(g)"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.7
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "701.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "704.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "703.4"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.8
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "609.2.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.1
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "106.5"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 51.0
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1010.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "304.3.2"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "233"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "806"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 52.5
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "104.1.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 56.2
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 56.3
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 67.0
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "502.3.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "502.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 55.8
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.10"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 57.5
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "found": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(i)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "205, 309"
+    ]
+   ],
+   "answer_rank": 1,
+   "latency_ms": 55.3
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "404"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.3.1"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 63.0
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.8.1.5"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "answer_rank": 2,
+   "latency_ms": 58.8
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 47.9
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 53.6
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "found": [
+    [
+     "ada_2010_standards.pdf",
+     "205.1"
+    ]
+   ],
+   "answer_rank": null,
+   "latency_ms": 56.8
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 54.0
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 57.8
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 50.1
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 48.1
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "found": [],
+   "answer_rank": null,
+   "latency_ms": 51.5
+  }
+ ]
+}
