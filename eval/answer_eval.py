@@ -1,14 +1,13 @@
 """Step 3/4b — deterministic answer eval (no LLM judge: a 3B model is too weak to judge).
 
 Runs every golden and held-out question through answer() and reports, per set:
-- answer correctness: every answer_contains string appears in a non-refused answer (questions that have one);
-- citation validity: at least one cited section is in `expected` (in-corpus questions that were answered);
-- refusal accuracy: out-of-corpus questions refused;
-- false refusals: in-corpus questions refused (by reason);
-- p50/p95 latency (total, retrieval, LLM) and mean tokens;
-- number grounding: answers blocked as "ungrounded_number", and whether each would otherwise have been correct;
-- shadow cost per 1,000 questions on the Anthropic models in config.SHADOW_PRICES_USD_PER_MTOK (estimate).
-Lists every failure with the answer text. Writes eval/answer_results.md and eval/answer_results.json.
+- wrong-but-verified (target 0): answers the grounding check verified whose answer_contains numbers are missing;
+- answer correct among verified, and among needs_review (questions with answer_contains);
+- needs_review rate: share of given answers (verified + needs_review) flagged for review;
+- citation validity: at least one cited section is in `expected` (answered in-corpus questions);
+- refusal accuracy (out-of-corpus refused) and false refusals (in-corpus refused, by reason);
+- p50/p95 latency and mean tokens; shadow cost per 1,000 questions (estimate).
+Lists every needs_review answer with its flagged numbers, every wrong-but-verified answer and every failure. Writes eval/answer_results.md and eval/answer_results.json.
 
 Run:  .venv/bin/python eval/answer_eval.py
 """
@@ -45,9 +44,9 @@ class AnswerResult:
     llm_ms: float
     input_tokens: int | None
     output_tokens: int | None
-    verified: bool | None = None          # number grounding; None: no answer to check
-    ungrounded_numbers: list[str] | None = None
-    raw_contains_ok: bool | None = None   # the model's own text had the expected numbers (even if blocked)
+    grounding_status: str | None = None   # verified | needs_review | refused; None: no answer reached the check
+    flagged: list[dict] | None = None     # [{"number", "cited", "found_in": [section ids]}]
+    raw_contains_ok: bool | None = None   # the model's own text had the expected numbers (even if refused)
     shadow_cost_usd: dict | None = None
     trace_url: str | None = None
 
@@ -77,6 +76,8 @@ def citation_is_valid(cited: list[tuple[str, str]], expected: list[list[dict]]) 
 def evaluate(question: dict) -> AnswerResult:
     result = answer(question["question"])
     cited = [(c.source, c.section_id) for c in result.citations]
+    # "404.2.3 [standards]": the source matters when Standards and Guidance share a section ID (35.151(b))
+    section_of = {s.label: f"{s.context.section_id} [{s.context.source.split('_')[2].split('.')[0]}]" for s in result.sources}
     expected_strings = question.get("answer_contains")
     in_corpus = bool(question["expected"])
     return AnswerResult(
@@ -95,8 +96,9 @@ def evaluate(question: dict) -> AnswerResult:
         llm_ms=result.timings_ms["llm"],
         input_tokens=result.llm.input_tokens if result.llm else None,
         output_tokens=result.llm.output_tokens if result.llm else None,
-        verified=result.verified,
-        ungrounded_numbers=result.ungrounded_numbers,
+        grounding_status=result.grounding_status,
+        flagged=[{"number": f.raw, "cited": [section_of[label] for label in f.cited_labels],
+                  "found_in": [section_of[label] for label in f.found_in]} for f in result.flagged_numbers],
         raw_contains_ok=(contains_expected(result.raw_llm_text, expected_strings)
                          if expected_strings and result.raw_llm_text else None),
         shadow_cost_usd=result.llm.shadow_cost_usd if result.llm else {},
@@ -106,6 +108,10 @@ def evaluate(question: dict) -> AnswerResult:
 
 def summarize(results: list[AnswerResult]) -> dict:
     with_contains = [r for r in results if r.contains_ok is not None]
+    verified = [r for r in results if r.grounding_status == "verified"]
+    review = [r for r in results if r.grounding_status == "needs_review"]
+    verified_checkable = [r for r in verified if r.contains_ok is not None]
+    review_checkable = [r for r in review if r.contains_ok is not None]
     answered_in_corpus = [r for r in results if r.citation_valid is not None]
     in_corpus = [r for r in results if r.in_corpus]
     out_of_corpus = [r for r in results if not r.in_corpus]
@@ -118,6 +124,12 @@ def summarize(results: list[AnswerResult]) -> dict:
         "n": len(results),
         "correct": ratio(sum(r.contains_ok for r in with_contains), len(with_contains)),
         "correct_n": f"{sum(r.contains_ok for r in with_contains)}/{len(with_contains)}",
+        "wrong_but_verified_n": sum(not r.contains_ok for r in verified_checkable),
+        "correct_verified": ratio(sum(r.contains_ok for r in verified_checkable), len(verified_checkable)),
+        "correct_verified_n": f"{sum(r.contains_ok for r in verified_checkable)}/{len(verified_checkable)}",
+        "correct_review_n": f"{sum(r.contains_ok for r in review_checkable)}/{len(review_checkable)}",
+        "needs_review": ratio(len(review), len(verified) + len(review)),
+        "needs_review_n": f"{len(review)}/{len(verified) + len(review)}",
         "citation_valid": ratio(sum(r.citation_valid for r in answered_in_corpus), len(answered_in_corpus)),
         "citation_valid_n": f"{sum(r.citation_valid for r in answered_in_corpus)}/{len(answered_in_corpus)}",
         "refusal_accuracy": ratio(sum(r.refused for r in out_of_corpus), len(out_of_corpus)),
@@ -166,20 +178,33 @@ def failures(results: list[AnswerResult], questions: dict[str, dict]) -> list[st
     return lines
 
 
+def short(text: str, limit: int = 300) -> str:
+    text = text.replace("\n", " ").replace("|", "/")
+    return text if len(text) <= limit else text[:limit] + " […]"
+
+
 def grounding_table(results: list[AnswerResult], questions: dict[str, dict]) -> list[str]:
-    """Every answer the number-grounding check blocked, and whether it would otherwise have been correct."""
-    lines = ["| id | ungrounded numbers | expected numbers | model's text had them? | model output |",
-             "|---|---|---|---|---|"]
+    """Every answer that is needs_review or refused by grounding, with each flagged number and where it was found."""
+    lines = ["| id | status | flagged number: cited → found in | expected numbers | answer correct? | model output |",
+             "|---|---|---|---|---|---|"]
     for r in results:
-        if r.refusal_reason != "ungrounded_number":
+        if r.grounding_status not in ("needs_review", "refused"):
             continue
+        flags = "; ".join(f"{f['number']}: {'/'.join(f['cited']) or '–'} → {'/'.join(f['found_in']) or 'nowhere'}"
+                          for f in r.flagged)
         expected = questions[r.question_id].get("answer_contains") or "–"
-        verdict = {True: "yes: right number, not in the cited source (false block for the user)",
-                   False: "no: correct block", None: "n/a (no expected number)"}[r.raw_contains_ok]
-        text = r.text.replace("\n", " ").replace("|", "/")
-        lines.append(f"| {r.question_id} | {r.ungrounded_numbers} | {expected} | {verdict} | "
-                     f"{text[:300] + (' […]' if len(text) > 300 else '')} |")
-    return lines if len(lines) > 2 else ["No answer was blocked."]
+        correct = {True: "yes", False: "no", None: "n/a"}[r.raw_contains_ok]
+        lines.append(f"| {r.question_id} | {r.grounding_status} | {flags} | {expected} | {correct} | {short(r.text)} |")
+    return lines if len(lines) > 2 else ["Every answer was verified."]
+
+
+def wrong_but_verified_table(results: list[AnswerResult], questions: dict[str, dict]) -> list[str]:
+    lines = ["| id | expected numbers | cited | answer |", "|---|---|---|---|"]
+    for r in results:
+        if r.grounding_status == "verified" and r.contains_ok is False:
+            cited = ", ".join(sid for _, sid in r.cited)
+            lines.append(f"| {r.question_id} | {questions[r.question_id]['answer_contains']} | {cited} | {short(r.text)} |")
+    return lines if len(lines) > 2 else ["None."]
 
 
 def cost_table(summaries: dict[str, dict]) -> list[str]:
@@ -190,15 +215,25 @@ def cost_table(summaries: dict[str, dict]) -> list[str]:
 
 
 def summary_table(summaries: dict[str, dict]) -> list[str]:
-    lines = ["| set | answer correct | citation valid | refusal acc. | false refusals | p50 ms | p95 ms | "
-             "retrieval p50 | LLM p50 | LLM p95 | tokens in/out (mean) |",
-             "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+    lines = ["| set | wrong but verified | correct among verified | needs_review | correct among needs_review | "
+             "correct overall | citation valid | refusal acc. | false refusals |",
+             "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for name, s in summaries.items():
         lines.append(
-            f"| {name} | {pct(s['correct'])} ({s['correct_n']}) | {pct(s['citation_valid'])} ({s['citation_valid_n']}) | "
-            f"{pct(s['refusal_accuracy'])} ({s['refusal_n']}) | {pct(s['false_refusals'])} ({s['false_refusal_n']}) | "
-            f"{s['p50_ms']:.0f} | {s['p95_ms']:.0f} | {s['retrieval_p50_ms']:.0f} | {s['llm_p50_ms']:.0f} | "
-            f"{s['llm_p95_ms']:.0f} | {s['mean_input_tokens']:.0f}/{s['mean_output_tokens']:.0f} |")
+            f"| {name} | **{s['wrong_but_verified_n']}** | {pct(s['correct_verified'])} ({s['correct_verified_n']}) | "
+            f"{pct(s['needs_review'])} ({s['needs_review_n']}) | {s['correct_review_n']} | "
+            f"{pct(s['correct'])} ({s['correct_n']}) | {pct(s['citation_valid'])} ({s['citation_valid_n']}) | "
+            f"{pct(s['refusal_accuracy'])} ({s['refusal_n']}) | {pct(s['false_refusals'])} ({s['false_refusal_n']}) |")
+    return lines
+
+
+def latency_table(summaries: dict[str, dict]) -> list[str]:
+    lines = ["| set | p50 ms | p95 ms | retrieval p50 | LLM p50 | LLM p95 | tokens in/out (mean) |",
+             "|---|---:|---:|---:|---:|---:|---:|"]
+    for name, s in summaries.items():
+        lines.append(f"| {name} | {s['p50_ms']:.0f} | {s['p95_ms']:.0f} | {s['retrieval_p50_ms']:.0f} | "
+                     f"{s['llm_p50_ms']:.0f} | {s['llm_p95_ms']:.0f} | "
+                     f"{s['mean_input_tokens']:.0f}/{s['mean_output_tokens']:.0f} |")
     return lines
 
 
@@ -216,20 +251,30 @@ def main() -> None:
         summaries[name] = summarize(results[name])
 
     report = [
-        "# Answer eval (step 3 baseline chain, deterministic, no LLM judge)", "",
+        "# Answer eval (baseline chain + three-state number grounding; deterministic, no LLM judge)", "",
         f"Model: {settings.llm_provider} `{model}`, temperature {settings.llm_temperature}, "
         f"num_ctx {settings.ollama_num_ctx}; context cap {settings.answer_max_context_chars:,} chars; "
         "retrieval: current RetrievalConfig defaults.", "",
-        "- answer correct: all `answer_contains` strings appear in a non-refused answer (only questions that have one);",
+        "Three-state number grounding (src/grounding.py): **verified** = every number is in a source cited in its",
+        "sentence; **needs_review** = some number is only in another source of the prompt (answered, flagged);",
+        "**refused** = some number is in no source of the prompt (refusal `ungrounded_number`).", "",
+        "- wrong but verified (target 0): verified answers missing an `answer_contains` number;",
+        "- correct: every `answer_contains` string appears in a given answer (questions that have one);",
+        "- needs_review: share of given answers (verified + needs_review) flagged for review;",
         "- citation valid: at least one cited section is in `expected` (answered in-corpus questions);",
-        "- refusal acc.: out-of-corpus questions refused; false refusals: in-corpus questions refused;",
-        "- latency: the whole answer() call, warm models, on this machine.", "",
+        "- refusal acc.: out-of-corpus questions refused; false refusals: in-corpus questions refused.", "",
         *summary_table(summaries), "",
         "False refusals by reason: " + "; ".join(f"{n}: {s['false_refusal_reasons'] or 'none'}" for n, s in summaries.items()),
         "",
-        f"## Number grounding (strict: {settings.strict_number_grounding})", "",
-        "Answers blocked because a number is not in a source cited in its sentence (src/grounding.py).", "",
+        "Latency (whole answer() call, warm models, this machine) and tokens:", "",
+        *latency_table(summaries), "",
+        "## Wrong but verified", "",
+        "Grounding only checks that a number comes from a cited source; these came from the wrong section.", "",
     ]
+    for name, questions in sets.items():
+        report += [f"### {name}", "", *wrong_but_verified_table(results[name], {q["id"]: q for q in questions}), ""]
+    report += ["## needs_review and grounding refusals, with each flagged number", "",
+               "`cited → found in`: the sections the sentence cited, and the prompt sections that contain the number.", ""]
     for name, questions in sets.items():
         report += [f"### {name}", "", *grounding_table(results[name], {q["id"]: q for q in questions}), ""]
     report += [

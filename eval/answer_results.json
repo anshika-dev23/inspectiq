@@ -20,20 +20,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 4247.5,
-   "retrieval_ms": 662.8,
-   "llm_ms": 3584.7,
+   "total_ms": 3099.0,
+   "retrieval_ms": 246.8,
+   "llm_ms": 2852.2,
    "input_tokens": 671,
    "output_tokens": 66,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001001,
     "claude-sonnet-5": 0.002002,
     "claude-opus-5": 0.005005
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/ac4cc7baa3643c8a15a3adfd84a6ffe0"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/428117c2d9723d2e6926b716bcba5c11"
   },
   {
    "question_id": "p02",
@@ -51,20 +51,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 2731.3,
-   "retrieval_ms": 181.2,
-   "llm_ms": 2550.1,
+   "total_ms": 2814.8,
+   "retrieval_ms": 251.1,
+   "llm_ms": 2563.7,
    "input_tokens": 705,
    "output_tokens": 27,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.00084,
     "claude-sonnet-5": 0.00168,
     "claude-opus-5": 0.0042
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/ab8000551f3e61556b3103849f5912f6"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/1560f9de67f00011889e59b29e10e6fa"
   },
   {
    "question_id": "p03",
@@ -82,20 +82,20 @@
    "invalid_labels": [],
    "contains_ok": false,
    "citation_valid": false,
-   "total_ms": 3730.0,
-   "retrieval_ms": 120.0,
-   "llm_ms": 3610.0,
+   "total_ms": 3657.2,
+   "retrieval_ms": 166.1,
+   "llm_ms": 3491.1,
    "input_tokens": 1650,
    "output_tokens": 76,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": false,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.00203,
     "claude-sonnet-5": 0.00406,
     "claude-opus-5": 0.01015
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/fbcace99505e89f74ec7364f375ffe32"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/82d352ccf6842806e451ad83c8e2dcf9"
   },
   {
    "question_id": "p04",
@@ -108,16 +108,16 @@
    "invalid_labels": [],
    "contains_ok": false,
    "citation_valid": null,
-   "total_ms": 193.7,
-   "retrieval_ms": 193.7,
+   "total_ms": 157.4,
+   "retrieval_ms": 157.4,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/3a4ff1439150a23a1b0e19d18cef9b48"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/b78b593577b6ee6c808f549b23790a62"
   },
   {
    "question_id": "p05",
@@ -139,20 +139,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 3102.6,
-   "retrieval_ms": 73.2,
-   "llm_ms": 3029.4,
+   "total_ms": 3083.2,
+   "retrieval_ms": 60.5,
+   "llm_ms": 3022.7,
    "input_tokens": 647,
    "output_tokens": 69,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000992,
     "claude-sonnet-5": 0.001984,
     "claude-opus-5": 0.00496
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/30973dc2e759874263eca54d4e452a6b"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/72ffada1943b1c10ee1bd3355d3bd800"
   },
   {
    "question_id": "p06",
@@ -170,20 +170,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 2522.8,
-   "retrieval_ms": 161.9,
-   "llm_ms": 2360.9,
+   "total_ms": 2545.2,
+   "retrieval_ms": 218.7,
+   "llm_ms": 2326.5,
    "input_tokens": 424,
    "output_tokens": 32,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000584,
     "claude-sonnet-5": 0.001168,
     "claude-opus-5": 0.00292
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/1b26d9f863d3cd26eb429ac22bc4e780"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/fab934a4778980500af74fa07371eabc"
   },
   {
    "question_id": "p07",
@@ -196,20 +196,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 967.8,
-   "retrieval_ms": 189.1,
-   "llm_ms": 778.7,
+   "total_ms": 787.9,
+   "retrieval_ms": 115.1,
+   "llm_ms": 672.8,
    "input_tokens": 1584,
    "output_tokens": 5,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001609,
     "claude-sonnet-5": 0.003218,
     "claude-opus-5": 0.008045
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/1ed89ae05b94bf555564421b0543a0b3"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/5414572a8d889a19af0d1e6a032a0e3f"
   },
   {
    "question_id": "p08",
@@ -235,27 +235,27 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 5098.3,
-   "retrieval_ms": 83.5,
-   "llm_ms": 5014.8,
+   "total_ms": 5180.2,
+   "retrieval_ms": 82.0,
+   "llm_ms": 5098.2,
    "input_tokens": 616,
    "output_tokens": 121,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001221,
     "claude-sonnet-5": 0.002442,
     "claude-opus-5": 0.006105
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/8ff0a9a8cf549a58518b7dbea684745f"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/c3e7d24aced53e08013373cfb9d2514a"
   },
   {
    "question_id": "p09",
    "question_type": "paraphrase",
    "question": "At what height do ramp handrails have to be installed?",
-   "refused": true,
-   "refusal_reason": "ungrounded_number",
+   "refused": false,
+   "refusal_reason": null,
    "text": "According to [S1], the height of handrails on ramps shall be 36 inches (915 mm) minimum and 38 inches (965 mm) maximum above walking surfaces, stair nosings, and ramp surfaces.\n\nHowever, [S2] states that for ramps with a rise greater than 6 inches (150 mm), handrails shall comply with [S1]'s requirements, but does not specify a different height.\n\n[S3] does not provide a different height for ramp handrails, but rather specifies a height range for handrails in play areas, which is not relevant to this question.\n\nTherefore, the answer is: 36 inches (915 mm) [S1].",
    "cited": [
     [
@@ -273,18 +273,50 @@
    ],
    "invalid_labels": [],
    "contains_ok": false,
-   "citation_valid": null,
-   "total_ms": 6045.8,
-   "retrieval_ms": 190.1,
-   "llm_ms": 5855.7,
+   "citation_valid": true,
+   "total_ms": 5964.9,
+   "retrieval_ms": 257.2,
+   "llm_ms": 5707.7,
    "input_tokens": 686,
    "output_tokens": 139,
-   "verified": false,
-   "ungrounded_numbers": [
-    "36 inches",
-    "915 mm",
-    "36 inches",
-    "915 mm"
+   "grounding_status": "needs_review",
+   "flagged": [
+    {
+     "number": "36 inches",
+     "cited": [
+      "505.4 [standards]"
+     ],
+     "found_in": [
+      "405.8 [standards]"
+     ]
+    },
+    {
+     "number": "915 mm",
+     "cited": [
+      "505.4 [standards]"
+     ],
+     "found_in": [
+      "405.8 [standards]"
+     ]
+    },
+    {
+     "number": "36 inches",
+     "cited": [
+      "505.4 [standards]"
+     ],
+     "found_in": [
+      "405.8 [standards]"
+     ]
+    },
+    {
+     "number": "915 mm",
+     "cited": [
+      "505.4 [standards]"
+     ],
+     "found_in": [
+      "405.8 [standards]"
+     ]
+    }
    ],
    "raw_contains_ok": false,
    "shadow_cost_usd": {
@@ -292,7 +324,7 @@
     "claude-sonnet-5": 0.002762,
     "claude-opus-5": 0.006905
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f7b959f9fca9a5ccbe6d971d95546dfc"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/ee698568fcea56d3bc853f7e78fc88bb"
   },
   {
    "question_id": "p10",
@@ -310,20 +342,20 @@
    "invalid_labels": [],
    "contains_ok": false,
    "citation_valid": false,
-   "total_ms": 2709.7,
-   "retrieval_ms": 220.8,
-   "llm_ms": 2488.9,
+   "total_ms": 2697.4,
+   "retrieval_ms": 174.0,
+   "llm_ms": 2523.4,
    "input_tokens": 466,
    "output_tokens": 48,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": false,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000706,
     "claude-sonnet-5": 0.001412,
     "claude-opus-5": 0.00353
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f6787b428ebcd966ede9f72bc248747b"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/4ceded89a7646a502e71ab025baf08a5"
   },
   {
    "question_id": "e01",
@@ -349,20 +381,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 6281.0,
-   "retrieval_ms": 179.0,
-   "llm_ms": 6102.0,
+   "total_ms": 7872.3,
+   "retrieval_ms": 138.9,
+   "llm_ms": 7733.4,
    "input_tokens": 838,
    "output_tokens": 144,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001558,
     "claude-sonnet-5": 0.003116,
     "claude-opus-5": 0.00779
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/631c4c09f0880b8a6f0e75ae6eb64bc6"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2c3d5359fc3657b1df010d3b467c1964"
   },
   {
    "question_id": "e02",
@@ -380,27 +412,27 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 5303.5,
-   "retrieval_ms": 296.7,
-   "llm_ms": 5006.8,
+   "total_ms": 5437.6,
+   "retrieval_ms": 423.3,
+   "llm_ms": 5014.3,
    "input_tokens": 1468,
    "output_tokens": 26,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001598,
     "claude-sonnet-5": 0.003196,
     "claude-opus-5": 0.00799
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d9429e7540a52707e1040bf7bd60013e"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/9eef2144051349a9795efbf776ff1727"
   },
   {
    "question_id": "e03",
    "question_type": "exact_id",
    "question": "Explain 35.151(b).",
-   "refused": true,
-   "refusal_reason": "ungrounded_number",
+   "refused": false,
+   "refusal_reason": null,
    "text": "According to [S1], Section 35.151(b) Alterations requires that each facility or part of a facility altered by, on behalf of, or for the use of a public entity in a manner that affects or could affect the usability of the facility or part of the facility shall be altered in such manner that the altered portion of the facility is readily accessible to and usable by individuals with disabilities, if the alteration was commenced after January 26, 1992 [S1].\n\nAdditionally, [S2] states that the path of travel requirements of § 35.151(b)(4) shall apply only to alterations undertaken solely for purposes other than to meet the program accessibility requirements of § 35.150 [S2].\n\n[S2] also defines a \"primary function\" as a major activity for which the facility is intended, and includes areas such as offices and work areas, dining areas, meeting rooms, and restrooms [S2].\n\n[S3] renumbers the requirements for alterations to historic facilities and eliminates the option of using the Uniform Federal Accessibility Standards (UFAS) for alterations that commence on or after March 15, 2012 [S3].",
    "cited": [
     [
@@ -418,15 +450,23 @@
    ],
    "invalid_labels": [],
    "contains_ok": null,
-   "citation_valid": null,
-   "total_ms": 10824.4,
-   "retrieval_ms": 184.8,
-   "llm_ms": 10639.6,
+   "citation_valid": true,
+   "total_ms": 10548.0,
+   "retrieval_ms": 191.0,
+   "llm_ms": 10357.0,
    "input_tokens": 1635,
    "output_tokens": 238,
-   "verified": false,
-   "ungrounded_numbers": [
-    "26"
+   "grounding_status": "needs_review",
+   "flagged": [
+    {
+     "number": "26",
+     "cited": [
+      "35.151(b) [guidance]"
+     ],
+     "found_in": [
+      "35.151(b) [standards]"
+     ]
+    }
    ],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
@@ -434,7 +474,7 @@
     "claude-sonnet-5": 0.00565,
     "claude-opus-5": 0.014125
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d9c2309491f433c1473aca4a4bc945c9"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2c15ad0f2a647e4c238ec152cad7aaf0"
   },
   {
    "question_id": "e04",
@@ -456,20 +496,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 14991.9,
-   "retrieval_ms": 538.7,
-   "llm_ms": 14453.2,
+   "total_ms": 14225.2,
+   "retrieval_ms": 260.7,
+   "llm_ms": 13964.5,
    "input_tokens": 1590,
    "output_tokens": 326,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.00322,
     "claude-sonnet-5": 0.00644,
     "claude-opus-5": 0.0161
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/c836096c59557ab5cfa3236d0d991efb"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/b452f4b38462d2ba696f4aa51176ae9b"
   },
   {
    "question_id": "e05",
@@ -487,20 +527,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 4278.7,
-   "retrieval_ms": 597.7,
-   "llm_ms": 3681.0,
+   "total_ms": 3938.8,
+   "retrieval_ms": 433.8,
+   "llm_ms": 3505.0,
    "input_tokens": 608,
    "output_tokens": 78,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000998,
     "claude-sonnet-5": 0.001996,
     "claude-opus-5": 0.00499
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/1153630ec5880ab31956fefa1cdc09ab"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/9ffe7d46464abf4fe1d84ab244415e6b"
   },
   {
    "question_id": "n01",
@@ -522,20 +562,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 6863.6,
-   "retrieval_ms": 218.5,
-   "llm_ms": 6645.1,
+   "total_ms": 7312.4,
+   "retrieval_ms": 475.1,
+   "llm_ms": 6837.3,
    "input_tokens": 1299,
    "output_tokens": 126,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001929,
     "claude-sonnet-5": 0.003858,
     "claude-opus-5": 0.009645
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f62baed183b4f9d9a6d6abfb3acfc733"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/3aaf471b60ae1c423900ffb11a444a73"
   },
   {
    "question_id": "n02",
@@ -553,20 +593,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 2810.5,
-   "retrieval_ms": 556.5,
-   "llm_ms": 2254.0,
+   "total_ms": 2265.6,
+   "retrieval_ms": 509.3,
+   "llm_ms": 1756.3,
    "input_tokens": 1250,
    "output_tokens": 34,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.00142,
     "claude-sonnet-5": 0.00284,
     "claude-opus-5": 0.0071
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/a73fb70cb53df1f46f71264e34c40469"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2ddd02d709cb84b810dd0064e4b09e74"
   },
   {
    "question_id": "n03",
@@ -584,20 +624,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 1256.5,
-   "retrieval_ms": 239.9,
-   "llm_ms": 1016.6,
+   "total_ms": 1234.3,
+   "retrieval_ms": 161.0,
+   "llm_ms": 1073.3,
    "input_tokens": 524,
    "output_tokens": 16,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000604,
     "claude-sonnet-5": 0.001208,
     "claude-opus-5": 0.00302
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/0046791285655b3c102b4cc92bf097b8"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d984a52e89b16f985e28b5ad4ce91203"
   },
   {
    "question_id": "n04",
@@ -623,20 +663,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 4481.1,
-   "retrieval_ms": 105.2,
-   "llm_ms": 4375.9,
+   "total_ms": 7533.1,
+   "retrieval_ms": 105.4,
+   "llm_ms": 7427.7,
    "input_tokens": 729,
    "output_tokens": 92,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001189,
     "claude-sonnet-5": 0.002378,
     "claude-opus-5": 0.005945
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/26fd05fb5c63eb75af1a4423d55fdc1d"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d15c1ccf65f51f113370e3586932abf4"
   },
   {
    "question_id": "n05",
@@ -658,20 +698,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 3799.1,
-   "retrieval_ms": 507.5,
-   "llm_ms": 3291.6,
+   "total_ms": 1927.1,
+   "retrieval_ms": 229.9,
+   "llm_ms": 1697.2,
    "input_tokens": 759,
    "output_tokens": 32,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000919,
     "claude-sonnet-5": 0.001838,
     "claude-opus-5": 0.004595
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2418c597eecc8d3f10509c7a20dc3028"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/5449fd051cdc22f5f950c6bef385409d"
   },
   {
    "question_id": "g01",
@@ -689,20 +729,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 2930.4,
-   "retrieval_ms": 415.0,
-   "llm_ms": 2515.4,
+   "total_ms": 3981.8,
+   "retrieval_ms": 193.4,
+   "llm_ms": 3788.4,
    "input_tokens": 1084,
    "output_tokens": 48,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001324,
     "claude-sonnet-5": 0.002648,
     "claude-opus-5": 0.00662
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/195dca785cce4e876ab50421c1eca887"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/189a5129c445c9a41c9c65ed9be02062"
   },
   {
    "question_id": "g02",
@@ -715,20 +755,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 7558.6,
-   "retrieval_ms": 192.3,
-   "llm_ms": 7366.3,
+   "total_ms": 16708.9,
+   "retrieval_ms": 2319.9,
+   "llm_ms": 14389.0,
    "input_tokens": 1589,
    "output_tokens": 164,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.002409,
     "claude-sonnet-5": 0.004818,
     "claude-opus-5": 0.012045
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/faf03123aac2bde2527d23fa17bb80fa"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/87558af557026048c9890de45f3c219e"
   },
   {
    "question_id": "g03",
@@ -750,20 +790,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 4504.8,
-   "retrieval_ms": 211.7,
-   "llm_ms": 4293.1,
+   "total_ms": 5335.2,
+   "retrieval_ms": 567.5,
+   "llm_ms": 4767.7,
    "input_tokens": 1695,
    "output_tokens": 93,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.00216,
     "claude-sonnet-5": 0.00432,
     "claude-opus-5": 0.0108
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/626600ad78bad8e37373cd80f99a638a"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/fc5aa3f1fd43b8bf8ba264602e86811a"
   },
   {
    "question_id": "g04",
@@ -781,20 +821,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": true,
-   "total_ms": 2552.0,
-   "retrieval_ms": 183.6,
-   "llm_ms": 2368.4,
+   "total_ms": 2854.1,
+   "retrieval_ms": 339.3,
+   "llm_ms": 2514.8,
    "input_tokens": 1476,
    "output_tokens": 45,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001701,
     "claude-sonnet-5": 0.003402,
     "claude-opus-5": 0.008505
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/7b338a1ce2aec501b014576f96405df4"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/7c010e1930ac0179f156f0f93c900cac"
   },
   {
    "question_id": "m01",
@@ -820,27 +860,27 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 9028.2,
-   "retrieval_ms": 186.7,
-   "llm_ms": 8841.5,
+   "total_ms": 9951.1,
+   "retrieval_ms": 218.5,
+   "llm_ms": 9732.6,
    "input_tokens": 1996,
    "output_tokens": 198,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.002986,
     "claude-sonnet-5": 0.005972,
     "claude-opus-5": 0.01493
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/e43f6c412fc8c7f883fdb23e2f7d16b8"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/66e88aff51fa6524fa0736ca17460bfa"
   },
   {
    "question_id": "m02",
    "question_type": "two_sections",
    "question": "How long must the side wall and the rear wall grab bars be at a water closet?",
-   "refused": true,
-   "refusal_reason": "ungrounded_number",
+   "refused": false,
+   "refusal_reason": null,
    "text": "According to [S1], the side wall grab bar must be at least 42 inches (1065 mm) long, and the rear wall grab bar must be at least 36 inches (915 mm) long.",
    "cited": [
     [
@@ -849,17 +889,33 @@
     ]
    ],
    "invalid_labels": [],
-   "contains_ok": false,
-   "citation_valid": null,
-   "total_ms": 2435.5,
-   "retrieval_ms": 240.3,
-   "llm_ms": 2195.2,
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 2688.2,
+   "retrieval_ms": 575.0,
+   "llm_ms": 2113.2,
    "input_tokens": 848,
    "output_tokens": 45,
-   "verified": false,
-   "ungrounded_numbers": [
-    "36 inches",
-    "915 mm"
+   "grounding_status": "needs_review",
+   "flagged": [
+    {
+     "number": "36 inches",
+     "cited": [
+      "604.5.1 [standards]"
+     ],
+     "found_in": [
+      "604.5.2 [standards]"
+     ]
+    },
+    {
+     "number": "915 mm",
+     "cited": [
+      "604.5.1 [standards]"
+     ],
+     "found_in": [
+      "604.5.2 [standards]"
+     ]
+    }
    ],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
@@ -867,7 +923,7 @@
     "claude-sonnet-5": 0.002146,
     "claude-opus-5": 0.005365
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f2d18223194327348d2ec23e9f6c9e79"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/91d5a19076b4b5de64242218a5c639e8"
   },
   {
    "question_id": "o01",
@@ -880,16 +936,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 137.5,
-   "retrieval_ms": 137.5,
+   "total_ms": 118.3,
+   "retrieval_ms": 118.3,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/4a6f6e68880d7d345ba770de8e20c09e"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/68a77cb56ab5d9d93316d8d7f5c04614"
   },
   {
    "question_id": "o02",
@@ -902,16 +958,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 60.4,
-   "retrieval_ms": 60.4,
+   "total_ms": 60.5,
+   "retrieval_ms": 60.5,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/bbce6df45faaed1ea34dde8c8365ecab"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/b6a04d2292b67ede177aafe589135cf0"
   },
   {
    "question_id": "o03",
@@ -924,20 +980,20 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 797.4,
-   "retrieval_ms": 84.3,
-   "llm_ms": 713.1,
+   "total_ms": 757.2,
+   "retrieval_ms": 79.9,
+   "llm_ms": 677.3,
    "input_tokens": 1500,
    "output_tokens": 5,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001525,
     "claude-sonnet-5": 0.00305,
     "claude-opus-5": 0.007625
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/c7166781d67eb10b00ade98de53418b8"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/fcb178d1fdd99e718eb1eb4c8f42054a"
   },
   {
    "question_id": "o04",
@@ -950,16 +1006,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 96.6,
-   "retrieval_ms": 96.6,
+   "total_ms": 84.0,
+   "retrieval_ms": 84.0,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f735245ef97fb2a7be1e62e9255c01d5"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/7b7e8fb4c99388a2d716ef8c2fc0738f"
   },
   {
    "question_id": "o05",
@@ -972,16 +1028,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 57.2,
-   "retrieval_ms": 57.2,
+   "total_ms": 63.4,
+   "retrieval_ms": 63.4,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/24f3452fffd2798cdebd196959b1166f"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/9e77e0d6e269f6ea03dfda6fc63b2fe1"
   },
   {
    "question_id": "o06",
@@ -994,16 +1050,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 57.3,
-   "retrieval_ms": 57.3,
+   "total_ms": 60.1,
+   "retrieval_ms": 60.1,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/9dc58800ca8d67171eeea13ff74c4334"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/91fab198302409afd2bdecfe30e899da"
   },
   {
    "question_id": "o07",
@@ -1016,16 +1072,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 60.6,
-   "retrieval_ms": 60.6,
+   "total_ms": 58.4,
+   "retrieval_ms": 58.4,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/64840e4d380f940f474534aabdc5e4ce"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/99631f281dc5db80ea14a6a5de01770e"
   },
   {
    "question_id": "o08",
@@ -1038,16 +1094,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 54.7,
-   "retrieval_ms": 54.7,
+   "total_ms": 53.9,
+   "retrieval_ms": 53.9,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/8dc5da0591ce5cc923e9e936488c8f29"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/1c552a4cc45cbfa14407a901dd6dd384"
   }
  ],
  "held-out": [
@@ -1075,20 +1131,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 4107.1,
-   "retrieval_ms": 51.6,
-   "llm_ms": 4055.5,
+   "total_ms": 4846.8,
+   "retrieval_ms": 53.4,
+   "llm_ms": 4793.4,
    "input_tokens": 466,
    "output_tokens": 97,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000951,
     "claude-sonnet-5": 0.001902,
     "claude-opus-5": 0.004755
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/c2729544706b7cff450e9c6f92422454"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f30d4205cb3fa03e659f0e06c6851910"
   },
   {
    "question_id": "h02",
@@ -1106,20 +1162,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 2011.5,
-   "retrieval_ms": 193.4,
-   "llm_ms": 1818.1,
+   "total_ms": 2084.5,
+   "retrieval_ms": 267.8,
+   "llm_ms": 1816.7,
    "input_tokens": 526,
    "output_tokens": 26,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000656,
     "claude-sonnet-5": 0.001312,
     "claude-opus-5": 0.00328
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/94398270653aff9d1e345acdb435e9e4"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/38fd883746be63ec1cb2f3a4cffb5874"
   },
   {
    "question_id": "h03",
@@ -1132,20 +1188,20 @@
    "invalid_labels": [],
    "contains_ok": false,
    "citation_valid": null,
-   "total_ms": 614.9,
-   "retrieval_ms": 169.7,
-   "llm_ms": 445.2,
+   "total_ms": 531.4,
+   "retrieval_ms": 124.0,
+   "llm_ms": 407.4,
    "input_tokens": 662,
    "output_tokens": 5,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": false,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000687,
     "claude-sonnet-5": 0.001374,
     "claude-opus-5": 0.003435
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/7d940627a78bf8286e5a19df25e185c5"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2e4fc74dc20b4e40ad6cf68ee2c28c8d"
   },
   {
    "question_id": "h04",
@@ -1163,20 +1219,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 1633.0,
-   "retrieval_ms": 98.7,
-   "llm_ms": 1534.3,
+   "total_ms": 1670.9,
+   "retrieval_ms": 93.4,
+   "llm_ms": 1577.5,
    "input_tokens": 238,
    "output_tokens": 29,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000383,
     "claude-sonnet-5": 0.000766,
     "claude-opus-5": 0.001915
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/4039c9dcfb0a850f8e41dc3b8718f1b1"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/ecb03ecfc68574e52deba0188ac83016"
   },
   {
    "question_id": "h05",
@@ -1194,20 +1250,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 1907.5,
-   "retrieval_ms": 126.6,
-   "llm_ms": 1780.9,
+   "total_ms": 2364.1,
+   "retrieval_ms": 112.9,
+   "llm_ms": 2251.2,
    "input_tokens": 219,
    "output_tokens": 38,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000409,
     "claude-sonnet-5": 0.000818,
     "claude-opus-5": 0.002045
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/05a3f25554eba1bb510d7dd51c712259"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2dac3eafa540d00bf7a645b4c3b6c239"
   },
   {
    "question_id": "h06",
@@ -1220,20 +1276,20 @@
    "invalid_labels": [],
    "contains_ok": false,
    "citation_valid": null,
-   "total_ms": 701.4,
-   "retrieval_ms": 98.3,
-   "llm_ms": 603.1,
+   "total_ms": 1510.2,
+   "retrieval_ms": 321.1,
+   "llm_ms": 1189.1,
    "input_tokens": 232,
    "output_tokens": 5,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": false,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.000257,
     "claude-sonnet-5": 0.000514,
     "claude-opus-5": 0.001285
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/419dbf3d4d4a54e600246807137c6a08"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/8d5b003b82bd5da5f35c064065ea2c1b"
   },
   {
    "question_id": "h07",
@@ -1251,27 +1307,27 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 3970.2,
-   "retrieval_ms": 82.5,
-   "llm_ms": 3887.7,
+   "total_ms": 2509.2,
+   "retrieval_ms": 111.0,
+   "llm_ms": 2398.2,
    "input_tokens": 1330,
    "output_tokens": 46,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.00156,
     "claude-sonnet-5": 0.00312,
     "claude-opus-5": 0.0078
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/a1a5125e8dc6ae39ccf4d41301864266"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/e9fe2442ff3d9585d2ca7702aed6f579"
   },
   {
    "question_id": "h08",
    "question_type": "paraphrase",
    "question": "How deep must the space for your knees be under a sink?",
-   "refused": true,
-   "refusal_reason": "ungrounded_number",
+   "refused": false,
+   "refusal_reason": null,
    "text": "According to [S3] [ada_2010_standards.pdf p.174-175 §606.2], the knee clearance under a sink is 11 inches (280 mm) deep minimum at 9 inches (230 mm) above the finish floor or ground, and 8 inches (205 mm) deep minimum at 27 inches (685 mm) above the finish floor or ground.",
    "cited": [
     [
@@ -1280,23 +1336,88 @@
     ]
    ],
    "invalid_labels": [],
-   "contains_ok": false,
-   "citation_valid": null,
-   "total_ms": 4148.1,
-   "retrieval_ms": 218.7,
-   "llm_ms": 3929.4,
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 4027.4,
+   "retrieval_ms": 202.7,
+   "llm_ms": 3824.7,
    "input_tokens": 1804,
    "output_tokens": 81,
-   "verified": false,
-   "ungrounded_numbers": [
-    "11 inches",
-    "280 mm",
-    "9 inches",
-    "230 mm",
-    "8 inches",
-    "205 mm",
-    "27 inches",
-    "685 mm"
+   "grounding_status": "needs_review",
+   "flagged": [
+    {
+     "number": "11 inches",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "280 mm",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "9 inches",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "230 mm",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "8 inches",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "806 [guidance]",
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "205 mm",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "27 inches",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    },
+    {
+     "number": "685 mm",
+     "cited": [
+      "606.2 [standards]"
+     ],
+     "found_in": [
+      "306.3.3 [standards]"
+     ]
+    }
    ],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
@@ -1304,7 +1425,7 @@
     "claude-sonnet-5": 0.004418,
     "claude-opus-5": 0.011045
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/85804a09904f94042d245fa7ab0baa59"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/585619b8a104d93c7d7d86b12f36ab26"
   },
   {
    "question_id": "h09",
@@ -1322,20 +1443,20 @@
    "invalid_labels": [],
    "contains_ok": true,
    "citation_valid": true,
-   "total_ms": 1615.2,
-   "retrieval_ms": 206.2,
-   "llm_ms": 1409.0,
+   "total_ms": 1726.6,
+   "retrieval_ms": 181.5,
+   "llm_ms": 1545.1,
    "input_tokens": 867,
    "output_tokens": 27,
-   "verified": true,
-   "ungrounded_numbers": [],
+   "grounding_status": "verified",
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.001002,
     "claude-sonnet-5": 0.002004,
     "claude-opus-5": 0.00501
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/8c8a2188fda168b2dd96d51b28b495ec"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/4fcd46f89d821dfd72506c1b02b01210"
   },
   {
    "question_id": "h10",
@@ -1348,20 +1469,20 @@
    "invalid_labels": [],
    "contains_ok": false,
    "citation_valid": null,
-   "total_ms": 8463.8,
-   "retrieval_ms": 195.1,
-   "llm_ms": 8268.7,
+   "total_ms": 7420.8,
+   "retrieval_ms": 188.3,
+   "llm_ms": 7232.5,
    "input_tokens": 1649,
    "output_tokens": 169,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": true,
    "shadow_cost_usd": {
     "claude-haiku-4-5": 0.002494,
     "claude-sonnet-5": 0.004988,
     "claude-opus-5": 0.01247
    },
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/60558bdf5e4d70b01e9c588a960c75a1"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/8a27b3c129f3070e2e0536bd26d4dc3e"
   },
   {
    "question_id": "hn1",
@@ -1374,16 +1495,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 268.8,
-   "retrieval_ms": 268.8,
+   "total_ms": 208.1,
+   "retrieval_ms": 208.1,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/f7cd0f8428f4973f6a638b77d8ce733d"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/7d60d539a95cc5bea783d0f342949f01"
   },
   {
    "question_id": "hn2",
@@ -1396,16 +1517,16 @@
    "invalid_labels": [],
    "contains_ok": null,
    "citation_valid": null,
-   "total_ms": 59.3,
-   "retrieval_ms": 59.3,
+   "total_ms": 57.0,
+   "retrieval_ms": 57.0,
    "llm_ms": 0.0,
    "input_tokens": null,
    "output_tokens": null,
-   "verified": null,
-   "ungrounded_numbers": [],
+   "grounding_status": null,
+   "flagged": [],
    "raw_contains_ok": null,
    "shadow_cost_usd": {},
-   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/2495a76527778b866b3d7be42ed94105"
+   "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d5aab1f708de76ad6782130292b710f3"
   }
  ]
 }

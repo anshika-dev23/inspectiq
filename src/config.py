@@ -82,8 +82,6 @@ class Settings:
 
     # Answering (step 3): total characters of source text put in the prompt
     answer_max_context_chars: int
-    # Every number in an answer must appear in a cited source; strict: otherwise refuse ("ungrounded_number")
-    strict_number_grounding: bool
 
 
 def load_settings() -> Settings:
@@ -115,7 +113,6 @@ def load_settings() -> Settings:
         # ~6,000 chars is ~1,500 tokens: fits llama3.2:3b's 8k context with instructions and answer to spare.
         answer_max_context_chars=int(os.getenv(
             "ANSWER_MAX_CONTEXT_CHARS", "6000" if llm_provider == "ollama" else "20000")),
-        strict_number_grounding=os.getenv("STRICT_NUMBER_GROUNDING", "1") != "0",
     )
 
 

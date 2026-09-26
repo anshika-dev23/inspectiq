@@ -460,3 +460,38 @@ Blocked answers:
 | held-out | $0.88 | $1.77 | $4.42 |
 
 - Input tokens dominate (~1,090 in vs ~90 out): the context cap is the main cost lever, not answer length.
+
+---
+
+## Step 3c — three-state number grounding (replaces strict mode)
+
+### 3c.1 Design
+- Strict mode refused every answer with a number outside its sentence's cited sources, so 3 answers with the
+  right content (e03, m02, h08) were refused along with the wrong one (p09). Replaced by three states:
+  - **verified**: every number is in a source cited in its sentence;
+  - **needs_review**: some number is not in its sentence's cited sources but is in another source of the prompt
+    (misattribution, or a number taken from the wrong source). The answer is returned with `flagged_numbers`,
+    each with the sources where it was found;
+  - **refused** (`ungrounded_number`): some number is in no source of the prompt: not taken from the sources.
+- "Retrieved source" = the source texts as the model saw them in the prompt (what it could have copied from).
+- `Answer.grounding_status` (None for refusals before the check) and `Answer.flagged_numbers`;
+  `STRICT_NUMBER_GROUNDING` removed. Trace: the grounding span is WARNING for needs_review, ERROR for refused.
+
+### 3c.2 Results (eval/answer_results.md)
+| set | wrong but verified | correct among verified | needs_review | correct among needs_review | correct overall | refusal acc. | false refusals |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| golden | **2** | 8/10 (80%) | 3/23 (13%) | 1/2 | 9/13 | 8/8 | 3/26 |
+| held-out | **0** | 6/6 (100%) | 1/7 (14%) | 1/1 | 7/10 | 2/2 | 3/10 |
+
+- needs_review holds exactly the four grounding cases: p09 (wrong number: 36 from 405.8's clear width, cited
+  505.4), m02 and h08 (right numbers, from 604.5.2 / 306.3.3, which the sentence did not cite), e03 (right date,
+  in the regulation, cited to the guidance). One wrong, two right, one not checkable: the flag means "look at
+  this", not "this is wrong".
+- No answer was refused by grounding in this run: the 3B model misattributes numbers but did not invent one.
+- False refusals are back to the step-3 level (3/26, 3/10); strict mode had raised them to 6/26 and 4/10.
+- **Wrong but verified is 2, not 0** (p03, p10). Their numbers do come from the cited section, but the section
+  does not answer the question (304.2 floor surfaces instead of 304.3.1 turning space; 502.2's van exception,
+  96 inches, instead of 502.3.1 access aisle, 60 inches). Number grounding checks *where* a number came from,
+  not *whether the cited section answers the question*. Reaching 0 needs a relevance check (does the cited
+  section answer this question?), e.g. the grade step of the step-6 agent, and better retrieval for p03.
+- Latency and cost unchanged (the check is deterministic, milliseconds).

@@ -50,9 +50,12 @@ def main() -> None:
     llm = result.llm
     tokens = f", tokens in/out {llm.input_tokens}/{llm.output_tokens}, cost ${llm.cost_usd:.4f}" if llm else ""
     print(f"timings (ms): {result.timings_ms}{tokens}")
-    if result.verified is not None:
-        print(f"number grounding: {'verified' if result.verified else 'UNVERIFIED'}"
-              + (f", ungrounded: {result.ungrounded_numbers}" if result.ungrounded_numbers else ""))
+    if result.grounding_status is not None:
+        print(f"number grounding: {result.grounding_status.upper()}")
+        by_label = {source.label: source.context.citation for source in result.sources}
+        for flag in result.flagged_numbers:
+            found = ", ".join(f"{label} {by_label[label]}" for label in flag.found_in) or "no source"
+            print(f"  flagged {flag.raw!r}: not in cited {flag.cited_labels}; found in: {found}")
     if llm and llm.shadow_cost_usd:
         from src.config import SHADOW_COST_NOTE
         costs = ", ".join(f"{model} ${usd:.5f}" for model, usd in llm.shadow_cost_usd.items())

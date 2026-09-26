@@ -1,5 +1,12 @@
 """Number grounding (step 3b): every number in an answer must appear in a source the answer cites.
 
+Three outcomes (assess_grounding):
+- verified:     every number appears in a source cited in its sentence;
+- needs_review: some number is not in its sentence's cited sources, but appears in another source given to the
+                model (a misattribution, or a number taken from the wrong source, as in p09). The answer is
+                returned with the flagged numbers and the sources where each was found;
+- refused:      some number appears in no source given to the model: it was not taken from the sources at all.
+
 Catches the most dangerous failure of the answer chain: a confident, cited, WRONG number
 (eval p09: "36 inches minimum" citing 505.4, which says 34). Citation checking cannot catch that,
 because the cited section is the right one.
@@ -167,18 +174,50 @@ def split_claims(text: str) -> list[tuple[str, list[str]]]:
     return claims
 
 
-def check_grounding_by_claim(answer_text: str, source_texts: dict[str, str]) -> GroundingResult:
-    """Per sentence: its numbers must appear in the sources it cites (all cited sources if it cites none).
+VERIFIED, NEEDS_REVIEW, REFUSED = "verified", "needs_review", "refused"
 
-    source_texts maps each valid label ("S1") to the source text the model saw. Labels that are not in it
-    (invalid citations) ground nothing.
+
+@dataclass(frozen=True)
+class FlaggedNumber:
+    """A number not found in the sources cited in its sentence."""
+
+    raw: str                 # "36 inches"
+    key: str                 # "36 in"
+    sentence: str
+    cited_labels: list[str]  # what the sentence cited (all cited labels if it cited none)
+    found_in: list[str]      # labels of the prompt sources that do contain it; empty -> not from the sources
+
+
+@dataclass(frozen=True)
+class GroundingAssessment:
+    status: str                    # verified | needs_review | refused
+    numbers: list[NumberMention]   # every number in the answer
+    flagged: list[FlaggedNumber]
+
+
+def assess_grounding(answer_text: str, source_texts: dict[str, str]) -> GroundingAssessment:
+    """Check each sentence's numbers against the sources it cites, then look for flagged numbers in every source.
+
+    source_texts maps every label in the prompt ("S1", "S2", ...) to the text the model saw. A sentence that
+    cites nothing is checked against all sources the answer cites; invalid labels ground nothing.
     """
     all_cited = [label for label in cited_labels(answer_text) if label in source_texts]
+    source_numbers = {label: extract_numbers(text) for label, text in source_texts.items()}
     numbers: list[NumberMention] = []
-    ungrounded: list[NumberMention] = []
+    flagged: list[FlaggedNumber] = []
     for sentence, labels in split_claims(answer_text):
         scope = [label for label in labels if label in source_texts] or all_cited
-        result = check_grounding(sentence, [source_texts[label] for label in scope])
-        numbers += result.numbers
-        ungrounded += result.ungrounded
-    return GroundingResult(numbers=numbers, ungrounded=ungrounded)
+        for number in extract_numbers(sentence):
+            numbers.append(number)
+            if any(is_grounded(number, source_numbers[label]) for label in scope):
+                continue
+            found_in = [label for label, found in source_numbers.items() if is_grounded(number, found)]
+            flagged.append(FlaggedNumber(number.raw, number.key, sentence, scope, found_in))
+
+    if any(not f.found_in for f in flagged):
+        status = REFUSED
+    elif flagged:
+        status = NEEDS_REVIEW
+    else:
+        status = VERIFIED
+    return GroundingAssessment(status=status, numbers=numbers, flagged=flagged)

@@ -4,7 +4,9 @@ The rules that matter are enforced in code, not trusted to the model:
 - no retrieved sources            -> refusal, the LLM is not called;
 - the model says NOT_IN_SOURCES   -> refusal;
 - no valid [S#] citation          -> refusal (every label is checked against the sources in the prompt);
-- a number not found in any cited source -> "unverified"; in strict mode a refusal (src/grounding.py).
+- number grounding (src/grounding.py): every number in a cited source of its sentence -> "verified";
+  found only in another source of the prompt -> "needs_review" (answered, numbers flagged);
+  found in no source of the prompt -> refusal "ungrounded_number".
 """
 import time
 from dataclasses import dataclass, field
@@ -14,7 +16,7 @@ from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 
 from src import tracing
 from src.config import RetrievalConfig, Settings, load_settings
-from src.grounding import CITATION_GROUP, LABEL, check_grounding_by_claim
+from src.grounding import CITATION_GROUP, LABEL, REFUSED, FlaggedNumber, assess_grounding
 from src.llm import LLM, LLMResponse
 from src.retrieve import RetrievalResult, RetrievedContext, choose_window, retrieve
 
@@ -66,8 +68,9 @@ class Answer:
     refusal_reason: str | None
     citations: list[Citation] = field(default_factory=list)
     invalid_labels: list[str] = field(default_factory=list)   # cited labels that were not in the prompt
-    verified: bool | None = None                               # every number grounded in a cited source
-    ungrounded_numbers: list[str] = field(default_factory=list)
+    # verified | needs_review | refused; None when no answer reached the check (earlier refusals)
+    grounding_status: str | None = None
+    flagged_numbers: list[FlaggedNumber] = field(default_factory=list)   # with the sources where each was found
     raw_llm_text: str | None = None
     timings_ms: dict[str, float] = field(default_factory=dict)
     llm: LLMResponse | None = None
@@ -166,8 +169,7 @@ def refusal(question: str, reason: str, **fields) -> Answer:
 
 
 def answer_from_contexts(question: str, contexts: list[RetrievedContext], llm: LLM,
-                         max_context_chars: int, retrieval_ms: float = 0.0,
-                         strict_grounding: bool = True) -> Answer:
+                         max_context_chars: int, retrieval_ms: float = 0.0) -> Answer:
     """Prompt -> LLM -> checked, cited answer. Separate from retrieval so it can be tested with a fake LLM."""
     timings = {"retrieval": retrieval_ms}
     if not contexts:
@@ -189,15 +191,15 @@ def answer_from_contexts(question: str, contexts: list[RetrievedContext], llm: L
     citations = [resolve_citation(by_label[label]) for label in valid]
     with tracing.observe("grounding", as_type="guardrail",
                          input={"answer": response.text, "cited_labels": valid}) as span:
-        grounding = check_grounding_by_claim(response.text, {label: by_label[label].text for label in valid})
-        tracing.update(span, output={"verified": grounding.verified,
+        grounding = assess_grounding(response.text, {source.label: source.text for source in sources})
+        tracing.update(span, output={"status": grounding.status,
                                      "numbers": [n.key for n in grounding.numbers],
-                                     "ungrounded": [n.raw for n in grounding.ungrounded],
-                                     "strict": strict_grounding},
-                       level="WARNING" if not grounding.verified else "DEFAULT")
-    checked = dict(citations=citations, invalid_labels=invalid, verified=grounding.verified,
-                   ungrounded_numbers=[n.raw for n in grounding.ungrounded], **common)
-    if strict_grounding and not grounding.verified:
+                                     "flagged": [{"number": f.raw, "cited": f.cited_labels, "found_in": f.found_in}
+                                                 for f in grounding.flagged]},
+                       level={"verified": "DEFAULT", "needs_review": "WARNING", "refused": "ERROR"}[grounding.status])
+    checked = dict(citations=citations, invalid_labels=invalid, grounding_status=grounding.status,
+                   flagged_numbers=grounding.flagged, **common)
+    if grounding.status == REFUSED:
         return refusal(question, "ungrounded_number", **checked)
     return Answer(question=question, text=response.text.strip(), refused=False, refusal_reason=None, **checked)
 
@@ -225,14 +227,13 @@ def answer(question: str, filters: dict | None = None, retrieval_config: Retriev
                          "candidates": len(retrieval.debug.fused)})
 
         result = answer_from_contexts(question, retrieval.contexts, llm or get_default_llm(),
-                                      settings.answer_max_context_chars, retrieval_ms,
-                                      strict_grounding=settings.strict_number_grounding)
+                                      settings.answer_max_context_chars, retrieval_ms)
         result.retrieval = retrieval
 
         output = {"answer": result.text, "refused": result.refused, "refusal_reason": result.refusal_reason,
-                  "citations": [c.citation for c in result.citations], "verified": result.verified}
+                  "citations": [c.citation for c in result.citations], "grounding_status": result.grounding_status}
         tracing.update(root, output=output, metadata={"timings_ms": result.timings_ms,
-                                                      "ungrounded_numbers": result.ungrounded_numbers})
+                                                      "flagged_numbers": [f.raw for f in result.flagged_numbers]})
         tracing.set_trace_io(root, input={"question": question}, output=output)
         result.trace_url = tracing.current_trace_url()
     return result
