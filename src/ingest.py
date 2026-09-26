@@ -620,12 +620,20 @@ def write_docstore(parents: list[dict], path: Path) -> int:
     return len(docstore)
 
 
+def is_searchable(parent: dict) -> bool:
+    """True for parents that go into the three search indexes (not just the docstore)."""
+    metadata = parent["metadata"]
+    return metadata["level"] == "section" and not metadata["heading_only"]
+
+
 def write_stores(parents: list[dict], settings: Settings, embed_fn: EmbedFn, chroma_client) -> dict[str, int]:
     """Part 2: write all four stores and return the number of entries in each.
 
-    Heading-only parents ("216 Signs") go to the docstore only; they live on in children's breadcrumbs.
+    Only real sections are searchable. Docstore only:
+    - heading-only parents ("216 Signs"): they live on in their children's breadcrumbs;
+    - front matter and back matter (the index): not code text, so never a search hit.
     """
-    searchable = [parent for parent in parents if not parent["metadata"]["heading_only"]]
+    searchable = [parent for parent in parents if is_searchable(parent)]
     splitter = make_child_splitter(settings.child_chunk_size, settings.child_chunk_overlap)
     children = [child for parent in searchable for child in split_children(parent, splitter)]
 

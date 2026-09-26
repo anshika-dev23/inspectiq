@@ -57,10 +57,9 @@ class Settings:
     sections_collection: str
     children_collection: str
 
-    # Retrieval context (step 2): a parent up to this size is returned whole ...
-    parent_full_text_max_chars: int
-    # ... a bigger parent is returned as a window of about this size around its best-matching children.
-    context_window_chars: int
+    # Retrieval models (step 2)
+    query_instruction: str  # BGE models expect this prefix on queries (not on documents)
+    reranker_model: str
 
     # LLM provider switch (used from step 3; steps 1-2 never call an LLM)
     llm_provider: str
@@ -87,10 +86,56 @@ def load_settings() -> Settings:
         child_chunk_overlap=60,
         sections_collection="sections",
         children_collection="children",
-        parent_full_text_max_chars=6000,
-        context_window_chars=4000,
+        query_instruction="Represent this sentence for searching relevant passages: ",
+        reranker_model="cross-encoder/ms-marco-MiniLM-L-6-v2",
         llm_provider=llm_provider,
         ollama_model=os.getenv("OLLAMA_MODEL", "llama3.2:3b"),
         ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
         anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5"),
     )
+
+
+# Query normalization: abbreviations are expanded in place, "GFCI" -> "GFCI (ground-fault circuit-interrupter)".
+ABBREVIATIONS = {
+    "gfci": "ground-fault circuit-interrupter",
+    "afci": "arc-fault circuit-interrupter",
+    "adaag": "ADA Accessibility Guidelines",
+    "tty": "text telephone teletypewriter",
+    "atm": "automatic teller machine",
+    "als": "assistive listening system",
+    "ufas": "Uniform Federal Accessibility Standards",
+    "cfr": "Code of Federal Regulations",
+    "hud": "Department of Housing and Urban Development",
+    "wc": "water closet toilet",
+}
+
+
+@dataclass(frozen=True)
+class RetrievalConfig:
+    """Every retrieval stage is toggleable so evals can compare configurations (step 4)."""
+
+    # Stage toggles
+    use_query_normalization: bool = True  # expand ABBREVIATIONS
+    use_child_vector: bool = True
+    use_bm25: bool = True
+    use_section_vector: bool = True
+    use_exact_ref_boost: bool = True      # a section ref in the query ("604.5") is pinned at rank 1
+    use_rerank: bool = True               # cross-encoder + relevance threshold
+    use_context_window: bool = True       # False: always return whole parents
+
+    # Sizes
+    child_vector_top_k: int = 20
+    bm25_top_k: int = 20
+    section_vector_top_k: int = 5
+    rrf_k: int = 60
+    rerank_top_n: int = 10
+    final_top_n: int = 3
+
+    # ms-marco cross-encoder returns raw logits (about -11 .. +11); below this a parent is not relevant.
+    # Provisional value, to be tuned with the golden set in step 4.
+    rerank_threshold: float = 0.0
+
+    # A parent up to this size is returned whole ...
+    parent_full_text_max_chars: int = 6000
+    # ... a bigger parent is returned as a window of this size centred on its best-matching children.
+    context_window_chars: int = 4000

@@ -511,3 +511,20 @@ def test_heading_only_parents_go_to_docstore_only(tmp_settings):
     assert index["metadatas"][0]["breadcrumb"] == "ADA 2010 Standards > 216 Signs > 216.2 Designations"
     assert "signs" in index["bm25"].doc_freqs[0]  # term counts of the indexed (breadcrumb + chunk) text
     assert len(json.loads(tmp_settings.docstore_path.read_text())) == 2
+
+
+def test_front_and_back_matter_go_to_docstore_only(tmp_settings):
+    client = chromadb.PersistentClient(path=str(tmp_settings.chroma_dir))
+    pages = [
+        Page(1, ["Preface about the regulation"]),
+        Page(2, ["402.1 General.  Accessible routes shall comply with 402."]),
+        Page(3, ["INDEX TO THE 2010 STANDARDS", "Accessible routes 402"]),
+    ]
+    parents = build_parents(split_sections(pages, "s.pdf"), "s.pdf", CORPUS_FILE)
+    assert [p["metadata"]["level"] for p in parents] == ["front-matter", "section", "back-matter"]
+
+    counts = write_stores(parents, tmp_settings, fake_embed, client)
+    assert counts == {"sections": 1, "children": 1, "bm25": 1, "docstore": 3}
+    with tmp_settings.bm25_path.open("rb") as f:
+        assert pickle.load(f)["metadatas"][0]["section_id"] == "402.1"
+    assert client.get_collection("children").get(include=["metadatas"])["metadatas"][0]["section_level"] == "section"
