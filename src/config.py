@@ -121,15 +121,43 @@ ABBREVIATIONS = {
 }
 
 
+# Query glossary: everyday words -> the terms the Standards use (mostly defined in 106.5 Defined Terms, plus the
+# chapter vocabulary: toilet room, water closet, lavatory, turning space). Matched as whole words (plural allowed);
+# the code terms are APPENDED to the query, so phrases such as "toilet room" are never broken apart.
+GLOSSARY = {
+    "light switch": "operable parts, controls",            # 106.5 Operable Part; 205.1 lists light switches
+    "outlet": "operable parts, convenience receptacles",
+    "thermostat": "operable parts, environmental controls",
+    "door handle": "door hardware, operable parts",
+    "bathroom": "toilet room",
+    "restroom": "toilet room",
+    "toilet": "water closet",
+    "sink": "lavatory",
+    "turn around": "turning space",
+    "hallway": "circulation path, walking surface",       # 106.5 Circulation Path
+    "sidewalk": "walk, accessible route",                 # 106.5 Walk
+    "steep": "running slope",                             # 106.5 Running Slope
+    "step": "change in level",
+    "stairs": "stairways",
+    "curb cut": "curb ramp",                              # 106.5 Curb Ramp
+    "how wide": "clear width",
+    "hotel room": "transient lodging guest room",         # 106.5 Transient Lodging
+    "wheelchair seating": "wheelchair space",             # 106.5 Wheelchair Space
+    "raised letters": "tactile characters",               # 106.5 Tactile, Characters
+    "water fountain": "drinking fountain",
+}
+
+
 @dataclass(frozen=True)
 class RetrievalConfig:
     """Every retrieval stage is toggleable so evals can compare configurations (step 4)."""
 
     # Stage toggles
     use_query_normalization: bool = True  # expand ABBREVIATIONS
+    use_glossary: bool = True             # append GLOSSARY code terms for everyday words
     use_child_vector: bool = True
     use_bm25: bool = True
-    use_section_vector: bool = True
+    use_section_vector: bool = False      # off by default: no gain on the golden set, hurt exact IDs (decisions 4a)
     use_exact_ref_boost: bool = True      # a section ref in the query ("604.5") is pinned at rank 1
     use_rerank: bool = True               # cross-encoder + relevance threshold
     use_context_window: bool = True       # False: always return whole parents

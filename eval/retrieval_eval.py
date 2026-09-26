@@ -24,7 +24,9 @@ QUESTION_TYPES = ("paraphrase", "exact_id", "numeric_keyword", "guidance_only", 
 FINAL_KS = (3, 5)
 THRESHOLDS = [float(t) for t in range(-4, 5)]  # -4 .. +4, step 1
 
-BASE = RetrievalConfig()
+# The step-4a settings, pinned so this report stays reproducible when the defaults in RetrievalConfig change.
+BASE = RetrievalConfig(rerank_top_n=10, use_section_vector=True, use_glossary=False, final_k=3,
+                       rerank_threshold=0.0, use_exact_ref_boost=True, rerank_mode="replace")
 # Retriever-comparison rows measure the raw retrievers: exact-ref boost OFF.
 # Rerank rows are production behaviour: boost ON. One ablation turns it off on the best rerank row.
 RAW = replace(BASE, use_exact_ref_boost=False, use_rerank=False)

@@ -245,6 +245,9 @@ Full tables: `eval/results.md` (per-question results: `eval/results.json`); harn
 | o03 GFCI | `205.1` (receptacles at kitchen counters) scores +1.58 > 0 | hard negative close to real content |
 - Two of five misses are recall at the first stage, not ranking: raising `rerank_top_n` (10 → 25) is the obvious
   next experiment; a synonym list (light switch → operable parts) would be the query-normalization fix for p04.
+- **Update (4a.7):** that diagnosis was incomplete. At depth 25 the reranker does see p01 and p03 and still
+  misranks them: 404.2.3 scores −0.33 (6th, below the threshold) and 304.3.1 is 4th, behind "wheelchair space"
+  sections (802.1.2, 809.2.2) that match "wheelchair user". They are reranker misses, not only depth misses.
 
 ### 4a.5 Threshold sweep (blend, k=3)
 | threshold | −4 | −3 … +1 | +2 | +3 | +4 |
@@ -265,3 +268,52 @@ Full tables: `eval/results.md` (per-question results: `eval/results.json`); harn
   (like o03) meet a second gate in step 3: the answer chain must refuse when the context does not answer. A false
   refusal, on the other hand, cannot be recovered later. Re-check with a held-out set.
 - Next experiments (evidence above): `rerank_top_n` 25; rerank without the section path; a small synonym list.
+
+### 4a.7 Follow-up experiments, one change at a time
+Full tables: `eval/experiments.md`; harness: `eval/experiments.py` (decision rules are in code, so reproducible).
+Golden set, final_k 3, threshold 0.0, exact-ref boost on. "correct" = in-corpus answered in the top 3 +
+out-of-corpus correctly empty, out of 34.
+
+| step | change | correct | hit@3 | MRR | p50 | decision |
+|---|---|---:|---:|---:|---:|---|
+| baseline | step-4a default (depth 10, sections on, replace) | 29 | 85% | 0.750 | 58 ms | |
+| (a) | rerank depth 25 | 29 | 85% | 0.750 | 95 ms | rejected: nothing gained, +36 ms p50 |
+| (b) | no section-vector path | 29 | 85% | 0.750 | 54 ms | kept: not worse, simpler, slightly faster |
+| (c) | rrf / blend instead of replace | 30 / 30 | 88% | 0.769 / 0.788 | 54 ms | replace kept: within one question, simplest |
+| (d) | + query glossary | 30 | 88% | 0.808 | 53 ms | kept: +1 question, MRR +0.06, hit@1 65% → 73% |
+
+- (a) The +36 ms is 25 instead of 10 cross-encoder pairs; p95 also rose (88 → 135 ms). Latency numbers vary by
+  ~20 ms between runs on this machine; the depth cost is well above that.
+- (c) blend/rrf win by exactly one question; per the rule, the simplest mode stays. Worth re-checking on a larger set.
+- (d) The glossary: 20 entries mapping everyday words to Standards terms, mostly 106.5 defined terms (Operable Part,
+  Circulation Path, Walk, Running Slope, Curb Ramp, Transient Lodging, Wheelchair Space, Tactile/Characters)
+  plus chapter vocabulary (toilet room, water closet, lavatory, turning space, change in level). Built from the
+  definitions, not from the failing questions. Code terms are appended to the query, never inserted inline,
+  so "toilet room" is not broken into "toilet (water closet) room". Toggle: `use_glossary`.
+- Still missing on golden: p03 (turning space; reranker prefers 809.2.2), p04 (light switch: even with
+  "operable parts, controls" appended, no candidate passes the threshold → false refusal), p07 (parking count:
+  Guidance "208, 502" and 502.3 above 208.2), o03 (GFCI hard negative, 205.1 at +1.58).
+
+### 4a.8 Held-out check (eval/heldout.json)
+- 10 new paraphrase questions + 2 negatives, on sections not in golden, written from the PDF text and committed
+  (`509c8fc`) *before* the glossary and the experiments. Never used for a decision.
+
+| | correct | hit@1 | hit@3 | MRR | refusal acc. | false refusals |
+|---|---:|---:|---:|---:|---:|---:|
+| step-4a baseline | 8/12 | 60% | 60% | 0.600 | 100% | 10% |
+| final defaults | 10/12 | 50% | 80% | 0.633 | 100% | 0% |
+
+- The gain carries over: +2 questions (h04 "step up in the floor" → change in level; h10 "around a toilet" →
+  water closet), and the one false refusal is gone. hit@1 dropped one question (60% → 50%): the right section is
+  found but not always first.
+- Still missing: h03 ("space in front of a fixture": 305.3 lost to 802.1.x wheelchair-space sections, the same
+  reranker bias as p01/p03) and h06 ("narrowest a ramp can be": 405.5 lost to 405.7.2 landing width).
+- 12 questions: each is 8%. This says "no sign of overfitting", not "proven to generalize".
+
+### 4a.9 Defaults applied to `RetrievalConfig`
+- child vector + BM25, **no section-vector path**; exact-ref boost on; **glossary on**; reranker on,
+  `rerank_mode = "replace"`, `rerank_top_n = 10`; `final_k = 3`; threshold **0.0** (not tuned to +2, see 4a.5).
+- `eval/retrieval_eval.py` pins the step-4a settings explicitly, so `eval/results.md` stays reproducible.
+- Plain `RetrievalConfig()` reproduces the final row: golden 30/34 (MRR 0.808), held-out 10/12.
+- Recurring failure pattern for later: the cross-encoder over-weights "wheelchair" and ranks wheelchair-space
+  sections (802.x, 809.x) above the specific requirement (p01, p03, h03).

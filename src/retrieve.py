@@ -23,7 +23,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from typing import Callable
 
-from src.config import ABBREVIATIONS, RetrievalConfig, Settings, load_settings
+from src.config import ABBREVIATIONS, GLOSSARY, RetrievalConfig, Settings, load_settings
 from src.text import tokenize
 
 FILTER_KEYS = ("code_name", "edition_year", "section_type")
@@ -197,6 +197,19 @@ def expand_abbreviations(text: str, abbreviations: dict[str, str]) -> str:
     return pattern.sub(lambda match: f"{match[0]} ({abbreviations[match[0].lower()]})", text)
 
 
+def expand_with_glossary(text: str, glossary: dict[str, str]) -> str:
+    """Append the code terms for everyday words found in the text (whole words, plural allowed):
+    'How high can a light switch be?' -> 'How high can a light switch be? (operable parts, controls)'.
+    Terms already in the text are not repeated; nothing found -> text unchanged."""
+    code_terms: list[str] = []
+    for everyday, terms in glossary.items():
+        if re.search(r"\b" + re.escape(everyday) + r"(?:s|es)?\b", text, re.IGNORECASE):
+            for term in terms.split(", "):
+                if term not in code_terms and term.lower() not in text.lower():
+                    code_terms.append(term)
+    return f"{text} ({', '.join(code_terms)})" if code_terms else text
+
+
 def detect_section_refs(text: str) -> list[str]:
     """Unique section refs in order of appearance, lowercased: 'See 35.151(B)' -> ['35.151(b)']."""
     refs = []
@@ -209,6 +222,8 @@ def detect_section_refs(text: str) -> list[str]:
 
 def normalize_query(query: str, config: RetrievalConfig) -> NormalizedQuery:
     text = expand_abbreviations(query, ABBREVIATIONS) if config.use_query_normalization else query
+    if config.use_glossary:
+        text = expand_with_glossary(text, GLOSSARY)
     return NormalizedQuery(
         original=query,
         text=text,

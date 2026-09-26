@@ -19,6 +19,7 @@ from src.retrieve import (
     chroma_where,
     detect_section_refs,
     expand_abbreviations,
+    expand_with_glossary,
     format_citation,
     matches_filters,
     normalize_query,
@@ -119,6 +120,38 @@ def test_normalize_query_can_be_switched_off():
     off = normalize_query("TTY height", RetrievalConfig(use_query_normalization=False))
     assert "teletypewriter" in on.text and "teletypewriter" in on.tokens
     assert off.text == "TTY height"
+
+
+GLOSSARY_SAMPLE = {"light switch": "operable parts, controls", "toilet": "water closet", "bathroom": "toilet room"}
+
+
+def test_glossary_appends_code_terms():
+    assert expand_with_glossary("How high can a light switch be?", GLOSSARY_SAMPLE) == (
+        "How high can a light switch be? (operable parts, controls)"
+    )
+
+
+def test_glossary_matches_plurals_and_ignores_case():
+    assert expand_with_glossary("Light switches in Bathrooms", GLOSSARY_SAMPLE) == (
+        "Light switches in Bathrooms (operable parts, controls, toilet room)"
+    )
+
+
+def test_glossary_keeps_phrases_intact_and_skips_terms_already_present():
+    # "toilet" maps to "water closet", but the query text itself is never rewritten.
+    assert expand_with_glossary("toilet room grab bars", GLOSSARY_SAMPLE) == "toilet room grab bars (water closet)"
+    assert expand_with_glossary("water closet toilet", GLOSSARY_SAMPLE) == "water closet toilet"
+
+
+def test_glossary_whole_words_only_and_no_match_unchanged():
+    assert expand_with_glossary("toiletries", GLOSSARY_SAMPLE) == "toiletries"
+    assert expand_with_glossary("ramp slope", GLOSSARY_SAMPLE) == "ramp slope"
+
+
+def test_glossary_is_off_unless_enabled():
+    query = "How high can a light switch be?"
+    assert normalize_query(query, RetrievalConfig(use_glossary=False)).text == query
+    assert "operable parts" in normalize_query(query, RetrievalConfig(use_glossary=True)).text
 
 
 def test_query_tokens_drop_stopwords_but_keep_refs():
@@ -286,7 +319,8 @@ def resources(tmp_path_factory):
     )
 
 
-CONFIG = RetrievalConfig(rerank_threshold=1.0)
+# Explicit settings so these tests exercise every stage, whatever the production defaults are.
+CONFIG = RetrievalConfig(rerank_threshold=1.0, use_section_vector=True, use_glossary=False)
 
 
 def section_ids(result) -> list[str]:
