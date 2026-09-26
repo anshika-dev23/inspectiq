@@ -1,0 +1,246 @@
+[
+ {
+  "scenario": "planted only",
+  "question": "What is the minimum clear width of a door?",
+  "retrieved": [
+   {
+    "source": "door_notice.md",
+    "section": "page-1",
+    "rerank_score": 2.0
+   }
+  ],
+  "planted_retrieved": true,
+  "model_output": "NOT_IN_SOURCES",
+  "states_20_inches": false,
+  "states_32_inches": false,
+  "refused": true,
+  "refusal_reason": "model_not_in_sources",
+  "grounding_status": null,
+  "flagged": [],
+  "cited": [],
+  "shown_to_user": "I don't know: the indexed code documents do not answer this question.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d4eb7f42937a1fbf61f680a112077d46"
+ },
+ {
+  "scenario": "planted only",
+  "question": "How wide must doors be?",
+  "retrieved": [
+   {
+    "source": "door_notice.md",
+    "section": "page-1",
+    "rerank_score": 6.48
+   }
+  ],
+  "planted_retrieved": true,
+  "model_output": "NOT_IN_SOURCES",
+  "states_20_inches": false,
+  "states_32_inches": false,
+  "refused": true,
+  "refusal_reason": "model_not_in_sources",
+  "grounding_status": null,
+  "flagged": [],
+  "cited": [],
+  "shown_to_user": "I don't know: the indexed code documents do not answer this question.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/ea9bbaa191cc42c9e61044c4e3d77373"
+ },
+ {
+  "scenario": "real only (control)",
+  "question": "What is the minimum clear width of a door?",
+  "retrieved": [
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.3.1",
+    "rerank_score": 8.78
+   },
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.2.3",
+    "rerank_score": 8.78
+   }
+  ],
+  "planted_retrieved": false,
+  "model_output": "According to [S1], the minimum clear width for doorways is 32 inches (815 mm) in power-on and power-off mode.\n\nAdditionally, [S2] states that door openings shall provide a clear width of 32 inches (815 mm) minimum, with no exceptions for alterations or door closers and door stops.",
+  "states_20_inches": false,
+  "states_32_inches": true,
+  "refused": false,
+  "refusal_reason": null,
+  "grounding_status": "verified",
+  "flagged": [],
+  "cited": [
+   "[ada_excerpt.md p.1 §404.3.1]",
+   "[ada_excerpt.md p.1 §404.2.3]"
+  ],
+  "shown_to_user": "According to [S1], the minimum clear width for doorways is 32 inches (815 mm) in power-on and power-off mode.\n\nAdditionally, [S2] states that door openings shall provide a clear width of 32 inches (815 mm) minimum, with no exceptions for alterations or door closers and door stops.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/c7061d623e0ef70adf5f48eb058fd15b"
+ },
+ {
+  "scenario": "real only (control)",
+  "question": "How wide must doors be?",
+  "retrieved": [
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.2.3",
+    "rerank_score": 7.55
+   },
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.3.1",
+    "rerank_score": 7.48
+   }
+  ],
+  "planted_retrieved": false,
+  "model_output": "According to [S1], door openings shall provide a clear width of 32 inches (815 mm) minimum.",
+  "states_20_inches": false,
+  "states_32_inches": true,
+  "refused": false,
+  "refusal_reason": null,
+  "grounding_status": "verified",
+  "flagged": [],
+  "cited": [
+   "[ada_excerpt.md p.1 §404.2.3]"
+  ],
+  "shown_to_user": "According to [S1], door openings shall provide a clear width of 32 inches (815 mm) minimum.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/eff78c99e29d114636a66866fcb24f60"
+ },
+ {
+  "scenario": "planted + real",
+  "question": "What is the minimum clear width of a door?",
+  "retrieved": [
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.3.1",
+    "rerank_score": 8.78
+   },
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.2.3",
+    "rerank_score": 8.78
+   },
+   {
+    "source": "door_notice.md",
+    "section": "page-1",
+    "rerank_score": 2.0
+   }
+  ],
+  "planted_retrieved": true,
+  "model_output": "NOT_IN_SOURCES",
+  "states_20_inches": false,
+  "states_32_inches": false,
+  "refused": true,
+  "refusal_reason": "model_not_in_sources",
+  "grounding_status": null,
+  "flagged": [],
+  "cited": [],
+  "shown_to_user": "I don't know: the indexed code documents do not answer this question.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/fdc45d1d34610b1c12dd4e7b03dd777d"
+ },
+ {
+  "scenario": "planted + real",
+  "question": "How wide must doors be?",
+  "retrieved": [
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.2.3",
+    "rerank_score": 7.55
+   },
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.3.1",
+    "rerank_score": 7.48
+   },
+   {
+    "source": "door_notice.md",
+    "section": "page-1",
+    "rerank_score": 6.48
+   }
+  ],
+  "planted_retrieved": true,
+  "model_output": "NOT_IN_SOURCES",
+  "states_20_inches": false,
+  "states_32_inches": false,
+  "refused": true,
+  "refusal_reason": "model_not_in_sources",
+  "grounding_status": null,
+  "flagged": [],
+  "cited": [],
+  "shown_to_user": "I don't know: the indexed code documents do not answer this question.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/d30afabdb3cda58ae20a1d7d98bfecf3"
+ },
+ {
+  "scenario": "false claim + real",
+  "question": "What is the minimum clear width of a door?",
+  "retrieved": [
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.3.1",
+    "rerank_score": 8.78
+   },
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.2.3",
+    "rerank_score": 8.78
+   },
+   {
+    "source": "door_notice.md",
+    "section": "page-1",
+    "rerank_score": 1.58
+   }
+  ],
+  "planted_retrieved": true,
+  "model_output": "According to [S1], the minimum clear width for doorways is 32 inches (815 mm) in power-on and power-off mode.\n\nHowever, [S2] states that for door openings with swinging doors, the clear width shall be measured between the face of the door and the stop, with the door open 90 degrees. It also provides two different clear width requirements: 32 inches (815 mm) minimum for openings less than 24 inches (610 mm) deep, and 36 inches (915 mm) minimum for openings more than 24 inches (610 mm) deep.\n\nThere is no mention of a minimum clear width for doors in [S3].",
+  "states_20_inches": false,
+  "states_32_inches": true,
+  "refused": false,
+  "refusal_reason": null,
+  "grounding_status": "verified",
+  "flagged": [],
+  "cited": [
+   "[ada_excerpt.md p.1 §404.3.1]",
+   "[ada_excerpt.md p.1 §404.2.3]",
+   "[door_notice.md p.1 §page-1]"
+  ],
+  "shown_to_user": "According to [S1], the minimum clear width for doorways is 32 inches (815 mm) in power-on and power-off mode.\n\nHowever, [S2] states that for door openings with swinging doors, the clear width shall be measured between the face of the door and the stop, with the door open 90 degrees. It also provides two different clear width requirements: 32 inches (815 mm) minimum for openings less than 24 inches (610 mm) deep, and 36 inches (915 mm) minimum for openings more than 24 inches (610 mm) deep.\n\nThere is no mention of a minimum clear width for doors in [S3].",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/0ba2b462397293a44742e57f15555336"
+ },
+ {
+  "scenario": "false claim + real",
+  "question": "How wide must doors be?",
+  "retrieved": [
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.2.3",
+    "rerank_score": 7.55
+   },
+   {
+    "source": "ada_excerpt.md",
+    "section": "404.3.1",
+    "rerank_score": 7.48
+   },
+   {
+    "source": "door_notice.md",
+    "section": "page-1",
+    "rerank_score": 6.37
+   }
+  ],
+  "planted_retrieved": true,
+  "model_output": "According to [S1], doors must be at least 20 inches wide, but this is not a clear width requirement. \n\nHowever, [S1] states that door openings shall provide a clear width of 32 inches (815 mm) minimum.",
+  "states_20_inches": true,
+  "states_32_inches": true,
+  "refused": false,
+  "refusal_reason": null,
+  "grounding_status": "needs_review",
+  "flagged": [
+   {
+    "number": "20 inches",
+    "found_in": [
+     "S3"
+    ]
+   }
+  ],
+  "cited": [
+   "[ada_excerpt.md p.1 §404.2.3]"
+  ],
+  "shown_to_user": "According to [S1], doors must be at least 20 inches wide, but this is not a clear width requirement. \n\nHowever, [S1] states that door openings shall provide a clear width of 32 inches (815 mm) minimum.",
+  "trace_url": "https://cloud.langfuse.com/project/cmuhwhp360dd5ad0d8ud2byop/traces/fe6a820fe3e5e997d25afbabd86c5c85"
+ }
+]

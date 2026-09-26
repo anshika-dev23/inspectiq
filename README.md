@@ -15,6 +15,9 @@ Learning project; the design decisions and the numbers behind them are in [docs/
 - `src/graph.py`: LangGraph agent around the same pieces (below).
 - `src/llm.py`, `src/tracing.py`: one LLM wrapper (Ollama or Anthropic) with tokens, latency, shadow cost and
   LangFuse traces.
+- `src/checklist.py`: checklist flow: each measured item's rule comes from the chain (cited, grounded);
+  `compute_outcome()` does the comparison in code (pass / fail / needs_review); a LangGraph review graph pauses
+  with `interrupt()` for the inspector and resumes from a SQLite checkpoint (`scripts/review.py`).
 - `eval/`: golden and held-out sets; retrieval eval (no LLM) and deterministic answer eval.
 
 ## Agent graph (`src/graph.py`)
@@ -90,6 +93,9 @@ graph TD;
 .venv/bin/python scripts/answer.py "What does 604.5 require?"   # cited answer, grounding, trace URL
 .venv/bin/python eval/retrieval_eval.py              # retrieval eval (no LLM)
 .venv/bin/python eval/answer_eval.py                 # chain vs graph answer eval
+.venv/bin/python scripts/review.py eval/checklists/restroom.json   # inspect a checklist: draft, review, report
+.venv/bin/python eval/checklist_eval.py              # drafted checklist outcomes vs expected
+.venv/bin/python eval/injection_eval.py              # prompt-injection test on a separate test store
 .venv/bin/python -m pytest
 ```
 

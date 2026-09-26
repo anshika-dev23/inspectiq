@@ -114,21 +114,30 @@ def normalize_value(match: re.Match) -> str:
 
 
 def strip_non_quantities(text: str) -> str:
+    """Blank out non-quantities with spaces of the same length, so positions in the text stay valid."""
     for pattern in NOT_QUANTITIES:
-        text = pattern.sub(" ", text)
+        text = pattern.sub(lambda match: " " * len(match.group(0)), text)
     return text
 
 
-def extract_numbers(text: str) -> list[NumberMention]:
-    """Every quantity in the text, in order. Section refs, citation labels, list numbers and bare years are skipped."""
+def extract_numbers_with_spans(text: str) -> list[tuple[NumberMention, int, int]]:
+    """Every quantity with its (start, end) position in `text`. Used by src/checklist.py to read the words
+    around a number ("32 inches (815 mm) minimum")."""
     mentions = []
     for match in MENTION.finditer(strip_non_quantities(text)):
         unit = UNIT_ALIASES.get((match["unit"] or "").lower()) if match["unit"] else None
         value = normalize_value(match)
         if unit is None and YEAR.match(value):
             continue  # "the 2010 Standards", "the 1991 Standards"
-        mentions.append(NumberMention(raw=match.group(0).strip(), value=value, unit=unit))
+        raw = match.group(0)
+        start = match.start() + (len(raw) - len(raw.lstrip()))
+        mentions.append((NumberMention(raw=raw.strip(), value=value, unit=unit), start, start + len(raw.strip())))
     return mentions
+
+
+def extract_numbers(text: str) -> list[NumberMention]:
+    """Every quantity in the text, in order. Section refs, citation labels, list numbers and bare years are skipped."""
+    return [mention for mention, _, _ in extract_numbers_with_spans(text)]
 
 
 def is_grounded(number: NumberMention, source_numbers: list[NumberMention]) -> bool:

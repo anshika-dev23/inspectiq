@@ -1,0 +1,32 @@
+{
+  "id": "restroom-001",
+  "title": "Public restroom, ground floor (sample inspection)",
+  "description": "Five measured items. `expected_outcome` and `expected_section` are for evaluation only; the checklist flow never reads them.",
+  "items": [
+    {"id": "door-clear-width", "element": "Restroom entry door: clear width",
+     "measured": {"value": 30, "unit": "in"},
+     "question": "What is the minimum clear width of a door opening?",
+     "expected_outcome": "fail", "expected_section": "404.2.3",
+     "note": "32 inches minimum (404.2.3)"},
+    {"id": "grab-bar-height", "element": "Water closet grab bars: height to top of gripping surface",
+     "measured": {"value": 35, "unit": "in"},
+     "question": "At what height above the floor must grab bars be installed?",
+     "expected_outcome": "pass", "expected_section": "609.4",
+     "note": "33 inches minimum and 36 inches maximum (609.4)"},
+    {"id": "toilet-seat-height", "element": "Water closet: seat height",
+     "measured": {"value": 20, "unit": "in"},
+     "question": "How high must the seat of a water closet be above the floor?",
+     "expected_outcome": "fail", "expected_section": "604.4",
+     "note": "17 inches minimum and 19 inches maximum (604.4)"},
+    {"id": "lavatory-knee-width", "element": "Lavatory: knee clearance width",
+     "measured": {"value": 27, "unit": "in"},
+     "question": "What is the minimum width of knee clearance under a lavatory?",
+     "expected_outcome": "fail", "expected_section": "306.3.5",
+     "note": "30 inches wide minimum (306.3.5). Width, not height: the 2010 Standards define knee clearance height only as the zone between 9 and 27 inches (306.3.1), not as a pass/fail minimum"},
+    {"id": "ramp-slope", "element": "Entrance ramp: running slope",
+     "measured": {"value": "1:10", "unit": "ratio"},
+     "question": "What is the maximum running slope of a ramp?",
+     "expected_outcome": "fail", "expected_section": "405.2",
+     "note": "not steeper than 1:12 (405.2); 1:10 is steeper"}
+  ]
+}

@@ -103,4 +103,4 @@ Order of work: 1, 2, 4a, 3, 4b, 5, ... (4a needs no LLM, so it runs before the a
 6. LangGraph agent (grade, rewrite, tools); re-run evals vs baseline
 7. Human-in-the-loop, safety tests
 8. FastAPI, Docker, CI
-Current step: 6 (done), next 7
+Current step: 7 (done; PII redaction in logs still open), next 8

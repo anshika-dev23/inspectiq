@@ -12,6 +12,8 @@ dependencies = [
     "langchain-ollama",
     "langchain-text-splitters",
     "langfuse>=4",
+    "langgraph>=1.2",
+    "langgraph-checkpoint-sqlite>=3",
     "pymupdf>=1.26",
     "python-dotenv",
     "rank-bm25",
