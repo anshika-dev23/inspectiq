@@ -384,3 +384,79 @@ Checked by looking at what was actually in the prompt:
   in the answer appears in the cited source text.
 - Model-side problems (3 of 4) involve long or distracting sources. Ideas to evaluate later, not tuned now:
   fewer or shorter sources for the 3B model, the stronger model for final answers (step 5), a grounding check.
+
+---
+
+## Step 3b — number grounding
+
+### 3b.1 Design (`src/grounding.py`)
+- Every number in an answer is extracted with its unit and normalized: "34 inches" = "34 in" = "34-inch";
+  "½" = "1/2" = 0.5; "1 1/4" = 1.25; ratios ("1:12") and percentages are single values; "1,000" = 1000.
+  Not quantities, skipped: citation labels and brackets, section refs (404.2.3, § 35.151(b), "section 208"),
+  cross-references ("comply with 304"), CFR/USC refs, figure/table numbers, list enumerators, bare years.
+- An answer number with a unit must match a source number with the same unit or no unit (PDF tables lose units);
+  a unitless answer number matches any unit.
+- **Per sentence, not per answer.** Each number must appear in a source cited *in its sentence* (all cited
+  sources when the sentence cites none; a trailing "[S1]" belongs to the sentence before). The first version
+  checked against all cited sources and **p09 passed**: the misquoted "36 inch (915 mm)" is the *clear width* in
+  405.8, which the answer also cited in another sentence. Only the sentence scope catches it.
+- Result on the Answer: `verified`, `ungrounded_numbers`. Strict mode (`STRICT_NUMBER_GROUNDING`, default on)
+  turns an unverified answer into a refusal `ungrounded_number` (model output kept in `raw_llm_text`).
+
+### 3b.2 Results (eval/answer_results.md, strict)
+| set | answer correct | citation valid | refusal acc. | false refusals |
+|---|---:|---:|---:|---:|
+| golden | 8/13 (step 3: 9/13) | 18/20 | 8/8 | 6/26 (step 3: 3/26) |
+| held-out | 6/10 (step 3: 7/10) | 6/6 | 2/2 | 4/10 (step 3: 3/10) |
+
+Blocked answers:
+| q | ungrounded | verdict |
+|---|---|---|
+| p09 | 36 in, 915 mm | **correct block**: the misquote (505.4 says 34) |
+| e03 | 26 ("January 26, 1992") | right fact, wrong source: the date is in the regulation (S2), the sentence cites the guidance (S1) |
+| m02 | 36 in, 915 mm | right number, missing citation: the rear-wall 36 in is in 604.5.2, which the answer never cites |
+| h08 | 11 in, 9 in, ... | right numbers, wrong citation: they are in 306.3.3 (S2), the answer cites 606.2 (S3) |
+
+- p09 no longer ships a wrong number. The price: 2 answers with the right number (m02, h08) and 1 with a right
+  but misattributed date (e03) are refused. m02 and h08 would also fail the answer-level check (the right source
+  is not cited anywhere); e03 fails only the sentence check.
+- A first run also blocked p03 on "304" ("shall comply with 304" is a cross-reference) → cross-references added
+  to the non-quantities; p03 is now answered (still wrong: retrieval, see 3.4).
+- **Why not relax it?** A rule such as "block only if the number is in no prompt source" would unblock m02/h08 but
+  also p09 (36/915 exist in 405.8 for a different quantity). Telling p09 apart from m02 needs meaning, not string
+  matching: the check enforces "a cited source says this number", nothing more.
+- Options for later, not tuned now: a stronger model (misattribution is a 3B-model habit), asking the model to
+  cite per sentence, or offering a corrected citation instead of refusing when the number is in an uncited source.
+
+---
+
+## Step 5 (partial) — LangFuse tracing and shadow cost
+
+### 5.1 Tracing (`src/tracing.py`)
+- One trace per `answer()` call: root `answer` (chain) → `retrieval` (retriever: citations, rerank scores,
+  pinned, stage timings, normalized query) → `llm` (generation: prompt messages, output, tokens, model
+  parameters, shadow cost) → `grounding` (guardrail: numbers, ungrounded, level WARNING when unverified).
+  Verified via the LangFuse v2 observations API: 4 observations, correct parent/child structure.
+- No-op without keys or with `TRACING_ENABLED=0` (set in `tests/conftest.py`: tests never send traces).
+- Found: spans failed to export with `CERTIFICATE_VERIFY_FAILED` while plain `requests` calls worked. This
+  python.org build of Python has no CA file (`/Library/Frameworks/.../openssl/cert.pem` missing, the
+  "Install Certificates" step was never run); the span exporter used the stdlib default. Fix: when no
+  `SSL_CERT_FILE` is set and the default CA file is missing, point it at certifi's bundle before creating the
+  client (`ensure_ca_bundle`). Running "Install Certificates.command" would fix it machine-wide.
+- The legacy trace API (`GET /api/public/traces/{id}`) returns 410 for organizations created after
+  2026-09-16; read traces with `GET /api/public/v2/observations`.
+
+### 5.2 Shadow cost
+- `config.SHADOW_PRICES_USD_PER_MTOK` (Anthropic first-party prices per million tokens, model table cached
+  2026-06-24): claude-haiku-4-5 $1/$5, claude-sonnet-5 $2/$10, claude-opus-5 $5/$25. Every LLM call records what
+  it would have cost on each, from Ollama's token counts. Label: "estimate: token counts from the llama
+  tokenizer, not Claude's". Real cost stays $0.
+- Per 1,000 questions (answer_eval; mean prompt ~1,090 tokens, ~90 out; questions refused before the LLM count
+  as $0):
+
+| set | Haiku 4.5 | Sonnet 5 | Opus 5 |
+|---|---:|---:|---:|
+| golden | $1.17 | $2.34 | $5.85 |
+| held-out | $0.88 | $1.77 | $4.42 |
+
+- Input tokens dominate (~1,090 in vs ~90 out): the context cap is the main cost lever, not answer length.

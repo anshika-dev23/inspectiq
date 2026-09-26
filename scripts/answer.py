@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # make "src" im
 os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
 
 import src  # noqa: E402,F401  (loads .env before any model library is imported)
+from src import tracing  # noqa: E402
 from src.answer import answer, build_messages  # noqa: E402
 
 
@@ -49,6 +50,16 @@ def main() -> None:
     llm = result.llm
     tokens = f", tokens in/out {llm.input_tokens}/{llm.output_tokens}, cost ${llm.cost_usd:.4f}" if llm else ""
     print(f"timings (ms): {result.timings_ms}{tokens}")
+    if result.verified is not None:
+        print(f"number grounding: {'verified' if result.verified else 'UNVERIFIED'}"
+              + (f", ungrounded: {result.ungrounded_numbers}" if result.ungrounded_numbers else ""))
+    if llm and llm.shadow_cost_usd:
+        from src.config import SHADOW_COST_NOTE
+        costs = ", ".join(f"{model} ${usd:.5f}" for model, usd in llm.shadow_cost_usd.items())
+        print(f"shadow cost ({SHADOW_COST_NOTE}): {costs}")
+    tracing.flush()
+    if result.trace_url:
+        print(f"trace: {result.trace_url}")
 
 
 if __name__ == "__main__":

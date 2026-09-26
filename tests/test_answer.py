@@ -181,3 +181,20 @@ def test_llm_wrapper_records_tokens_and_latency():
     response = llm.complete([])
     assert (response.text, response.input_tokens, response.output_tokens, response.cost_usd) == ("ok [S1]", 30, 3, 0.0)
     assert response.latency_ms >= 0 and response.provider == "ollama"
+
+
+def test_shadow_costs_per_model():
+    from src.llm import shadow_costs
+
+    costs = shadow_costs(1_000_000, 100_000, {"a": (2.0, 10.0), "b": (1.0, 5.0)})
+    assert costs == {"a": pytest.approx(2.0 + 1.0), "b": pytest.approx(1.0 + 0.5)}
+    assert shadow_costs(None, 5) == {}
+
+
+def test_tracing_is_a_no_op_in_tests():
+    from src import tracing
+
+    with tracing.observe("x") as span:
+        assert span is None
+    tracing.update(None, output="ignored")
+    assert tracing.current_trace_url() is None

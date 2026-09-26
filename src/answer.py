@@ -3,16 +3,18 @@
 The rules that matter are enforced in code, not trusted to the model:
 - no retrieved sources            -> refusal, the LLM is not called;
 - the model says NOT_IN_SOURCES   -> refusal;
-- no valid [S#] citation          -> refusal (every label is checked against the sources in the prompt).
+- no valid [S#] citation          -> refusal (every label is checked against the sources in the prompt);
+- a number not found in any cited source -> "unverified"; in strict mode a refusal (src/grounding.py).
 """
-import re
 import time
 from dataclasses import dataclass, field
 from functools import lru_cache
 
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 
+from src import tracing
 from src.config import RetrievalConfig, Settings, load_settings
+from src.grounding import CITATION_GROUP, LABEL, check_grounding_by_claim
 from src.llm import LLM, LLMResponse
 from src.retrieve import RetrievalResult, RetrievedContext, choose_window, retrieve
 
@@ -20,9 +22,6 @@ NOT_IN_SOURCES = "NOT_IN_SOURCES"
 REFUSAL_TEXT = "I don't know: the indexed code documents do not answer this question."
 TRUNCATION_MARK = " […] "
 
-# "[S1]", "[S1, S2]", "[S1; S3]"; each label inside is checked separately.
-CITATION_GROUP = re.compile(r"\[\s*(S\d+(?:\s*[,;]\s*S\d+)*)\s*\]")
-LABEL = re.compile(r"S\d+")
 
 SYSTEM_PROMPT = f"""You answer questions about accessibility building codes using ONLY the numbered sources given.
 Rules:
@@ -63,14 +62,18 @@ class Answer:
     question: str
     text: str
     refused: bool
-    refusal_reason: str | None     # "no_relevant_sources" | "model_not_in_sources" | "no_valid_citation"
+    # "no_relevant_sources" | "model_not_in_sources" | "no_valid_citation" | "ungrounded_number"
+    refusal_reason: str | None
     citations: list[Citation] = field(default_factory=list)
     invalid_labels: list[str] = field(default_factory=list)   # cited labels that were not in the prompt
+    verified: bool | None = None                               # every number grounded in a cited source
+    ungrounded_numbers: list[str] = field(default_factory=list)
     raw_llm_text: str | None = None
     timings_ms: dict[str, float] = field(default_factory=dict)
     llm: LLMResponse | None = None
     sources: list[Source] = field(default_factory=list)
     retrieval: RetrievalResult | None = None
+    trace_url: str | None = None                               # LangFuse trace, when tracing is on
 
 
 # =============================================================================
@@ -163,7 +166,8 @@ def refusal(question: str, reason: str, **fields) -> Answer:
 
 
 def answer_from_contexts(question: str, contexts: list[RetrievedContext], llm: LLM,
-                         max_context_chars: int, retrieval_ms: float = 0.0) -> Answer:
+                         max_context_chars: int, retrieval_ms: float = 0.0,
+                         strict_grounding: bool = True) -> Answer:
     """Prompt -> LLM -> checked, cited answer. Separate from retrieval so it can be tested with a fake LLM."""
     timings = {"retrieval": retrieval_ms}
     if not contexts:
@@ -182,8 +186,20 @@ def answer_from_contexts(question: str, contexts: list[RetrievedContext], llm: L
     if not valid:
         return refusal(question, "no_valid_citation", invalid_labels=invalid, **common)
 
-    return Answer(question=question, text=response.text.strip(), refused=False, refusal_reason=None,
-                  citations=[resolve_citation(by_label[label]) for label in valid], invalid_labels=invalid, **common)
+    citations = [resolve_citation(by_label[label]) for label in valid]
+    with tracing.observe("grounding", as_type="guardrail",
+                         input={"answer": response.text, "cited_labels": valid}) as span:
+        grounding = check_grounding_by_claim(response.text, {label: by_label[label].text for label in valid})
+        tracing.update(span, output={"verified": grounding.verified,
+                                     "numbers": [n.key for n in grounding.numbers],
+                                     "ungrounded": [n.raw for n in grounding.ungrounded],
+                                     "strict": strict_grounding},
+                       level="WARNING" if not grounding.verified else "DEFAULT")
+    checked = dict(citations=citations, invalid_labels=invalid, verified=grounding.verified,
+                   ungrounded_numbers=[n.raw for n in grounding.ungrounded], **common)
+    if strict_grounding and not grounding.verified:
+        return refusal(question, "ungrounded_number", **checked)
+    return Answer(question=question, text=response.text.strip(), refused=False, refusal_reason=None, **checked)
 
 
 @lru_cache(maxsize=1)
@@ -193,12 +209,30 @@ def get_default_llm() -> LLM:
 
 def answer(question: str, filters: dict | None = None, retrieval_config: RetrievalConfig | None = None,
            settings: Settings | None = None, llm: LLM | None = None, resources=None) -> Answer:
-    """Answer a question from the indexed codes, with [S#] citations, or refuse."""
+    """Answer a question from the indexed codes, with [S#] citations, or refuse. One LangFuse trace per call."""
     settings = settings or load_settings()
-    start = time.perf_counter()
-    retrieval = retrieve(question, filters, retrieval_config, resources)
-    retrieval_ms = round((time.perf_counter() - start) * 1000, 1)
-    result = answer_from_contexts(question, retrieval.contexts, llm or get_default_llm(),
-                                  settings.answer_max_context_chars, retrieval_ms)
-    result.retrieval = retrieval
+    with tracing.observe("answer", as_type="chain", input={"question": question, "filters": filters}) as root:
+        with tracing.observe("retrieval", as_type="retriever", input=question) as span:
+            start = time.perf_counter()
+            retrieval = retrieve(question, filters, retrieval_config, resources)
+            retrieval_ms = round((time.perf_counter() - start) * 1000, 1)
+            tracing.update(span, output=[
+                {"citation": c.citation, "breadcrumb": c.breadcrumb, "rerank_score": c.rerank_score,
+                 "pinned": c.pinned, "window": c.window} for c in retrieval.contexts
+            ], metadata={"stage_timings_ms": retrieval.debug.timings_ms,
+                         "normalized_query": retrieval.debug.normalized.text,
+                         "section_refs": retrieval.debug.normalized.section_refs,
+                         "candidates": len(retrieval.debug.fused)})
+
+        result = answer_from_contexts(question, retrieval.contexts, llm or get_default_llm(),
+                                      settings.answer_max_context_chars, retrieval_ms,
+                                      strict_grounding=settings.strict_number_grounding)
+        result.retrieval = retrieval
+
+        output = {"answer": result.text, "refused": result.refused, "refusal_reason": result.refusal_reason,
+                  "citations": [c.citation for c in result.citations], "verified": result.verified}
+        tracing.update(root, output=output, metadata={"timings_ms": result.timings_ms,
+                                                      "ungrounded_numbers": result.ungrounded_numbers})
+        tracing.set_trace_io(root, input={"question": question}, output=output)
+        result.trace_url = tracing.current_trace_url()
     return result

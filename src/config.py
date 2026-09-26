@@ -82,6 +82,8 @@ class Settings:
 
     # Answering (step 3): total characters of source text put in the prompt
     answer_max_context_chars: int
+    # Every number in an answer must appear in a cited source; strict: otherwise refuse ("ungrounded_number")
+    strict_number_grounding: bool
 
 
 def load_settings() -> Settings:
@@ -113,6 +115,7 @@ def load_settings() -> Settings:
         # ~6,000 chars is ~1,500 tokens: fits llama3.2:3b's 8k context with instructions and answer to spare.
         answer_max_context_chars=int(os.getenv(
             "ANSWER_MAX_CONTEXT_CHARS", "6000" if llm_provider == "ollama" else "20000")),
+        strict_number_grounding=os.getenv("STRICT_NUMBER_GROUNDING", "1") != "0",
     )
 
 
@@ -195,3 +198,14 @@ class RetrievalConfig:
     parent_full_text_max_chars: int = 6000
     # ... a bigger parent is returned as a window of this size centred on its best-matching children.
     context_window_chars: int = 4000
+
+
+# Shadow cost (step 5): what each LLM call WOULD cost on these Anthropic models, in USD per million tokens
+# (input, output). Anthropic first-party prices, from the model table cached 2026-06-24. Applied to the local
+# model's token counts, so it is an estimate: the llama tokenizer does not count tokens like Claude's.
+SHADOW_PRICES_USD_PER_MTOK = {
+    "claude-haiku-4-5": (1.00, 5.00),    # candidate for grading / query rewriting (step 6)
+    "claude-sonnet-5": (2.00, 10.00),    # candidate for final answers
+    "claude-opus-5": (5.00, 25.00),      # upper bound
+}
+SHADOW_COST_NOTE = "estimate: token counts from the llama tokenizer, not Claude's"

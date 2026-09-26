@@ -5,7 +5,9 @@ Runs every golden and held-out question through answer() and reports, per set:
 - citation validity: at least one cited section is in `expected` (in-corpus questions that were answered);
 - refusal accuracy: out-of-corpus questions refused;
 - false refusals: in-corpus questions refused (by reason);
-- p50/p95 latency (total, retrieval, LLM) and mean tokens.
+- p50/p95 latency (total, retrieval, LLM) and mean tokens;
+- number grounding: answers blocked as "ungrounded_number", and whether each would otherwise have been correct;
+- shadow cost per 1,000 questions on the Anthropic models in config.SHADOW_PRICES_USD_PER_MTOK (estimate).
 Lists every failure with the answer text. Writes eval/answer_results.md and eval/answer_results.json.
 
 Run:  .venv/bin/python eval/answer_eval.py
@@ -21,8 +23,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # make "src" an
 
 import src  # noqa: E402,F401  (loads .env before any model library is imported)
 from eval.retrieval_eval import EVAL_DIR, load_golden, pct, percentile  # noqa: E402
+from src import tracing  # noqa: E402
 from src.answer import answer, get_default_llm  # noqa: E402
-from src.config import load_settings  # noqa: E402
+from src.config import SHADOW_COST_NOTE, SHADOW_PRICES_USD_PER_MTOK, load_settings  # noqa: E402
 
 
 @dataclass
@@ -42,6 +45,11 @@ class AnswerResult:
     llm_ms: float
     input_tokens: int | None
     output_tokens: int | None
+    verified: bool | None = None          # number grounding; None: no answer to check
+    ungrounded_numbers: list[str] | None = None
+    raw_contains_ok: bool | None = None   # the model's own text had the expected numbers (even if blocked)
+    shadow_cost_usd: dict | None = None
+    trace_url: str | None = None
 
     @property
     def in_corpus(self) -> bool:
@@ -87,6 +95,12 @@ def evaluate(question: dict) -> AnswerResult:
         llm_ms=result.timings_ms["llm"],
         input_tokens=result.llm.input_tokens if result.llm else None,
         output_tokens=result.llm.output_tokens if result.llm else None,
+        verified=result.verified,
+        ungrounded_numbers=result.ungrounded_numbers,
+        raw_contains_ok=(contains_expected(result.raw_llm_text, expected_strings)
+                         if expected_strings and result.raw_llm_text else None),
+        shadow_cost_usd=result.llm.shadow_cost_usd if result.llm else {},
+        trace_url=result.trace_url,
     )
 
 
@@ -118,6 +132,10 @@ def summarize(results: list[AnswerResult]) -> dict:
         "llm_p95_ms": percentile([r.llm_ms for r in called_llm], 95),
         "mean_input_tokens": ratio(sum(r.input_tokens for r in called_llm), len(called_llm)),
         "mean_output_tokens": ratio(sum(r.output_tokens for r in called_llm), len(called_llm)),
+        "blocked_ungrounded": sum(r.refusal_reason == "ungrounded_number" for r in results),
+        # shadow cost per 1,000 questions: questions refused before the LLM cost nothing and are included
+        "shadow_per_1000": {model: 1000 * sum((r.shadow_cost_usd or {}).get(model, 0.0) for r in results) / len(results)
+                            for model in SHADOW_PRICES_USD_PER_MTOK},
     }
 
 
@@ -145,6 +163,29 @@ def failures(results: list[AnswerResult], questions: dict[str, dict]) -> list[st
         text = text if len(text) <= 300 else text[:300] + " […]"
         cited = ", ".join(sid for _, sid in r.cited) or "–"
         lines.append(f"| {r.question_id} | {'; '.join(problems)} | {r.question} | {expected} | {text} | {cited} |")
+    return lines
+
+
+def grounding_table(results: list[AnswerResult], questions: dict[str, dict]) -> list[str]:
+    """Every answer the number-grounding check blocked, and whether it would otherwise have been correct."""
+    lines = ["| id | ungrounded numbers | expected numbers | model's text had them? | model output |",
+             "|---|---|---|---|---|"]
+    for r in results:
+        if r.refusal_reason != "ungrounded_number":
+            continue
+        expected = questions[r.question_id].get("answer_contains") or "–"
+        verdict = {True: "yes: right number, not in the cited source (false block for the user)",
+                   False: "no: correct block", None: "n/a (no expected number)"}[r.raw_contains_ok]
+        text = r.text.replace("\n", " ").replace("|", "/")
+        lines.append(f"| {r.question_id} | {r.ungrounded_numbers} | {expected} | {verdict} | "
+                     f"{text[:300] + (' […]' if len(text) > 300 else '')} |")
+    return lines if len(lines) > 2 else ["No answer was blocked."]
+
+
+def cost_table(summaries: dict[str, dict]) -> list[str]:
+    lines = ["| set | " + " | ".join(SHADOW_PRICES_USD_PER_MTOK) + " |", "|---|" + "---:|" * len(SHADOW_PRICES_USD_PER_MTOK)]
+    for name, s in summaries.items():
+        lines.append(f"| {name} | " + " | ".join(f"${s['shadow_per_1000'][m]:.2f}" for m in SHADOW_PRICES_USD_PER_MTOK) + " |")
     return lines
 
 
@@ -186,6 +227,18 @@ def main() -> None:
         *summary_table(summaries), "",
         "False refusals by reason: " + "; ".join(f"{n}: {s['false_refusal_reasons'] or 'none'}" for n, s in summaries.items()),
         "",
+        f"## Number grounding (strict: {settings.strict_number_grounding})", "",
+        "Answers blocked because a number is not in a source cited in its sentence (src/grounding.py).", "",
+    ]
+    for name, questions in sets.items():
+        report += [f"### {name}", "", *grounding_table(results[name], {q["id"]: q for q in questions}), ""]
+    report += [
+        f"## Shadow cost per 1,000 questions ({SHADOW_COST_NOTE})", "",
+        "What the LLM calls of this run would cost on each model, from Ollama's token counts and the prices in",
+        "config.SHADOW_PRICES_USD_PER_MTOK (USD per million tokens, input/output: "
+        + ", ".join(f"{m} ${i:g}/${o:g}" for m, (i, o) in SHADOW_PRICES_USD_PER_MTOK.items())
+        + "). Questions refused before the LLM count as $0.", "",
+        *cost_table(summaries), "",
     ]
     for name, questions in sets.items():
         report += [f"## Every failure: {name}", "", *failures(results[name], {q["id"]: q for q in questions}), ""]
@@ -193,6 +246,7 @@ def main() -> None:
     (EVAL_DIR / "answer_results.md").write_text("\n".join(report), encoding="utf-8")
     raw = {name: [asdict(r) for r in rs] for name, rs in results.items()}
     (EVAL_DIR / "answer_results.json").write_text(json.dumps(raw, indent=1, ensure_ascii=False), encoding="utf-8")
+    tracing.flush()
     print("wrote eval/answer_results.md and eval/answer_results.json")
 
 
