@@ -10,7 +10,7 @@ dependencies = [
     "langchain-anthropic",
     "langchain-ollama",
     "langchain-text-splitters",
-    "pypdf>=6",
+    "pymupdf>=1.26",
     "python-dotenv",
     "rank-bm25",
     "sentence-transformers",
@@ -22,3 +22,7 @@ dev = ["pytest"]
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+filterwarnings = [
+    # PyMuPDF's SWIG bindings trigger these at import time; harmless.
+    "ignore:builtin type (SwigPy|swigvarlink).*:DeprecationWarning",
+]

@@ -7,11 +7,14 @@ Pipeline (every stage can be switched off in RetrievalConfig):
   3. map child hits to their parent (dedupe, keep the best rank)
   4. fuse the three parent rankings with Reciprocal Rank Fusion (k=60)
   5. pin parents named by an exact section ref ("604.5") at rank 1
-  6. rerank the top 10 with a cross-encoder; drop those under the threshold (pinned parents stay)
-  7. return the top 3 parents as contexts: whole if small, else a window around the best children
+  6. rerank the top 10 with a cross-encoder ("replace" or "blend" with RRF); drop those under the
+     threshold (pinned parents stay)
+  7. return the top final_k parents as contexts: whole if small, else a line-aligned window around the
+     best children (or from the section start, when the section was pinned by an exact ref)
 No LLM is called here.
 """
 import json
+import math
 import pickle
 import re
 import time
@@ -28,6 +31,9 @@ FILTER_KEYS = ("code_name", "edition_year", "section_type")
 # Section refs in a query: "404.2.3", "604.5", "35.151(b)", "§ 36.406(f)", "R302.1".
 # At least two digits before the first dot, so "1.5 inches" is not a ref.
 SECTION_REF = re.compile(r"\b([a-z]?\d{2,4}(?:\.\d+)+(?:\([a-z0-9]+\))*)", re.IGNORECASE)
+RERANK_MODES = ("replace", "blend")
+# Window edges move to the nearest line break, but never further than this.
+MAX_SNAP_CHARS = 200
 
 
 # =============================================================================
@@ -38,7 +44,7 @@ SECTION_REF = re.compile(r"\b([a-z]?\d{2,4}(?:\.\d+)+(?:\([a-z0-9]+\))*)", re.IG
 class NormalizedQuery:
     original: str
     text: str                 # abbreviations expanded; used for embeddings and the reranker
-    tokens: list[str]         # used for BM25
+    tokens: list[str]         # used for BM25 (stopwords removed)
     section_refs: list[str]   # lowercased, e.g. ["35.151(b)"]
 
 
@@ -66,6 +72,7 @@ class Candidate:
     ranks: dict[str, int]              # retriever name -> rank of this parent in that retriever
     pinned: bool = False               # named by an exact section ref in the query
     rerank_score: float | None = None
+    blend_score: float | None = None   # only in rerank_mode "blend"
     best_child_ids: list[str] = field(default_factory=list)
 
 
@@ -201,7 +208,12 @@ def detect_section_refs(text: str) -> list[str]:
 
 def normalize_query(query: str, config: RetrievalConfig) -> NormalizedQuery:
     text = expand_abbreviations(query, ABBREVIATIONS) if config.use_query_normalization else query
-    return NormalizedQuery(original=query, text=text, tokens=tokenize(text), section_refs=detect_section_refs(query))
+    return NormalizedQuery(
+        original=query,
+        text=text,
+        tokens=tokenize(text, remove_stopwords=True),
+        section_refs=detect_section_refs(query),
+    )
 
 
 # =============================================================================
@@ -375,20 +387,47 @@ def rerank_passage(candidate: Candidate, resources: RetrievalResources) -> str:
     return f"{parent['metadata']['breadcrumb']}\n{text}"
 
 
-def rerank(query_text: str, candidates: list[Candidate], resources: RetrievalResources) -> list[Candidate]:
-    """Score (query, passage) pairs; pinned parents stay first, the rest are ordered by score."""
+def sigmoid(x: float) -> float:
+    return 1.0 / (1.0 + math.exp(-x))
+
+
+def order_candidates(candidates: list[Candidate], mode: str, blend_weight: float) -> list[Candidate]:
+    """Pinned parents first (query order), the rest by:
+      replace: the cross-encoder score;
+      blend:   weight * sigmoid(rerank score) + (1 - weight) * rrf_score / best rrf_score.
+    Both parts of the blend are in 0..1: the ms-marco cross-encoder is trained as a binary
+    classifier, so sigmoid(logit) reads as P(relevant); RRF is divided by this query's best RRF.
+    """
+    if mode not in RERANK_MODES:
+        raise ValueError(f"rerank_mode must be one of {RERANK_MODES}, got {mode!r}")
+    pinned = [c for c in candidates if c.pinned]
+    others = [c for c in candidates if not c.pinned]
+    if mode == "replace":
+        return pinned + sorted(others, key=lambda c: -c.rerank_score)
+
+    best_rrf = max((c.rrf_score for c in candidates), default=0.0) or 1.0
+    for candidate in candidates:
+        candidate.blend_score = (
+            blend_weight * sigmoid(candidate.rerank_score) + (1 - blend_weight) * candidate.rrf_score / best_rrf
+        )
+    return pinned + sorted(others, key=lambda c: -c.blend_score)
+
+
+def rerank(query_text: str, candidates: list[Candidate], resources: RetrievalResources,
+           config: RetrievalConfig) -> list[Candidate]:
+    """Score (query, passage) pairs with the cross-encoder, then order them (see order_candidates)."""
     if not candidates:
         return []
     scores = resources.rerank([(query_text, rerank_passage(c, resources)) for c in candidates])
     for candidate, score in zip(candidates, scores):
         candidate.rerank_score = float(score)
-    pinned = [c for c in candidates if c.pinned]
-    others = sorted((c for c in candidates if not c.pinned), key=lambda c: -c.rerank_score)
-    return pinned + others
+    return order_candidates(candidates, config.rerank_mode, config.rerank_blend_weight)
 
 
 def passes_threshold(candidate: Candidate, threshold: float) -> bool:
-    """Pinned parents always pass: the user asked for that section by its ID."""
+    """Pinned parents always pass: the user asked for that section by its ID.
+    The threshold is on the raw cross-encoder score in both rerank modes: it answers
+    "is this relevant at all?", while the mode only decides the order."""
     return candidate.pinned or candidate.rerank_score >= threshold
 
 
@@ -414,6 +453,20 @@ def choose_window(parent_length: int, child_spans: list[tuple[int, int]], window
     return start, end
 
 
+def snap_to_lines(text: str, start: int, end: int) -> tuple[int, int]:
+    """Widen a window to whole lines: start back to its line start, end forward to its line end,
+    unless the line break is more than MAX_SNAP_CHARS away (then the edge stays where it is)."""
+    line_start = text.rfind("\n", 0, start) + 1
+    if start - line_start <= MAX_SNAP_CHARS:
+        start = line_start
+    line_end = text.find("\n", end)
+    if line_end == -1:
+        line_end = len(text)
+    if line_end - end <= MAX_SNAP_CHARS:
+        end = line_end
+    return start, end
+
+
 def format_citation(metadata: dict) -> str:
     """[file p.X §section], or p.X-Y when the section spans pages."""
     start, end = metadata["page_start"], metadata["page_end"]
@@ -426,12 +479,17 @@ def build_context(candidate: Candidate, resources: RetrievalResources, config: R
     metadata, text = parent["metadata"], parent["text"]
 
     window = None
-    if config.use_context_window and len(text) > config.parent_full_text_max_chars and candidate.best_child_ids:
-        spans = []
-        for child_id in candidate.best_child_ids:
-            child = resources.children_by_id[child_id]
-            spans.append((child["start_char"], child["start_char"] + len(child["text"])))
-        window = choose_window(len(text), spans, config.context_window_chars)
+    if config.use_context_window and len(text) > config.parent_full_text_max_chars:
+        if candidate.pinned or not candidate.best_child_ids:
+            # Asked for by its ID (or nothing matched inside it): show the section from its start.
+            window = (0, min(len(text), config.context_window_chars))
+        else:
+            spans = []
+            for child_id in candidate.best_child_ids:
+                child = resources.children_by_id[child_id]
+                spans.append((child["start_char"], child["start_char"] + len(child["text"])))
+            window = choose_window(len(text), spans, config.context_window_chars)
+        window = snap_to_lines(text, *window)
         text = text[window[0]:window[1]]
 
     return RetrievedContext(
@@ -529,10 +587,10 @@ def retrieve(
     reranked: list[Candidate] = []
     if config.use_rerank:
         with timed(timings, "rerank"):
-            reranked = rerank(normalized.text, fused[:config.rerank_top_n], resources)
-        final = [c for c in reranked if passes_threshold(c, config.rerank_threshold)][:config.final_top_n]
+            reranked = rerank(normalized.text, fused[:config.rerank_top_n], resources, config)
+        final = [c for c in reranked if passes_threshold(c, config.rerank_threshold)][:config.final_k]
     else:
-        final = fused[:config.final_top_n]
+        final = fused[:config.final_k]
 
     with timed(timings, "context"):
         contexts = [build_context(candidate, resources, config) for candidate in final]

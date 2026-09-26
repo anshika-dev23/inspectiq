@@ -19,17 +19,14 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable
 
+import pymupdf
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from pypdf import PdfReader
 from rank_bm25 import BM25Okapi
 
-from src.config import CORPUS, FURNITURE_STOPLIST, CorpusFile, Settings, load_settings
+from src.config import CORPUS, FURNITURE_ANYWHERE, FURNITURE_STOPLIST, CorpusFile, Settings, load_settings
 from src.text import tokenize
 
 logger = logging.getLogger("inspectiq.ingest")
-
-# pypdf warns about fonts it cannot fully parse; the extracted text is still fine.
-logging.getLogger("pypdf").setLevel(logging.ERROR)
 
 EmbedFn = Callable[[list[str]], list[list[float]]]
 
@@ -58,11 +55,12 @@ def split_lines(text: str) -> list[str]:
 
 
 def load_pdf_pages(path: Path) -> list[Page]:
-    reader = PdfReader(path)
-    return [
-        Page(number=number, lines=split_lines(pdf_page.extract_text() or ""))
-        for number, pdf_page in enumerate(reader.pages, start=1)
-    ]
+    """PyMuPDF text extraction (chosen over pypdf: far fewer words broken across lines, see docs/decisions.md)."""
+    with pymupdf.open(path) as document:
+        return [
+            Page(number=number, lines=split_lines(pdf_page.get_text("text")))
+            for number, pdf_page in enumerate(document, start=1)
+        ]
 
 
 def load_markdown_pages(path: Path) -> list[Page]:
@@ -83,12 +81,15 @@ def load_pages(path: Path) -> list[Page]:
 # Part 1b — clean: drop headers/footers and contents pages, join hyphenated words
 # =============================================================================
 
-PRINTED_PAGE_PATTERN = re.compile(
-    r"^(\d{1,4}) - "                         # "116 - 2010 Standards: Titles II and III ..."
-    r"|- ?(\d{1,4}) ?Department of Justice"  # "... Titles II and III - 117Department of Justice"
-    r"|- ?(\d{1,4})$"                        # "Guidance on the 2010 Standards: Titles II and III - 93"
-)
+# The DOJ footer carries the printed page number, first or last:
+PRINTED_PAGE_PATTERNS = [
+    # "116 - 2010 Standards: Titles II and III", "56 - Guidance on 2010 Standards: Title III"
+    re.compile(r"^(\d{1,4}) - (?:Guidance on )?(?:the )?\d{4} Standards"),
+    # "2010 Standards: Titles II and III - 117Department of Justice", "Guidance on the 2010 Standards:  Titles II and III - 93"
+    re.compile(r"\d{4} Standards:? +Titles? I[I ]*(?:and III)? ?- ?(\d{1,4})"),
+]
 STOPLIST_PATTERNS = [re.compile(pattern) for pattern in FURNITURE_STOPLIST]
+ANYWHERE_PATTERNS = [re.compile(pattern) for pattern in FURNITURE_ANYWHERE]
 HYPHEN_AT_LINE_END = re.compile(r"(\w)-\n(\w)")   # "resi-\ndential"  -> "residential"
 HYPHEN_ON_OWN_LINE = re.compile(r"(\w)\n-\n(\w)")  # "tran\n-\nsient" -> "transient"
 DOT_LEADER = re.compile(r"…|\.{4,}")
@@ -96,6 +97,11 @@ MIN_DOT_LEADER_LINES = 3
 # Contents entry without dot leaders: "221 Assembly Areas 46"
 NUMBERED_CONTENTS_ENTRY = re.compile(r"^(?:10\d{2}|[1-9]\d{2})(?:\.\d+)* [A-Z][^.…]*? \d{1,3}$")
 MIN_NUMBERED_CONTENTS_ENTRIES = 5
+CONTENTS_TITLE = re.compile(r"^(?:TABLE OF )?CONTENTS$", re.IGNORECASE)
+# "40" left over when a section number is split across lines ("40" + "4.3.2 Maneuvering ...")
+NUMBER_FRAGMENT = re.compile(r"^\d{1,3}$")
+STARTS_WITH_DIGITS_AND_DOT = re.compile(r"^\d+\.")
+STARTS_WITH_SECTION_NUMBER = re.compile(r"^(?:10\d{2}|[1-9]\d{2})(?:\.\d+)+ ")
 
 
 def mask_digits(line: str) -> str:
@@ -120,42 +126,82 @@ def find_repeated_edge_lines(pages: list[Page]) -> set[str]:
 
 
 def is_stoplisted(line: str) -> bool:
-    """Known furniture from config.FURNITURE_STOPLIST."""
+    """Known edge furniture from config.FURNITURE_STOPLIST."""
     return any(pattern.search(line) for pattern in STOPLIST_PATTERNS)
+
+
+def is_furniture_anywhere(line: str) -> bool:
+    """Known furniture from config.FURNITURE_ANYWHERE, removed wherever it sits on the page."""
+    return any(pattern.search(line) for pattern in ANYWHERE_PATTERNS)
 
 
 def detect_printed_page(furniture_lines: list[str]) -> str | None:
     """Best effort: read the printed page number from the DOJ footer lines, else None."""
     for line in furniture_lines:
-        if "Department of Justice" not in line and "Guidance" not in line:
-            continue
-        match = PRINTED_PAGE_PATTERN.search(line)
-        if match:
-            return next(group for group in match.groups() if group)
+        for pattern in PRINTED_PAGE_PATTERNS:
+            match = pattern.search(line)
+            if match:
+                return match[1]
     return None
 
 
 def remove_headers_footers(pages: list[Page]) -> list[Page]:
-    """Drop repeated or stoplisted edge lines (never a heading); keep the printed page number they carried."""
+    """Drop page furniture (never a heading) and keep the printed page number it carried.
+
+    Furniture = an edge line that repeats on >= 10% of pages or is stoplisted,
+    or a FURNITURE_ANYWHERE line at any position.
+    """
     repeated = find_repeated_edge_lines(pages)
     cleaned = []
     for page in pages:
         edges = edge_line_indexes(len(page.lines))
         kept, furniture = [], []
         for i, line in enumerate(page.lines):
-            looks_like_furniture = mask_digits(line) in repeated or is_stoplisted(line)
-            is_furniture = i in edges and looks_like_furniture and match_heading(line) is None
+            edge_furniture = i in edges and (mask_digits(line) in repeated or is_stoplisted(line))
+            is_furniture = (edge_furniture or is_furniture_anywhere(line)) and match_heading(line) is None
             (furniture if is_furniture else kept).append(line)
         cleaned.append(Page(page.number, kept, detect_printed_page(furniture)))
     return cleaned
 
 
 def is_contents_page(page: Page) -> bool:
-    """A table-of-contents page has several dot-leader lines ("(a) General..……....21")
-    or several numbered entries ending in a page number ("221 Assembly Areas 46")."""
+    """A table-of-contents page has a "TABLE OF CONTENTS" title line, several dot-leader lines
+    ("(a) General..……....21"), or several numbered entries ending in a page number ("221 Assembly Areas 46")."""
+    if any(CONTENTS_TITLE.match(line) for line in page.lines):
+        return True
     dot_leader_lines = sum(1 for line in page.lines if DOT_LEADER.search(line))
     numbered_entries = sum(1 for line in page.lines if NUMBERED_CONTENTS_ENTRY.match(line))
     return dot_leader_lines >= MIN_DOT_LEADER_LINES or numbered_entries >= MIN_NUMBERED_CONTENTS_ENTRIES
+
+
+def repair_split_headings(lines: list[str]) -> list[str]:
+    """Join a heading that text extraction split over two lines; only when the joined line IS a heading.
+
+    Case 1, split section number:  "40" + "4.3.2 Maneuvering Clearance. ..." -> "404.3.2 Maneuvering ..."
+    Case 2, split title:           "305.1 Gene" + "ral."                        -> "305.1 General."
+                                   "233.3 ... Section 504" + "Regulations."     -> "233.3 ... Section 504 Regulations."
+    In case 2 a next line starting with a capital is a new word (join with a space); lowercase continues
+    the split word (join without one).
+    """
+    repaired: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        next_line = lines[i + 1] if i + 1 < len(lines) else None
+        if next_line is not None and match_heading(line) is None:
+            joined = None
+            if NUMBER_FRAGMENT.match(line) and STARTS_WITH_DIGITS_AND_DOT.match(next_line):
+                joined = line + next_line
+            elif STARTS_WITH_SECTION_NUMBER.match(line):
+                joined = f"{line} {next_line}" if next_line[:1].isupper() else line + next_line
+            if joined is not None and match_heading(joined) is not None:
+                logger.info("repaired split heading: %r + %r", line, next_line)
+                repaired.append(joined)
+                i += 2
+                continue
+        repaired.append(line)
+        i += 1
+    return repaired
 
 
 def fix_hyphenation(text: str) -> str:
@@ -168,7 +214,8 @@ def fix_hyphenation(text: str) -> str:
 
 
 def clean_pages(pages: list[Page]) -> list[Page]:
-    """Headers/footers first (they are whole lines), then drop contents pages, then fix hyphenation.
+    """Headers/footers first (they are whole lines), then drop contents pages, then fix hyphenation,
+    then repair headings split over two lines (before any heading detection).
 
     Contents pages must go: their entries ("§ 36.402 Alterations.") look like headings and would
     claim occurrence 1 of the ID ahead of the real section.
@@ -179,7 +226,7 @@ def clean_pages(pages: list[Page]) -> list[Page]:
             logger.info("dropping contents page p.%d", page.number)
             continue
         text = fix_hyphenation("\n".join(page.lines))
-        cleaned.append(Page(page.number, text.split("\n"), page.printed_number))
+        cleaned.append(Page(page.number, repair_split_headings(text.split("\n")), page.printed_number))
     return cleaned
 
 
@@ -598,7 +645,7 @@ def write_collection(client, name: str, ids: list[str], documents: list[str], em
 def build_bm25_index(children: list[dict]) -> dict:
     """Keyword index over the same children as the vector path; rebuilt in full every run."""
     return {
-        "bm25": BM25Okapi([tokenize(child_index_text(child)) for child in children]),
+        "bm25": BM25Okapi([tokenize(child_index_text(child), remove_stopwords=True) for child in children]),
         "child_ids": [child["child_id"] for child in children],
         "parent_ids": [child["parent_id"] for child in children],
         "texts": [child["text"] for child in children],

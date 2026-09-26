@@ -39,6 +39,17 @@ FURNITURE_STOPLIST = (
     r"^Section 35\.151 of 28 CFR Part 35$",
 )
 
+# Furniture that can appear anywhere on a page (e.g. an inner footer printed above a figure),
+# so it is removed wherever it occurs, not only at the page edges.
+FURNITURE_ANYWHERE = (
+    r"^Titles II and III - 2010 Standards - \d+$",
+    # The DOJ footer, which PyMuPDF sometimes places mid-page (above a figure). Whole lines only.
+    r"^\d{4} Standards: +Titles? I[I ]*(?:and III)? ?- ?\d+$",
+    r"^\d+ - \d{4} Standards: +Titles? I[I ]*(?:and III)?$",
+    r"^Guidance on (?:the )?\d{4} Standards: +Titles? I[I ]*(?:and III)? ?- ?\d+$",
+    r"^Department of Justice$",
+)
+
 
 @dataclass(frozen=True)
 class Settings:
@@ -129,11 +140,17 @@ class RetrievalConfig:
     section_vector_top_k: int = 5
     rrf_k: int = 60
     rerank_top_n: int = 10
-    final_top_n: int = 3
+    final_k: int = 3                      # parents returned; step 4 compares 3 and 5
 
     # ms-marco cross-encoder returns raw logits (about -11 .. +11); below this a parent is not relevant.
-    # Provisional value, to be tuned with the golden set in step 4.
+    # Provisional value, to be tuned with the golden set in step 4. Applies in both rerank modes.
     rerank_threshold: float = 0.0
+
+    # How the reranker orders candidates (pinned exact refs always stay first):
+    #   "replace": by cross-encoder score alone
+    #   "blend":   rerank_blend_weight * sigmoid(rerank score) + (1 - weight) * (RRF score / best RRF score)
+    rerank_mode: str = "replace"
+    rerank_blend_weight: float = 0.5
 
     # A parent up to this size is returned whole ...
     parent_full_text_max_chars: int = 6000

@@ -4,6 +4,7 @@ Usage:
     .venv/bin/python scripts/ask.py "What does 604.5 require?"
     .venv/bin/python scripts/ask.py "grab bar height" --code "ADA 2010 Standards" --type code
     .venv/bin/python scripts/ask.py "35.151(b)" --no-rerank --full
+    .venv/bin/python scripts/ask.py "grab bar height for toilets" --rerank-mode blend --final-k 5
 """
 import argparse
 import os
@@ -29,6 +30,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--year", type=int, help="edition_year filter")
     parser.add_argument("--type", dest="section_type", help='section_type filter: "code" or "regulation"')
     parser.add_argument("--no-rerank", action="store_true", help="skip the cross-encoder and its threshold")
+    parser.add_argument("--rerank-mode", choices=["replace", "blend"], default=RetrievalConfig.rerank_mode)
+    parser.add_argument("--final-k", type=int, default=RetrievalConfig.final_k)
     parser.add_argument("--full", action="store_true", help=f"print whole contexts, not {PREVIEW_CHARS}-char previews")
     return parser.parse_args()
 
@@ -46,7 +49,8 @@ def print_child_hits(name: str, hits, docstore: dict) -> None:
 
 def main() -> None:
     args = parse_args()
-    config = replace(RetrievalConfig(), use_rerank=not args.no_rerank)
+    config = replace(RetrievalConfig(), use_rerank=not args.no_rerank, rerank_mode=args.rerank_mode,
+                     final_k=args.final_k)
     filters = {"code_name": args.code, "edition_year": args.year, "section_type": args.section_type}
 
     resources = get_default_resources()
@@ -71,10 +75,12 @@ def main() -> None:
         print(f"  {rank:>2}. {candidate.rrf_score:.4f}  {label(candidate.parent_id, docstore)}  ranks={candidate.ranks}{pin}")
 
     if config.use_rerank:
-        print(f"\n-- reranked (cross-encoder, threshold {config.rerank_threshold}): top {len(debug.reranked)}")
+        print(f"\n-- reranked (cross-encoder, mode {config.rerank_mode}, threshold {config.rerank_threshold}): "
+              f"top {len(debug.reranked)}")
         for rank, candidate in enumerate(debug.reranked[:TOP], start=1):
             verdict = "pinned" if candidate.pinned else ("pass" if candidate.rerank_score >= config.rerank_threshold else "FAIL")
-            print(f"  {rank:>2}. {candidate.rerank_score:7.2f} {verdict:<6}  {label(candidate.parent_id, docstore)}")
+            blend = "" if candidate.blend_score is None else f"  blend={candidate.blend_score:.3f}"
+            print(f"  {rank:>2}. {candidate.rerank_score:7.2f} {verdict:<6}  {label(candidate.parent_id, docstore)}{blend}")
 
     print(f"\n-- contexts: {len(result.contexts)}" + ("   -> EMPTY: answer \"I don't know\"" if result.is_empty else ""))
     for context in result.contexts:

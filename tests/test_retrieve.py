@@ -10,6 +10,7 @@ from rank_bm25 import BM25Okapi
 from src.config import CorpusFile, RetrievalConfig, load_settings
 from src.ingest import Page, build_parents, split_sections, write_stores
 from src.retrieve import (
+    Candidate,
     ChildHit,
     ParentHit,
     RetrievalResources,
@@ -21,10 +22,12 @@ from src.retrieve import (
     format_citation,
     matches_filters,
     normalize_query,
+    order_candidates,
     parents_from_children,
     reciprocal_rank_fusion,
     resolve_section_ref,
     retrieve,
+    snap_to_lines,
 )
 from src.text import tokenize
 
@@ -118,6 +121,46 @@ def test_normalize_query_can_be_switched_off():
     assert off.text == "TTY height"
 
 
+def test_query_tokens_drop_stopwords_but_keep_refs():
+    assert normalize_query("What does 604.5 require?", RetrievalConfig()).tokens == ["604.5", "require"]
+
+
+def candidate(parent_id, rrf, rerank_score, pinned=False):
+    return Candidate(parent_id, rrf, {}, pinned=pinned, rerank_score=rerank_score)
+
+
+def test_order_candidates_replace_uses_rerank_score_only():
+    ordered = order_candidates([candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)], "replace", 0.5)
+    assert [c.parent_id for c in ordered] == ["rerank_top", "rrf_top"]
+
+
+def test_order_candidates_blend_combines_normalized_scores():
+    candidates = [candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)]
+    ordered = order_candidates(candidates, "blend", 0.5)
+    # rrf_top:    0.5 * sigmoid(6.5) + 0.5 * 1.0  = 0.99924
+    # rerank_top: 0.5 * sigmoid(8.3) + 0.5 * 0.6  = 0.79988
+    assert [c.parent_id for c in ordered] == ["rrf_top", "rerank_top"]
+    assert ordered[0].blend_score == pytest.approx(0.5 / (1 + math.exp(-6.5)) + 0.5)
+    assert ordered[1].blend_score == pytest.approx(0.5 / (1 + math.exp(-8.3)) + 0.5 * 0.6)
+
+
+def test_order_candidates_blend_weight_extremes():
+    candidates = [candidate("rrf_top", 0.05, 6.5), candidate("rerank_top", 0.03, 8.3)]
+    assert order_candidates(candidates, "blend", 1.0)[0].parent_id == "rerank_top"   # rerank only
+    assert order_candidates(candidates, "blend", 0.0)[0].parent_id == "rrf_top"      # RRF only
+
+
+def test_order_candidates_keeps_pinned_first_in_both_modes():
+    candidates = [candidate("other", 0.05, 9.0), candidate("pinned", 0.0, -5.0, pinned=True)]
+    for mode in ("replace", "blend"):
+        assert order_candidates(candidates, mode, 0.5)[0].parent_id == "pinned"
+
+
+def test_order_candidates_rejects_unknown_mode():
+    with pytest.raises(ValueError, match="rerank_mode"):
+        order_candidates([], "average", 0.5)
+
+
 def test_resolve_section_ref_falls_back_to_paragraph():
     lookup = {"35.151(b)": ["pB"], "604.5": ["p6"]}
     assert resolve_section_ref("35.151(b)(4)", lookup) == ["pB"]
@@ -138,6 +181,19 @@ def test_choose_window_includes_nearby_children_and_ignores_far_ones():
 def test_choose_window_is_shifted_inside_the_parent():
     assert choose_window(10_000, [(0, 400)], 4_000) == (0, 4_000)
     assert choose_window(10_000, [(9_600, 10_000)], 4_000) == (6_000, 10_000)
+
+
+def test_snap_to_lines_widens_to_whole_lines():
+    text = "line one\nline two is here\nline three"
+    #       0       8 9              25 26
+    assert snap_to_lines(text, 12, 20) == (9, 25)       # inside "line two is here"
+    assert snap_to_lines(text, 9, 25) == (9, 25)        # already on boundaries
+    assert snap_to_lines(text, 3, 30) == (0, len(text))  # first and last line
+
+
+def test_snap_to_lines_does_not_move_edges_far():
+    text = "x" * 1_000 + "\n" + "y" * 1_000
+    assert snap_to_lines(text, 500, 1_500) == (500, 1_500)  # nearest breaks are > 200 chars away
 
 
 def test_format_citation():
@@ -284,11 +340,32 @@ def test_big_parent_is_returned_as_a_window_around_the_best_child(resources):
     result = retrieve("door clear width route", {"code_name": "ADA 2010 Standards"}, config, resources)
     [context] = [c for c in result.contexts if c.section_id == "206.2.3"]
     start, end = context.window
-    assert end - start == 1_000
+    assert 1_000 <= end - start <= 1_000 + 2 * 200            # widened to line boundaries at most 200 each side
     assert "door clear width" in context.text                   # the matching sentence is inside the window
     parent_text = resources.docstore[context.parent_id]["text"]
     assert context.text == parent_text[start:end]
     assert context.parent_length > 3_000
+
+
+def test_pinned_big_parent_window_starts_at_the_section_start(resources):
+    config = replace(CONFIG, parent_full_text_max_chars=3_000, context_window_chars=1_000)
+    result = retrieve("What does 206.2.3 require?", config=config, resources=resources)
+    context = result.contexts[0]
+    assert context.pinned and context.section_id == "206.2.3"
+    assert context.window[0] == 0
+    assert context.text.startswith("206.2.3 Multi-Story Buildings.")
+
+
+def test_final_k_limits_the_number_of_contexts(resources):
+    config = replace(CONFIG, use_rerank=False)
+    assert len(retrieve("door clear width", config=replace(config, final_k=3), resources=resources).contexts) == 3
+    assert len(retrieve("door clear width", config=replace(config, final_k=5), resources=resources).contexts) == 5
+
+
+def test_blend_mode_runs_end_to_end(resources):
+    result = retrieve("grab bar for water closets", config=replace(CONFIG, rerank_mode="blend"), resources=resources)
+    assert result.contexts[0].section_id == "604.5"
+    assert all(c.blend_score is not None for c in result.debug.reranked)
 
 
 def test_context_window_can_be_switched_off(resources):

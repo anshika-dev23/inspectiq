@@ -20,6 +20,7 @@ from src.ingest import (
     find_repeated_edge_lines,
     fix_hyphenation,
     is_contents_page,
+    is_furniture_anywhere,
     is_next_paragraph_letter,
     is_stoplisted,
     make_breadcrumb,
@@ -30,6 +31,7 @@ from src.ingest import (
     match_heading,
     paragraph_title,
     remove_headers_footers,
+    repair_split_headings,
     section_embedding_text,
     split_children,
     split_sections,
@@ -127,6 +129,8 @@ def test_stoplisted_line_removed_at_edge_but_kept_in_middle():
     (["116 - 2010 Standards: Titles II and III Department of Justice"], "116"),
     (["2010 Standards: Titles II and III - 117Department of Justice"], "117"),
     (["Guidance on the 2010 Standards:  Titles II and III - 93"], "93"),
+    (["32 - 2010 Standards: Titles II and III", "Department of Justice"], "32"),  # PyMuPDF splits the footer
+    (["56 - Guidance on 2010 Standards: Title III Department of Justice"], "56"),
     (["Titles II and III - 2010 Standards - 87"], None),  # inner numbering, not the DOJ footer
     (["Department of Justice"], None),
     ([], None),
@@ -155,6 +159,40 @@ def test_is_contents_page():
     assert not is_contents_page(body)
 
 
+def test_furniture_anywhere_is_removed_mid_page():
+    page = Page(1, ["604.5.1 Side Wall.  The side wall grab bar shall be 42 inches long", "a", "b", "c",
+                    "Titles II and III - 2010 Standards - 134", "Figure 604.5.1", "d", "e", "f"])
+    [cleaned] = remove_headers_footers([page])
+    assert "Titles II and III - 2010 Standards - 134" not in cleaned.lines
+    assert "Figure 604.5.1" in cleaned.lines
+
+
+@pytest.mark.parametrize("line", [
+    "Titles II and III - 2010 Standards - 134",
+    "2010 Standards: Titles II and III - 163",
+    "32 - 2010 Standards: Titles II and III",
+    "Guidance on 2010 Standards: Title II - 5",
+    "Department of Justice",
+])
+def test_furniture_anywhere_matches_footer_lines(line):
+    assert is_furniture_anywhere(line)
+
+
+@pytest.mark.parametrize("line", [
+    "Titles II and III of the ADA apply to 2010 Standards",
+    "required by regulations issued by the Department of Justice.",
+    "The Department of Justice published its revised regulations for",
+])
+def test_furniture_anywhere_ignores_sentences(line):
+    assert not is_furniture_anywhere(line)
+
+
+def test_is_contents_page_by_title_line():
+    assert is_contents_page(Page(37, ["TABLE OF CONTENTS", "101 Purpose", "5"]))
+    assert is_contents_page(Page(3, ["Contents", "1 Introduction 1"]))
+    assert not is_contents_page(Page(50, ["The table of contents lists every chapter."]))
+
+
 def test_is_contents_page_without_dot_leaders():
     contents = Page(36, ["101 Purpose 5", "102 Dimensions for Adults and Children 5", "103 Equivalent Facilitation 5",
                          "104 Conventions 5", "105 Referenced Standards 6", "106 Definitions 8"])
@@ -170,6 +208,43 @@ def test_clean_pages_drops_contents_pages_so_real_section_gets_occurrence_1():
     ]
     [section] = split_sections(clean_pages(pages), "s.pdf")
     assert (section.section_id, section.occurrence, section.pages) == ("36.402", 1, [25])
+
+
+def test_repair_split_section_number_404_3_2():
+    lines = ["by all leaves in the open position.", "40",
+             "4.3.2 Maneuvering Clearance.  Clearances at power-assisted doors and gates shall comply with"]
+    assert repair_split_headings(lines) == [
+        "by all leaves in the open position.",
+        "404.3.2 Maneuvering Clearance.  Clearances at power-assisted doors and gates shall comply with",
+    ]
+    [_, section] = split_sections([Page(131, repair_split_headings(lines))], "s.pdf")
+    assert (section.section_id, section.section_title) == ("404.3.2", "Maneuvering Clearance")
+
+
+def test_repair_split_title_word():
+    assert repair_split_headings(["305.1 Gene", "ral."]) == ["305.1 General."]
+    assert repair_split_headings(["804.6.5.3 C", "ontrols. Ovens shall have controls on front panels"]) == [
+        "804.6.5.3 Controls. Ovens shall have controls on front panels"
+    ]
+
+
+def test_repair_split_title_at_a_word_boundary_keeps_the_space():
+    lines = ["233.3 Residential Dwelling Units Provided by Entities Not Subject to HUD Section 504",
+             "Regulations.  Facilities with residential dwelling units"]
+    [joined] = repair_split_headings(lines)
+    assert match_heading(joined).section_title == (
+        "Residential Dwelling Units Provided by Entities Not Subject to HUD Section 504 Regulations"
+    )
+
+
+@pytest.mark.parametrize("lines", [
+    ["36", "inches (915 mm) minimum."],             # number fragment, but next line is not "digits."
+    ["40", "4.3 percent of the spaces"],             # joins to "404.3 percent ..." which is not a heading
+    ["403 Walking Surfaces", "403.1 General."],      # first line is already a heading
+    ["shall comply with", "404.2.4.  Clearances"],   # body text
+])
+def test_repair_split_headings_leaves_other_lines_alone(lines):
+    assert repair_split_headings(lines) == lines
 
 
 def test_clean_pages_removes_furniture_then_fixes_hyphens():
@@ -495,6 +570,16 @@ def test_reingestion_does_not_duplicate_and_removes_stale_entries(tmp_settings):
         index = pickle.load(f)
     assert len(index["child_ids"]) == third["bm25"]
     assert index["bm25"].get_scores(["alpha"]).max() > 0
+
+
+def test_bm25_index_is_built_without_stopwords(tmp_settings):
+    client = chromadb.PersistentClient(path=str(tmp_settings.chroma_dir))
+    parents = make_parents({"404.2.3": "The width of the door shall be 32 inches."})
+    write_stores(parents, tmp_settings, fake_embed, client)
+    with tmp_settings.bm25_path.open("rb") as f:
+        indexed_terms = pickle.load(f)["bm25"].doc_freqs[0]
+    assert "the" not in indexed_terms and "of" not in indexed_terms
+    assert {"width", "door", "shall", "32", "404.2.3"} <= set(indexed_terms)
 
 
 def test_heading_only_parents_go_to_docstore_only(tmp_settings):
