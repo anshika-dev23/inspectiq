@@ -495,3 +495,61 @@ Blocked answers:
   not *whether the cited section answers the question*. Reaching 0 needs a relevance check (does the cited
   section answer this question?), e.g. the grade step of the step-6 agent, and better retrieval for p03.
 - Latency and cost unchanged (the check is deterministic, milliseconds).
+
+---
+
+## Step 6 — LangGraph agent (grade, rewrite) vs the baseline chain
+
+### 6.1 Design (`src/graph.py`, Mermaid in README.md)
+- The graph orchestrates the existing pieces and re-implements none: `retrieve` = `retrieve()`, `generate` =
+  `answer_from_contexts()` (prompt builder, citation check, number grounding) on the relevant sources only.
+- `grade_documents`: one LLM call per source, graded on the text the generator would see, asking only
+  "relevant: yes/no". The first yes/no in the reply decides; a reply with neither counts as "yes", so a 3B
+  model's formatting slips never discard a good source.
+- `rewrite_query`: only when no source is graded relevant (including an empty retrieval); the LLM rewrites the
+  search query in ADA vocabulary; at most 2 retries, then refuse (`graded_not_relevant`, or
+  `no_relevant_sources` when retrieval found nothing).
+- Two variants from one builder: grade only, and grade + rewrite.
+- Every LLM call is counted (`Answer.llm_calls`) and its tokens and shadow cost summed (`Answer.usage`);
+  `Answer.agent` records the queries tried and every grade. Tools, human-in-the-loop, the checklist flow and
+  conversation memory (`messages`, checkpointer) are step 7.
+
+### 6.2 Results (eval/answer_results.md; llama3.2:3b for grading, rewriting and answering)
+| set | setup | wrong but verified | correct overall | correct among verified | needs_review | false refusals | LLM calls/q | Sonnet 5 shadow $/1k |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| golden | baseline chain | **2** | 9/13 | 8/10 | 3/23 | 3/26 | 0.8 | $2.35 |
+| golden | graph (grade only) | **1** | 10/13 | 9/10 | 2/23 | 3/26 | 2.9 | $3.78 |
+| golden | graph (grade + rewrite) | **1** | 10/13 | 9/10 | 2/23 | 3/26 | 4.0 | $4.55 |
+| held-out | baseline chain | **0** | 7/10 | 6/6 | 1/7 | 3/10 | 0.8 | $1.77 |
+| held-out | graph (grade only) | **1** | 5/10 | 5/6 | 0/6 | 4/10 | 2.7 | $2.29 |
+| held-out | graph (grade + rewrite) | **1** | 5/10 | 5/6 | 0/6 | 4/10 | 3.9 | $3.01 |
+
+Refusal accuracy is 100% everywhere (10/10 out-of-corpus).
+
+### 6.3 What changed, question by question
+- Grader: 96 grades in grade-only, 25 "no", **0 parse failures**.
+- **Wins:** p09: the grader removed 405.8 (the source of the misquoted 36 in), and the answer became correct
+  (34–38 in). p10: the grader removed 502.2 (the van exception behind the wrong 96 in); the answer is no longer
+  wrong, but the generator then replied NOT_IN_SOURCES although 502.3.1 ("60 inches") was in the prompt.
+  g02 went from a refusal to an answer.
+- **Losses (held-out):** h08: the grader correctly kept only 306.3.3, but the model then gave only half the rule
+  ("8 inches at 27 inches", omitting "11 inches at 9 inches"): true but incomplete, counted wrong and verified.
+  h07: with one source left the model answered without any [S#] citation → refused by the citation check (the
+  uncited answer also added a "35 inches" from an exception).
+- Still wrong but verified: p03: the grader dropped 304.2 but kept 809.2.2; "30 inches" is in 809.2.2 (a
+  different dimension), so grounding verifies it.
+- **The rewrite loop changed no in-corpus outcome.** It ran 22 times, mostly on out-of-corpus questions
+  (sprinkler, live load: rewritten, retrieved, then graded "no"). It adds ~1.1 LLM calls per question and
+  ~20% shadow cost for nothing measurable here.
+
+### 6.4 Decision
+- **On the deciding metric the graph does not beat the chain:** wrong-but-verified is 2 + 0 = 2 for the chain
+  and 1 + 1 = 2 for the graph over all 46 questions; correct overall is 16/23 vs 15/23. Grading fixes
+  wrong-*source* errors (p09, p10), but the 3B generator adds new failures on the smaller source sets (h07, h08).
+- Keep the **baseline chain as the default answer path**. Keep the graph (grade only) as the path to re-test with a
+  stronger generator (step 5 routing: cheap grader, stronger answer model), where the h07/h08-type failures
+  should disappear. **Drop the rewrite loop from consideration** unless a larger set shows a gain: 0 wins, more cost.
+- Latency caveat: the setups ran in sequence against the same Ollama server, which caches repeated prompt
+  prefixes; grade + rewrite reused grade-only's grading prompts and looks faster (p50 4.4 s vs 6.3 s) for that
+  reason. Latency comparisons need a cold cache or a shuffled order.
+- 46 questions: every difference above is one or two questions. The direction is informative, not significant.

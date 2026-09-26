@@ -17,7 +17,7 @@ from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from src import tracing
 from src.config import RetrievalConfig, Settings, load_settings
 from src.grounding import CITATION_GROUP, LABEL, REFUSED, FlaggedNumber, assess_grounding
-from src.llm import LLM, LLMResponse
+from src.llm import LLM, LLMResponse, add_usage
 from src.retrieve import RetrievalResult, RetrievedContext, choose_window, retrieve
 
 NOT_IN_SOURCES = "NOT_IN_SOURCES"
@@ -77,6 +77,9 @@ class Answer:
     sources: list[Source] = field(default_factory=list)
     retrieval: RetrievalResult | None = None
     trace_url: str | None = None                               # LangFuse trace, when tracing is on
+    llm_calls: int = 0                                         # chain: 0 or 1; graph: grading + rewrites + answer
+    agent: dict | None = None                                  # graph only: variant, queries tried, grades, retries
+    usage: dict | None = None                                  # tokens and shadow cost summed over all LLM calls
 
 
 # =============================================================================
@@ -178,7 +181,8 @@ def answer_from_contexts(question: str, contexts: list[RetrievedContext], llm: L
     sources = build_sources(contexts, max_context_chars)
     response = llm.complete(build_messages(question, sources))
     timings.update(llm=response.latency_ms, total=round(retrieval_ms + response.latency_ms, 1))
-    common = dict(raw_llm_text=response.text, timings_ms=timings, llm=response, sources=sources)
+    common = dict(raw_llm_text=response.text, timings_ms=timings, llm=response, sources=sources, llm_calls=1,
+                  usage=add_usage(None, response))
 
     if NOT_IN_SOURCES in response.text:
         return refusal(question, "model_not_in_sources", **common)

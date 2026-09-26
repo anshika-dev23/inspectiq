@@ -108,3 +108,42 @@ def test_citation_is_valid_any_expected_section():
     expected = [[item(S, "604.5.1")], [item(S, "604.5.2")]]
     assert citation_is_valid([(S, "609.4"), (S, "604.5.2")], expected)
     assert not citation_is_valid([(S, "609.4")], expected)
+
+
+# --- setup comparison helpers -------------------------------------------------
+
+from eval.answer_eval import AnswerResult, graph_decisions_table, outcome, outcome_diff_table  # noqa: E402
+
+
+def answer_result(qid, qtype="paraphrase", refused=False, reason=None, contains_ok=True, status="verified", agent=None):
+    return AnswerResult(setup="s", question_id=qid, question_type=qtype, question=f"question {qid}", refused=refused,
+                        refusal_reason=reason, text="t", cited=[], invalid_labels=[], contains_ok=contains_ok,
+                        citation_valid=None, total_ms=1.0, llm_calls=1, input_tokens=1, output_tokens=1,
+                        shadow_cost_usd={}, grounding_status=status, agent=agent)
+
+
+def test_outcome_labels():
+    assert outcome(answer_result("p1")) == "correct"
+    assert outcome(answer_result("p1", contains_ok=False)) == "WRONG"
+    assert outcome(answer_result("p1", status="needs_review")) == "correct [review]"
+    assert outcome(answer_result("p1", refused=True, reason="graded_not_relevant")) == "refused (graded_not_relevant)"
+    assert outcome(answer_result("o1", qtype="out_of_corpus", refused=True, reason="no_relevant_sources")) == (
+        "refused (no_relevant_sources) ✓")
+    assert outcome(answer_result("o1", qtype="out_of_corpus", contains_ok=None)) == "ANSWERED (out of corpus)"
+
+
+def test_outcome_diff_table_lists_only_questions_that_differ():
+    by_setup = {"baseline": [answer_result("p1"), answer_result("p2", contains_ok=False)],
+                "graph": [answer_result("p1"), answer_result("p2", refused=True, reason="model_not_in_sources")]}
+    table = outcome_diff_table(by_setup)
+    assert len(table) == 3 and "| p2 |" in table[2] and "WRONG" in table[2] and "model_not_in_sources" in table[2]
+
+
+def test_graph_decisions_table_shows_rejections_and_rewrites():
+    agent = {"queries": ["q", "q2"], "retries": 1,
+             "grades": [{"section": "502.2 [ada_2010_standards.pdf]", "verdict": "no", "parsed": True},
+                        {"section": "502.3.1 [ada_2010_standards.pdf]", "verdict": "yes", "parsed": False}]}
+    quiet = {"queries": ["q"], "retries": 0, "grades": [{"section": "x", "verdict": "yes", "parsed": True}]}
+    table = graph_decisions_table([answer_result("p10", agent=agent), answer_result("p1", agent=quiet)])
+    assert len(table) == 3
+    assert "`q` → `q2`" in table[2] and "502.2 [standards]: no" in table[2] and "502.3.1 [standards]: yes?" in table[2]

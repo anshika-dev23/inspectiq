@@ -65,6 +65,17 @@ def shadow_costs(input_tokens: int | None, output_tokens: int | None,
             for model, (price_in, price_out) in prices.items()}
 
 
+def add_usage(total: dict | None, response: LLMResponse) -> dict:
+    """Running totals over several LLM calls: tokens and shadow cost per model."""
+    total = total or {"input_tokens": 0, "output_tokens": 0, "shadow_cost_usd": {}}
+    shadow = dict(total["shadow_cost_usd"])
+    for model, usd in response.shadow_cost_usd.items():
+        shadow[model] = shadow.get(model, 0.0) + usd
+    return {"input_tokens": total["input_tokens"] + (response.input_tokens or 0),
+            "output_tokens": total["output_tokens"] + (response.output_tokens or 0),
+            "shadow_cost_usd": shadow}
+
+
 class LLM:
     """The one place the application calls a language model."""
 

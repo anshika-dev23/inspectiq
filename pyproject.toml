@@ -5,11 +5,13 @@ description = "Inspection compliance copilot"
 requires-python = ">=3.12"
 dependencies = [
     "anthropic",
+    "certifi",
     "chromadb>=1.5",
     "langchain>=1.4",
     "langchain-anthropic",
     "langchain-ollama",
     "langchain-text-splitters",
+    "langfuse>=4",
     "pymupdf>=1.26",
     "python-dotenv",
     "rank-bm25",
