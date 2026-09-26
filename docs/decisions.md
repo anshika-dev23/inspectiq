@@ -181,3 +181,11 @@ what is still open. Numbers are from the ADA corpus: `ada_2010_standards.pdf` (2
 
 ### Open for step 4
 - Threshold value (2.4), `final_k` 3 vs 5 and `rerank_mode` replace vs blend (2.5), with the golden set.
+
+---
+
+## Build order change (after step 2)
+- **Decision:** steps 3 and 4 swapped. Step 3 is now retrieval evals (no LLM); step 4 is the baseline answer
+  chain (Ollama first, via the provider switch), which also adds faithfulness to the evals.
+- **Why:** retrieval evals need no LLM, so they are free and fast locally, and they settle the open questions
+  (rerank or not, `rerank_mode`, `final_k`, the threshold) before an answer chain is built on top.
