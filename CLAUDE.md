@@ -52,7 +52,7 @@ Tokenizer (src/text.py), used at ingestion AND query time:
 - Every stage toggleable in config so evals can compare: vector-only / +bm25 / +sections / +rerank.
 
 ## Answering
-- Step 4 baseline: plain LangChain chain (retriever | prompt | llm | parser), no LangGraph.
+- Step 3 baseline: plain LangChain chain (retriever | prompt | llm | parser), no LangGraph.
 - Answer only from retrieved text; cite every claim; refuse without a citation.
 
 ## Agent (src/graph.py) — LangGraph, step 6 only
@@ -66,8 +66,8 @@ Tokenizer (src/text.py), used at ingestion AND query time:
 ## Evals (eval/)
 - golden.json: 20+ questions with expected source + section, including 4 not in the corpus
   and some exact-ID questions (e.g. "What does R302.1 require?").
-- Metrics: hit-rate@k and refusal correctness (step 3, retrieval only, no LLM), faithfulness (LLM judge,
-  step 4), tool-choice accuracy (step 6).
+- Metrics: hit-rate@k, MRR, refusal correctness, latency (step 4a, retrieval only, no LLM),
+  faithfulness (LLM judge, step 4b), tool-choice accuracy (step 6).
 - Report a table per retrieval config and baseline chain vs graph.
 
 ## Observability & cost (src/llm.py)
@@ -91,14 +91,16 @@ Tokenizer (src/text.py), used at ingestion AND query time:
 - Keep functions small and named for what they do.
 
 ## Build order (do ONLY the current step; stop and wait after each)
+Order of work: 1, 2, 4a, 3, 4b, 5, ... (4a needs no LLM, so it runs before the answer chain)
 1. Ingestion part 1 + part 2 (four stores) + tests
 2. Retrieval as a pure function + tests
-3. Retrieval evals (no LLM): golden set; compare vector-only / +bm25 / +sections / +rerank,
-   rerank_mode, final_k and the rerank threshold
-4. Baseline answer chain (no LangGraph): retrieve -> LLM (provider switch, Ollama first) -> cited answer;
-   add faithfulness to the evals
+3. Baseline answer chain (no LangGraph): retrieve -> LLM (provider switch, Ollama first) -> cited answer
+4. Evals: golden set
+   4a. Retrieval only (no LLM): compare vector-only / bm25-only / hybrid / +sections / +rerank
+       (replace, blend, rrf) at final_k 3 and 5; sweep the rerank threshold
+   4b. After step 3: faithfulness (LLM judge) and baseline chain results
 5. LLM wrapper + LangFuse + cost tracking
 6. LangGraph agent (grade, rewrite, tools); re-run evals vs baseline
 7. Human-in-the-loop, safety tests
 8. FastAPI, Docker, CI
-Current step: 3
+Current step: 4a
