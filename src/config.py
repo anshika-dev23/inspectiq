@@ -76,7 +76,12 @@ class Settings:
     llm_provider: str
     ollama_model: str
     ollama_base_url: str
+    ollama_num_ctx: int          # set explicitly: Ollama's default context is smaller and silently truncates
     anthropic_model: str
+    llm_temperature: float
+
+    # Answering (step 3): total characters of source text put in the prompt
+    answer_max_context_chars: int
 
 
 def load_settings() -> Settings:
@@ -102,7 +107,12 @@ def load_settings() -> Settings:
         llm_provider=llm_provider,
         ollama_model=os.getenv("OLLAMA_MODEL", "llama3.2:3b"),
         ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+        ollama_num_ctx=int(os.getenv("OLLAMA_NUM_CTX", "8192")),
         anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5"),
+        llm_temperature=0.0,
+        # ~6,000 chars is ~1,500 tokens: fits llama3.2:3b's 8k context with instructions and answer to spare.
+        answer_max_context_chars=int(os.getenv(
+            "ANSWER_MAX_CONTEXT_CHARS", "6000" if llm_provider == "ollama" else "20000")),
     )
 
 

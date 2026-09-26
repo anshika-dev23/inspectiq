@@ -94,6 +94,9 @@ class RetrievedContext:
     rerank_score: float | None
     pinned: bool
     ranks: dict[str, int]
+    # Where the best-matching chunk sits inside `text` (start, end); None when the section was pinned
+    # (then the start of the text matters most). Used by the answer step when it has to shorten the text.
+    focus: tuple[int, int] | None = None
 
 
 @dataclass
@@ -503,6 +506,11 @@ def build_context(candidate: Candidate, resources: RetrievalResources, config: R
     parent = resources.docstore[candidate.parent_id]
     metadata, text = parent["metadata"], parent["text"]
 
+    best_span = None
+    if candidate.best_child_ids and not candidate.pinned:
+        best = resources.children_by_id[candidate.best_child_ids[0]]
+        best_span = (best["start_char"], best["start_char"] + len(best["text"]))
+
     window = None
     if config.use_context_window and len(text) > config.parent_full_text_max_chars:
         if candidate.pinned or not candidate.best_child_ids:
@@ -516,6 +524,12 @@ def build_context(candidate: Candidate, resources: RetrievalResources, config: R
             window = choose_window(len(text), spans, config.context_window_chars)
         window = snap_to_lines(text, *window)
         text = text[window[0]:window[1]]
+
+    focus = None
+    if best_span is not None:
+        offset = window[0] if window else 0
+        start, end = max(0, best_span[0] - offset), min(len(text), best_span[1] - offset)
+        focus = (start, end) if start < end else None
 
     return RetrievedContext(
         parent_id=candidate.parent_id,
@@ -533,6 +547,7 @@ def build_context(candidate: Candidate, resources: RetrievalResources, config: R
         rerank_score=candidate.rerank_score,
         pinned=candidate.pinned,
         ranks=dict(candidate.ranks),
+        focus=focus,
     )
 
 

@@ -317,3 +317,70 @@ out-of-corpus correctly empty, out of 34.
 - Plain `RetrievalConfig()` reproduces the final row: golden 30/34 (MRR 0.808), held-out 10/12.
 - Recurring failure pattern for later: the cross-encoder over-weights "wheelchair" and ranks wheelchair-space
   sections (802.x, 809.x) above the specific requirement (p01, p03, h03).
+
+---
+
+## Step 3 — baseline answer chain (Ollama `llama3.2:3b`)
+
+### 3.1 Design
+- `src/llm.py`: one wrapper over the provider switch (ChatOllama / ChatAnthropic), temperature 0. `num_ctx=8192`
+  is set explicitly: Ollama's default context is smaller and silently drops the start of long prompts. Every call
+  records provider, model, latency, input/output tokens (Ollama: `prompt_eval_count` / `eval_count`) and cost ($0
+  for now; LangFuse and prices in step 5).
+- `src/answer.py`: `answer(question, filters)` = `retrieve()` + `answer_from_contexts()` (split so the chain is
+  tested with a fake LLM and no stores). Sources are labelled `[S1]..[S3]` with their citation and breadcrumb.
+- Context cap 6,000 chars for Ollama (config `answer_max_context_chars`; ~1,500 tokens, measured mean prompt
+  1,090 tokens incl. instructions): **water-filling**, short sources keep all their text, long ones share the rest
+  equally. A shortened source keeps the part around its best-matching chunk (`RetrievedContext.focus`, new), or the
+  start for a section pinned by an exact ref.
+- Enforced in code, not trusted to the model: empty retrieval → refusal without an LLM call;
+  `NOT_IN_SOURCES` anywhere in the reply → refusal; no `[S#]` citing a label that exists → refusal. Labels that do
+  not exist are reported as `invalid_labels` (none seen in the eval).
+
+### 3.2 The six spot checks (`scripts/answer.py`)
+- Door clear width: "32 inches (815 mm)" [S1 = 404.2.3]. Correct.
+- "What does 604.5 require?": side and rear wall grab bars [S1 604.5], lengths [S2 604.5.1], [S3 604.5.2]. Correct.
+- Grab bar height for toilets: **faithful but wrong**: "25 to 27 inches ... children ages 9 through 12" [S1 604.9].
+  Retrieval never supplied 609.4 (33–36 inches); the model answered correctly from what it was given.
+  The glossary changed this query's retrieval ("toilet" → water closet): 604.9 and 604.7 instead of 604.5.x.
+- 35.151(b): a long, correct, fully cited summary from both the regulation and the guidance (19 s, 326 tokens out).
+- Capital of France: refused by retrieval (no LLM call).
+- "How high can a light switch be?": retrieval found 205.1 (light switches are operable parts), 309.3 ("within the
+  reach ranges specified in 308") and Guidance "205, 309", whose text in the prompt says side reach was lowered to
+  48 inches. The model replied NOT_IN_SOURCES: a **model false refusal**, one cross-reference hop (309.3 → 308)
+  too far for a 3B model. It failed safely.
+
+### 3.3 Deterministic answer eval (`eval/answer_eval.py`, `eval/answer_results.md`)
+- No LLM judge (a 3B model is too weak to judge). `answer_contains` added to 13 golden and 10 held-out questions
+  whose answer is a number in the text (numbers already in the question were skipped); whole-number matching.
+
+| set | answer correct | citation valid | refusal acc. | false refusals | p50 | p95 | LLM p50 | retrieval p50 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| golden | 9/13 (69%) | 21/23 (91%) | 8/8 | 3/26 (12%) | 5.4 s | 14.8 s | 5.6 s | 236 ms |
+| held-out | 7/10 (70%) | 7/7 | 2/2 | 3/10 (30%) | 2.4 s | 12.6 s | 2.4 s | 181 ms |
+
+- Latency is the LLM: retrieval is ~0.2 s, generation 2–15 s on this Mac (longer answers, longer time).
+- Out-of-corpus: 10/10 refused (8 by the retrieval threshold, 2 via the model or citation checks). No
+  hallucinated answer to an out-of-corpus question.
+
+### 3.4 Failures: retrieval vs model
+Checked by looking at what was actually in the prompt:
+
+| q | outcome | where it failed |
+|---|---|---|
+| p03 turning space | answered from 304.2 (surfaces), no "60" | retrieval (304.3.x not retrieved) |
+| p04 light switch (golden phrasing) | refused: empty retrieval | retrieval |
+| p07 parking count | NOT_IN_SOURCES | retrieval (208.2 not in top 3) |
+| h03 space in front of a fixture | NOT_IN_SOURCES | retrieval (305.3 not retrieved) |
+| h06 narrowest ramp | NOT_IN_SOURCES | retrieval (405.5 not retrieved) |
+| **p09 ramp handrail height** | "**36** inches minimum" citing 505.4, which says **34** | **model misquote**: the number was in S1 |
+| p10 access aisle width | answered 96 inches from the 502.2 van exception | model: chose S2 over S1 (502.3.1, "60 inches") |
+| g02 cars in van spaces | reasoned from 502.7, then NOT_IN_SOURCES | model: the answer ("do not prohibit") was in S1 |
+| h10 area around a toilet | confused by a 4,000-char guidance source, then NOT_IN_SOURCES | model: 604.3.1 (60 × 56 inches) was in S3 |
+
+- Retrieval failures end in a refusal or a weak cited answer, never an invented one: the refusal gates work.
+- **p09 is the dangerous case**: a confident, cited, wrong number. Citation checking cannot catch it (the cited
+  section is right); only the deterministic number check did. Idea for step 7: a grounding check that every number
+  in the answer appears in the cited source text.
+- Model-side problems (3 of 4) involve long or distracting sources. Ideas to evaluate later, not tuned now:
+  fewer or shorter sources for the 3B model, the stronger model for final answers (step 5), a grounding check.

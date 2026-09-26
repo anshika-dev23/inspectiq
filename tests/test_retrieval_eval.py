@@ -81,3 +81,30 @@ def test_golden_set_is_well_formed():
             assert len(q["expected"]) == 2
         for group in q["expected"]:
             assert group and all(set(e) == {"source", "section_id"} for e in group)
+
+
+# --- answer eval helpers ------------------------------------------------------
+
+from eval.answer_eval import citation_is_valid, contains_expected  # noqa: E402
+
+
+@pytest.mark.parametrize("text, expected, ok", [
+    ("a clear width of 32 inches [S1]", ["32"], True),
+    ("17 inches minimum and 19 inches maximum", ["17", "19"], True),
+    ("17 inches minimum", ["17", "19"], False),
+    ("15 pounds", ["5"], False),                 # whole numbers only
+    ("5.5 pounds", ["5"], False),
+    ("5 pounds (22.2 N)", ["5"], True),
+    ("a slope of 1:12 [S1]", ["1:12"], True),
+    ("1:120", ["1:12"], False),
+    ("over 1/2 inch", ["½|1/2|0.5"], True),
+    ("over ½ inch", ["½|1/2|0.5"], True),
+])
+def test_contains_expected(text, expected, ok):
+    assert contains_expected(text, expected) is ok
+
+
+def test_citation_is_valid_any_expected_section():
+    expected = [[item(S, "604.5.1")], [item(S, "604.5.2")]]
+    assert citation_is_valid([(S, "609.4"), (S, "604.5.2")], expected)
+    assert not citation_is_valid([(S, "609.4")], expected)

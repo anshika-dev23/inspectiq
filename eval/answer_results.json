@@ -1,0 +1,1022 @@
+{
+ "golden": [
+  {
+   "question_id": "p01",
+   "question_type": "paraphrase",
+   "question": "How wide does a doorway need to be for a wheelchair user?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], a doorway should provide a clear opening of 32 inches (815 mm) minimum in power-on and power-off mode.\n\nHowever, [S3] states that a single wheelchair space should be 36 inches (915 mm) wide minimum.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "404.3.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "802.1.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 4408.0,
+   "retrieval_ms": 201.6,
+   "llm_ms": 4206.4,
+   "input_tokens": 671,
+   "output_tokens": 55
+  },
+  {
+   "question_id": "p02",
+   "question_type": "paraphrase",
+   "question": "How steep can a wheelchair ramp be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], a wheelchair ramp's running slope shall not be steeper than 1:12 [S1].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 3509.7,
+   "retrieval_ms": 181.5,
+   "llm_ms": 3328.2,
+   "input_tokens": 705,
+   "output_tokens": 27
+  },
+  {
+   "question_id": "p03",
+   "question_type": "paraphrase",
+   "question": "How much floor space does a wheelchair user need to turn around?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S2], a wheelchair turning space shall comply with 304, and [S2] states that floor or ground surfaces of a turning space shall comply with 302, with changes in level not permitted, except for slopes not steeper than 1:48.\n\n[S2] [ada_2010_standards.pdf p.110 §304.2]",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "304.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": false,
+   "total_ms": 9154.3,
+   "retrieval_ms": 401.8,
+   "llm_ms": 8752.5,
+   "input_tokens": 1650,
+   "output_tokens": 76
+  },
+  {
+   "question_id": "p04",
+   "question_type": "paraphrase",
+   "question": "How high on the wall can a light switch be mounted?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": null,
+   "total_ms": 272.7,
+   "retrieval_ms": 272.7,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "p05",
+   "question_type": "paraphrase",
+   "question": "How high should the seat of an accessible toilet be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the seat height of an accessible toilet shall be 17 inches (430 mm) minimum and 19 inches (485 mm) maximum measured to the top of the seat.\n\nNote that [S2] also states the same height range for children's toilets, but the question specifically asks about accessible toilets, which is addressed in [S1].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "604.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.9.3"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 5362.6,
+   "retrieval_ms": 62.0,
+   "llm_ms": 5300.6,
+   "input_tokens": 647,
+   "output_tokens": 75
+  },
+  {
+   "question_id": "p06",
+   "question_type": "paraphrase",
+   "question": "How much force can it take to push open an interior door?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the maximum force that can be applied to push open an interior hinged door is 5 pounds (22.2 N).",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 2659.4,
+   "retrieval_ms": 296.1,
+   "llm_ms": 2363.3,
+   "input_tokens": 424,
+   "output_tokens": 32
+  },
+  {
+   "question_id": "p07",
+   "question_type": "paraphrase",
+   "question": "How many accessible parking spaces does a parking lot need?",
+   "refused": true,
+   "refusal_reason": "model_not_in_sources",
+   "text": "NOT_IN_SOURCES",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 5686.1,
+   "retrieval_ms": 205.8,
+   "llm_ms": 5480.3,
+   "input_tokens": 1584,
+   "output_tokens": 5
+  },
+  {
+   "question_id": "p08",
+   "question_type": "paraphrase",
+   "question": "How high can a checkout or service counter be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the counter surface height shall be 38 inches (965 mm) maximum above the finish floor or ground.\n\nHowever, [S2] states that a portion of the counter surface shall be 36 inches (915 mm) high maximum above the finish floor, and [S3] states that a portion of the counter surface shall be 36 inches (915 mm) high maximum and 30 inches (760 mm) long minimum.\n\nTherefore, the counter surface height is 36 inches (915 mm) maximum, as stated in [S2] and [S3].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "904.3.2"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "904.4.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 6786.2,
+   "retrieval_ms": 202.1,
+   "llm_ms": 6584.1,
+   "input_tokens": 616,
+   "output_tokens": 121
+  },
+  {
+   "question_id": "p09",
+   "question_type": "paraphrase",
+   "question": "At what height do ramp handrails have to be installed?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the height of handrails on ramps shall be 36 inches (915 mm) minimum and 38 inches (965 mm) maximum above walking surfaces, stair nosings, and ramp surfaces.\n\nHowever, [S2] states that for ramps with a rise greater than 6 inches (150 mm), handrails shall comply with [S1]'s requirements, but does not specify a different height.\n\n[S3] does not provide a different height for ramp handrails, but rather specifies a height range for handrails in play areas, which is not relevant to this question.\n\nTherefore, the answer is: 36 inches (915 mm) [S1].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "505.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "405.8"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "1008.2.5.3.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": true,
+   "total_ms": 7948.9,
+   "retrieval_ms": 218.7,
+   "llm_ms": 7730.2,
+   "input_tokens": 686,
+   "output_tokens": 139
+  },
+  {
+   "question_id": "p10",
+   "question_type": "paraphrase",
+   "question": "How wide must the aisle next to an accessible parking space be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S2], the adjacent access aisle must be at least 96 inches (2440 mm) wide minimum, but this exception applies only when the van parking space is 96 inches (2440 mm) wide minimum.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": false,
+   "total_ms": 3572.7,
+   "retrieval_ms": 417.2,
+   "llm_ms": 3155.5,
+   "input_tokens": 466,
+   "output_tokens": 48
+  },
+  {
+   "question_id": "e01",
+   "question_type": "exact_id",
+   "question": "What does 604.5 require?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], 604.5 requires grab bars to be provided on the side wall closest to the water closet and on the rear wall.\n\nAdditionally, [S2] states that the side wall grab bar shall be 42 inches (1065 mm) long minimum, located 12 inches (305 mm) maximum from the rear wall, and extending 54 inches (1370 mm) minimum from the rear wall.\n\n[S3] states that the rear wall grab bar shall be 36 inches (915 mm) long minimum and extend from the centerline of the water closet 12 inches (305 mm) minimum on one side and 24 inches (610 mm) minimum on the other side.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "604.5.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 6082.8,
+   "retrieval_ms": 175.0,
+   "llm_ms": 5907.8,
+   "input_tokens": 838,
+   "output_tokens": 144
+  },
+  {
+   "question_id": "e02",
+   "question_type": "exact_id",
+   "question": "What does section 405.2 say?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "Section 405.2 states that ramps shall have a running slope not steeper than 1:12 [S1].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "405.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 5270.6,
+   "retrieval_ms": 264.8,
+   "llm_ms": 5005.8,
+   "input_tokens": 1468,
+   "output_tokens": 26
+  },
+  {
+   "question_id": "e03",
+   "question_type": "exact_id",
+   "question": "Explain 35.151(b).",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], Section 35.151(b) Alterations requires that each facility or part of a facility altered by, on behalf of, or for the use of a public entity in a manner that affects or could affect the usability of the facility or part of the facility shall be altered in such manner that the altered portion of the facility is readily accessible to and usable by individuals with disabilities, if the alteration was commenced after January 26, 1992 [S1].\n\nAdditionally, [S2] states that the path of travel requirements of § 35.151(b)(4) shall apply only to alterations undertaken solely for purposes other than to meet the program accessibility requirements of § 35.150 [S2].\n\n[S2] also defines a \"primary function\" as a major activity for which the facility is intended, and includes areas such as offices and work areas, dining areas, meeting rooms, and restrooms [S2].\n\n[S3] renumbers the requirements for alterations to historic facilities and eliminates the option of using the Uniform Federal Accessibility Standards (UFAS) for alterations that commence on or after March 15, 2012 [S3].",
+   "cited": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "35.151(b)"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(b)(3)"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 10560.8,
+   "retrieval_ms": 186.4,
+   "llm_ms": 10374.4,
+   "input_tokens": 1635,
+   "output_tokens": 238
+  },
+  {
+   "question_id": "e04",
+   "question_type": "exact_id",
+   "question": "What is required by 36.406(f)?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1] and [S2], 36.406(f) requires that:\n\n* In stadiums, arenas, and grandstands, wheelchair spaces and companion seats are dispersed to all levels that include seating served by an accessible route [S2].\n* Assembly areas that are required to horizontally disperse wheelchair spaces and companion seats by section 221.2.3.1 of the 2010 Standards, and that have seating encircling, in whole or in part, a field of play or performance, wheelchair spaces and companion seats are dispersed around that field of play or performance area [S2].\n* Wheelchair spaces and companion seats are not located on (or obstructed by) temporary platforms or other movable structures, except that when an entire seating section is placed on temporary platforms or other movable structures in an area where fixed seating is not provided, wheelchair spaces and companion seats may be placed in that section [S2].\n* In stadium-style movie theaters, wheelchair spaces and companion seats are located on a riser or cross-aisle in the stadium section that satisfies at least one of the following criteria: (i) It is located within the rear 60% of the seats provided in an auditorium; or (ii) It is located within the area of an auditorium in which the vertical viewing angles (as measured to the top of the screen) are from the 40th to the 100th percentile of vertical viewing angles for all seats as ranked from the seats in the first row (1st percentile) to seats in the back row (100th percentile) [S2].",
+   "cited": [
+    [
+     "ada_2010_guidance.pdf",
+     "36.406(f)"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "36.406(f)"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 18916.2,
+   "retrieval_ms": 370.2,
+   "llm_ms": 18546.0,
+   "input_tokens": 1590,
+   "output_tokens": 326
+  },
+  {
+   "question_id": "e05",
+   "question_type": "exact_id",
+   "question": "What does 703.4.1 require?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], 703.4.1 requires that tactile characters on signs be located:\n\n* 48 inches (1220 mm) minimum above the finish floor or ground surface, measured from the baseline of the lowest tactile character\n* 60 inches (1525 mm) maximum above the finish floor or ground surface, measured from the baseline of the highest tactile character.\n\n[Note: There is no mention of an exception for elevator car controls in [S1]. The exception is mentioned in [S3], but it is related to a different requirement (407.2.3.1).]",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "703.4.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "407.2.3.1"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 7304.8,
+   "retrieval_ms": 569.7,
+   "llm_ms": 6735.1,
+   "input_tokens": 608,
+   "output_tokens": 124
+  },
+  {
+   "question_id": "n01",
+   "question_type": "numeric_keyword",
+   "question": "33 to 36 inches grab bar",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], grab bars shall be installed in a horizontal position, 33 inches (840 mm) minimum and 36 inches (915 mm) maximum above the finish floor measured to the top of the gripping surface.\n\nHowever, [S2] states that where the requirement states a specified range, such as in section 609.4, that range provides an adequate tolerance and therefore no tolerance outside of the range at either end point is permitted. \n\nTherefore, the correct answer is that the range of 33 to 36 inches is the specified range, and no tolerance outside of this range is permitted.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "609.4"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "104"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 9389.8,
+   "retrieval_ms": 274.4,
+   "llm_ms": 9115.4,
+   "input_tokens": 1299,
+   "output_tokens": 125
+  },
+  {
+   "question_id": "n02",
+   "question_type": "numeric_keyword",
+   "question": "ramp cross slope 1:48",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the cross slope of a ramp shall not be steeper than 1:48 [S1 p.132 §405.3].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "405.3"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 5693.7,
+   "retrieval_ms": 247.3,
+   "llm_ms": 5446.4,
+   "input_tokens": 1250,
+   "output_tokens": 34
+  },
+  {
+   "question_id": "n03",
+   "question_type": "numeric_keyword",
+   "question": "60 inch diameter turning space",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "The 60 inch diameter turning space is a minimum requirement [S1].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "304.3.1"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 2726.1,
+   "retrieval_ms": 434.7,
+   "llm_ms": 2291.4,
+   "input_tokens": 524,
+   "output_tokens": 16
+  },
+  {
+   "question_id": "n04",
+   "question_type": "numeric_keyword",
+   "question": "5 pounds maximum force",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the maximum 5 pounds of force requirement applies to the window latch itself, not just the force required to open the window.\n\n[S2] states that the maximum force for pushing or pulling open a door or gate is 5 pounds (22.2 N) maximum.\n\n[S3] also states that the force required to activate operable parts, including windows, shall be 5 pounds (22.2 N) maximum.",
+   "cited": [
+    [
+     "ada_2010_guidance.pdf",
+     "229"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.9"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "309.4"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 6047.3,
+   "retrieval_ms": 198.0,
+   "llm_ms": 5849.3,
+   "input_tokens": 729,
+   "output_tokens": 92
+  },
+  {
+   "question_id": "n05",
+   "question_type": "numeric_keyword",
+   "question": "36 inch minimum clear width of walking surfaces",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the clear width of walking surfaces shall be 36 inches (915 mm) minimum, except as provided in [S3].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "403.5.1"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "403.5.3"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 3867.0,
+   "retrieval_ms": 341.4,
+   "llm_ms": 3525.6,
+   "input_tokens": 759,
+   "output_tokens": 32
+  },
+  {
+   "question_id": "g01",
+   "question_type": "guidance_only",
+   "question": "Why is an accessible urinal no longer required in a men's room with only one urinal?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], men's toilet rooms with only one urinal will no longer be required to provide an accessible urinal under the 2010 Standards, as stated in section 213.3.1 [S1].",
+   "cited": [
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 5533.1,
+   "retrieval_ms": 236.6,
+   "llm_ms": 5296.5,
+   "input_tokens": 1084,
+   "output_tokens": 48
+  },
+  {
+   "question_id": "g02",
+   "question_type": "guidance_only",
+   "question": "Can cars that are not vans park in van accessible parking spaces?",
+   "refused": true,
+   "refusal_reason": "model_not_in_sources",
+   "text": "[S2] [ada_2010_standards.pdf p.155 §502.7] states that parking spaces and access aisles shall be designed so that cars and vans, when parked, cannot obstruct the required clear width of adjacent accessible routes. This implies that cars cannot park in van accessible parking spaces, as it would obstruct the clear width of the adjacent accessible route.\n\nHowever, [S2] does not explicitly state that cars cannot park in van accessible parking spaces. It only states that cars and vans, when parked, cannot obstruct the required clear width of adjacent accessible routes.\n\n[S3] [ada_2010_standards.pdf p.155 §502.3.4] does not address the specific scenario of cars parking in van accessible parking spaces.\n\nTherefore, the answer is NOT_IN_SOURCES.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 12064.5,
+   "retrieval_ms": 211.0,
+   "llm_ms": 11853.5,
+   "input_tokens": 1589,
+   "output_tokens": 164
+  },
+  {
+   "question_id": "g03",
+   "question_type": "guidance_only",
+   "question": "How did the handrail diameter requirement change from the 1991 Standards to the 2010 Standards?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], Section 4.26.2 of the 1991 Standards requires handrail gripping surfaces to have a diameter of 1 ¼ inches to 1 ½ inches, or to provide an equivalent gripping surface. In contrast, Section 505.7 of the 2010 Standards requires handrail gripping surfaces with a circular cross section to have an outside diameter of 1 ¼ inches to 2 inches [S2].",
+   "cited": [
+    [
+     "ada_2010_guidance.pdf",
+     "505"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "505.7.1"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 9664.4,
+   "retrieval_ms": 248.4,
+   "llm_ms": 9416.0,
+   "input_tokens": 1695,
+   "output_tokens": 93
+  },
+  {
+   "question_id": "g04",
+   "question_type": "guidance_only",
+   "question": "Why did the Department keep the phrase 'other sloped areas' in the curb ramp rule?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "The Department kept the phrase \"other sloped areas\" in the curb ramp rule because it stated that the phrase \"lacks technical precision\" and received no significant public comments on the proposal to delete it [S1].",
+   "cited": [
+    [
+     "ada_2010_guidance.pdf",
+     "35.151(i)"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": true,
+   "total_ms": 6970.3,
+   "retrieval_ms": 235.6,
+   "llm_ms": 6734.7,
+   "input_tokens": 1476,
+   "output_tokens": 45
+  },
+  {
+   "question_id": "m01",
+   "question_type": "two_sections",
+   "question": "What are the clear width and the maneuvering clearance requirements for a manual swinging door?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], a manual door opening shall provide a clear width of 32 inches (815 mm) minimum.\n\nFor a manual swinging door, the maneuvering clearance requirements are as follows:\n\n- From front, pull: 60 inches (1525 mm)\n- From front, push: 48 inches (1220 mm)\n- From hinge side, pull: 60 inches (1525 mm)\n- From hinge side, push: 42 inches (1065 mm)\n- From latch side, pull: 48 inches (1220 mm)\n- From latch side, push: 42 inches (1065 mm)\n\nAdditionally, [S2] Table 404.2.4.1 provides the maneuvering clearance requirements for a manual swinging door, which are the same as above.\n\nNote that [S3] provides examples of toilet room layouts with manual swinging doors, but does not provide the clear width and maneuvering clearance requirements for a manual swinging door.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "404.2.3"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "404.2.4.1"
+    ],
+    [
+     "ada_2010_guidance.pdf",
+     "213, 603, 604, 608"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 14808.1,
+   "retrieval_ms": 242.3,
+   "llm_ms": 14565.8,
+   "input_tokens": 1996,
+   "output_tokens": 198
+  },
+  {
+   "question_id": "m02",
+   "question_type": "two_sections",
+   "question": "How long must the side wall and the rear wall grab bars be at a water closet?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the side wall grab bar must be at least 42 inches (1065 mm) long, and the rear wall grab bar must be at least 36 inches (915 mm) long.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "604.5.1"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 4833.1,
+   "retrieval_ms": 286.9,
+   "llm_ms": 4546.2,
+   "input_tokens": 848,
+   "output_tokens": 45
+  },
+  {
+   "question_id": "o01",
+   "question_type": "out_of_corpus",
+   "question": "What is the capital of France?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 808.0,
+   "retrieval_ms": 808.0,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "o02",
+   "question_type": "out_of_corpus",
+   "question": "What R-value of insulation is required in an attic?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 66.9,
+   "retrieval_ms": 66.9,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "o03",
+   "question_type": "out_of_corpus",
+   "question": "How many GFCI outlets are required on a kitchen countertop?",
+   "refused": true,
+   "refusal_reason": "model_not_in_sources",
+   "text": "NOT_IN_SOURCES",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 5645.5,
+   "retrieval_ms": 87.0,
+   "llm_ms": 5558.5,
+   "input_tokens": 1500,
+   "output_tokens": 5
+  },
+  {
+   "question_id": "o04",
+   "question_type": "out_of_corpus",
+   "question": "What fire-resistance rating do exterior walls need near a property line?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 529.5,
+   "retrieval_ms": 529.5,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "o05",
+   "question_type": "out_of_corpus",
+   "question": "What sprinkler spacing is required in an office?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 61.1,
+   "retrieval_ms": 61.1,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "o06",
+   "question_type": "out_of_corpus",
+   "question": "What live load must an office floor support?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 92.4,
+   "retrieval_ms": 92.4,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "o07",
+   "question_type": "out_of_corpus",
+   "question": "What U-factor must windows have in climate zone 5?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 59.6,
+   "retrieval_ms": 59.6,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "o08",
+   "question_type": "out_of_corpus",
+   "question": "What amperage must a kitchen countertop circuit have?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 53.6,
+   "retrieval_ms": 53.6,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  }
+ ],
+ "held-out": [
+  {
+   "question_id": "h01",
+   "question_type": "paraphrase",
+   "question": "How tall can a drinking fountain spout be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to the sources, a drinking fountain spout can be:\n\n* Maximum 36 inches (915 mm) above the finish floor or ground [S1]\n* Minimum 38 inches (965 mm) above the finish floor or ground [S2]\n* Maximum 43 inches (1090 mm) above the finish floor or ground [S2]\n\nNote that the exception for children's units has a different maximum height of 30 inches (760 mm) [S3].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "602.4"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "602.7"
+    ],
+    [
+     "ada_2010_standards.pdf",
+     "602.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 5197.0,
+   "retrieval_ms": 53.2,
+   "llm_ms": 5143.8,
+   "input_tokens": 466,
+   "output_tokens": 97
+  },
+  {
+   "question_id": "h02",
+   "question_type": "paraphrase",
+   "question": "How wide does a van accessible parking space need to be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S2], a van parking space must be at least 132 inches (3350 mm) wide minimum.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "502.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 2683.0,
+   "retrieval_ms": 243.3,
+   "llm_ms": 2439.7,
+   "input_tokens": 526,
+   "output_tokens": 26
+  },
+  {
+   "question_id": "h03",
+   "question_type": "paraphrase",
+   "question": "How much space does a person in a wheelchair need in front of a fixture or control?",
+   "refused": true,
+   "refusal_reason": "model_not_in_sources",
+   "text": "NOT_IN_SOURCES",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": null,
+   "total_ms": 2383.9,
+   "retrieval_ms": 187.9,
+   "llm_ms": 2196.0,
+   "input_tokens": 662,
+   "output_tokens": 5
+  },
+  {
+   "question_id": "h04",
+   "question_type": "paraphrase",
+   "question": "How high can a step up in the floor be before it has to be ramped?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], a step up in the floor must be ramped if it is higher than ½ inch (13 mm).",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "303.4"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 1796.8,
+   "retrieval_ms": 174.2,
+   "llm_ms": 1622.6,
+   "input_tokens": 238,
+   "output_tokens": 29
+  },
+  {
+   "question_id": "h05",
+   "question_type": "paraphrase",
+   "question": "How much can a single ramp run rise before you need a landing?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], a single ramp run does not need a landing if the rise is 30 inches (760 mm) or less [S1, 405.6].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "405.6"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 2126.6,
+   "retrieval_ms": 142.3,
+   "llm_ms": 1984.3,
+   "input_tokens": 219,
+   "output_tokens": 38
+  },
+  {
+   "question_id": "h06",
+   "question_type": "paraphrase",
+   "question": "What is the narrowest a ramp can be?",
+   "refused": true,
+   "refusal_reason": "model_not_in_sources",
+   "text": "NOT_IN_SOURCES",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": null,
+   "total_ms": 873.0,
+   "retrieval_ms": 242.1,
+   "llm_ms": 630.9,
+   "input_tokens": 232,
+   "output_tokens": 5
+  },
+  {
+   "question_id": "h07",
+   "question_type": "paraphrase",
+   "question": "How high can the bottom of a bathroom mirror be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S1], the bottom edge of the reflecting surface of a mirror located above lavatories or countertops shall be installed with a maximum height of 40 inches (1015 mm) above the finish floor or ground.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "603.3"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 6189.6,
+   "retrieval_ms": 88.1,
+   "llm_ms": 6101.5,
+   "input_tokens": 1330,
+   "output_tokens": 46
+  },
+  {
+   "question_id": "h08",
+   "question_type": "paraphrase",
+   "question": "How deep must the space for your knees be under a sink?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "According to [S3] [ada_2010_standards.pdf p.174-175 §606.2], the knee clearance under a sink is 11 inches (280 mm) deep minimum at 9 inches (230 mm) above the finish floor or ground, and 8 inches (205 mm) deep minimum at 27 inches (685 mm) above the finish floor or ground.",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "606.2"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 9606.5,
+   "retrieval_ms": 181.3,
+   "llm_ms": 9425.2,
+   "input_tokens": 1804,
+   "output_tokens": 81
+  },
+  {
+   "question_id": "h09",
+   "question_type": "paraphrase",
+   "question": "How high can the rim of a bathroom sink be?",
+   "refused": false,
+   "refusal_reason": null,
+   "text": "The rim of a bathroom sink can be 34 inches (865 mm) maximum above the finish floor or ground [S1].",
+   "cited": [
+    [
+     "ada_2010_standards.pdf",
+     "606.3"
+    ]
+   ],
+   "invalid_labels": [],
+   "contains_ok": true,
+   "citation_valid": true,
+   "total_ms": 3862.2,
+   "retrieval_ms": 211.8,
+   "llm_ms": 3650.4,
+   "input_tokens": 867,
+   "output_tokens": 27
+  },
+  {
+   "question_id": "h10",
+   "question_type": "paraphrase",
+   "question": "How much clear floor area is needed around a toilet?",
+   "refused": true,
+   "refusal_reason": "model_not_in_sources",
+   "text": "According to [S1], the required clear floor space at fixtures and turning space overlap is not specified, but the turning space includes knee and toe clearance at the lavatory, which is not related to the clear floor area around the toilet.\n\nHowever, [S2] Plan 4B and Plan 5A show a clear floor space of 30 inches wide by 48 inches long minimum beyond the arc of the swing of the entry door, but this is not directly related to the clear floor area around the toilet.\n\n[S3] states that the clearance around a water closet shall be 60 inches (1525 mm) minimum measured perpendicular from the side wall and 56 inches (1420 mm) minimum measured perpendicular from the rear wall, but it does not specify the clear floor area needed around the toilet.\n\nNOT_IN_SOURCES",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": false,
+   "citation_valid": null,
+   "total_ms": 12636.2,
+   "retrieval_ms": 236.6,
+   "llm_ms": 12399.6,
+   "input_tokens": 1649,
+   "output_tokens": 169
+  },
+  {
+   "question_id": "hn1",
+   "question_type": "out_of_corpus",
+   "question": "How deep must footings be below the frost line?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 585.9,
+   "retrieval_ms": 585.9,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "question_id": "hn2",
+   "question_type": "out_of_corpus",
+   "question": "What is the maximum spacing of floor joists?",
+   "refused": true,
+   "refusal_reason": "no_relevant_sources",
+   "text": "I don't know: the indexed code documents do not answer this question.",
+   "cited": [],
+   "invalid_labels": [],
+   "contains_ok": null,
+   "citation_valid": null,
+   "total_ms": 55.2,
+   "retrieval_ms": 55.2,
+   "llm_ms": 0.0,
+   "input_tokens": null,
+   "output_tokens": null
+  }
+ ]
+}
